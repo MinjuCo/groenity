@@ -1,4 +1,4 @@
-<footer class="page-footer d-flex flex-row align-items-center fixed-bottom">
+<footer class="page-footer d-flex flex-row align-items-center">
     <div class="container-xl">
         <div class="row">
             <div class="col-10">
