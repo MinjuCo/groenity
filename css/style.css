@@ -40,6 +40,11 @@ html{
     margin-left: 16px;
     border-radius: 5px;
 }
+
+/*  REGISTRATION.PHP  */
+.p-2 .row, .p-3 .row, .p-4 .row{
+    width: 600px;
+}
 /* FOOTER */
 .page-footer {
     height: 60px;
