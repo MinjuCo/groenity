@@ -1,8 +1,8 @@
-<footer class="page-footer">
+<footer class="page-footer fixed-bottom">
     <div class="container">
         <div class="row">
             <div class="col">
-                <h6 class="align-middle">Copyrights Groenity</h6>
+                <h6>Copyrights Groenity</h6>
             </div>
         <div class="col-6"></div>
         <div class="col-md-auto">
