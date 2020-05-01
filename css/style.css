@@ -9,37 +9,43 @@ white/nav: #FCFCFC;
 html, body{
     font-family: 'Roboto', sans-serif;
     background-color: #EDF5E0;
+    font-size: 1em;
     height: 100%;
 }
 
 
 /*   NAVBAR  */
 .navbar {
-    height: 60px;
     background-color: #FCFCFC;
     box-shadow: 0px -10px 10px 10px rgba(0,0,0,0.2);
 }
 .navbar-brand {
-    width: 240px;
-    padding:0;
+    width: 130px;
 }
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-left: 20px;
-    padding-right: 20px;
+
+.navbar-toggler{
+    border-color: #8DE4AF;
 }
+
+.navbar-toggler-icon{
+    background-image: url("../img/Icons/menu.svg");
+}
+
 .nav-item .nav-link{
     color: #389583;
     font-family: 'Roboto', sans-serif;
 
 }
-.nav-item.aanmelden-container{
+.nav-item.aanmelden::before{
+    content: "";
     border-left: 1px solid rgba(5, 56, 107, 0.2);
 }
 .nav-link.aanmelden, .btn-form-registratie {
     background-color: #5CD894;
     color: #FCFCFC;
-    margin-left: 16px;
+    margin-left: 1em;
     border-radius: 5px;
+    padding: 0.5em;
 }
 
 /*  REGISTRATION.PHP  */
@@ -72,24 +78,35 @@ html, body{
 }
 /* FOOTER */
 .page-footer {
-    height: 60px;
+    height: 56px;
     background-color: #05386B;
 }
-html .page-footer .container {
-    height: 100%;
-}
-html .page-footer .container .row {
-  padding-top: 15px;
-}
-html .page-footer .container .row .col h6{
+
+.page-footer{
     font-family: 'Roboto', sans-serif;
     color: #EDF5E0;
     font-size: 16px;
 }
-html .page-footer .container .row .col-md-auto a {
-    padding: 5px;
-    margin: 5px;
-}
+
 .social-media-icon {
     stroke: #EDF5E0;
+}
+
+.page-footer .icon{
+    margin: 0 0.5em;
+}
+
+@media (max-width: 768px){
+    .nav-item.aanmelden::before{
+        content: "";
+        border-left: none;
+    }
+
+    .nav-link.aanmelden{
+        margin-left: 0;
+    }
+
+    .navbar .collapse{
+        flex-direction: row;
+    }
 }
