@@ -11,8 +11,27 @@ html, body{
     background-color: #EDF5E0;
     font-size: 1em;
     height: 100%;
+    color: #1C1C1C;
 }
 
+label{
+    font-weight: bold;
+}
+
+.card{
+    background-color: #FCFCFC;
+}
+
+.btn{
+    background-color: #5CD894;
+    color: #EDF5E0;
+    border-radius: 5px;
+}
+
+.link-gn{
+    font-weight: bold;
+    color: #389583;
+}
 
 /*   NAVBAR  */
 .navbar {
@@ -46,6 +65,35 @@ html, body{
     margin-left: 1em;
     border-radius: 5px;
     padding: 0.5em;
+}
+
+/* LANDINGPAGE.PHP */
+.intro{
+    position: relative;
+    height: 100vh;
+    background-image: url("../img/Visuals/demo_application.svg"), url("../img/Visuals/fluid_bg.svg");
+    background-repeat: no-repeat;
+    background-size: 35em, cover;
+    background-position: 4vw bottom ,bottom left;
+}
+
+.intro .container-xl, .intro .container-xl .row{
+    height: 500px;
+}
+
+.intro_text.col-md-6{
+    color: #EDF5E0;
+}
+
+h1{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 4em;
+}
+
+h4{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.5em;
+    color: #389583;
 }
 
 /*  REGISTRATION.PHP  */
