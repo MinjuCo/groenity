@@ -46,6 +46,12 @@ h4{
     color: #389583;
 }
 
+hr{
+    color: rgba(5, 56, 107, 0.3);
+    border-top:1px solid rgba(5, 56, 107, 0.3);
+    width: 80%;
+}
+
 /*   NAVBAR  */
 .navbar {
     background-color: #FCFCFC;
@@ -77,7 +83,6 @@ h4{
     color: #EDF5E0;
     margin-left: 1em;
     border-radius: 5px;
-    padding: 0.5em;
 }
 
 /* LANDINGPAGE.PHP */
@@ -114,28 +119,17 @@ h1{
     height: 100vh;
     background-image: url("../img/Visuals/ask_code.svg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 75%;
     background-position: bottom center;
     padding-top: 5em;
 }
-.p-2 .row, .p-3 .row, .p-4 .row{
-    width: 600px;
-}
-.registration-moveit{
-    margin-left: 10px;
-}
+
 .btn-form-registratie{
     margin-left:0;
     padding-left: 20px;
     padding-right: 20px;
 }
-.form-space{
-    background-color: #FCFCFC;
-    border-radius: 15px;
-    margin-bottom: 2em;
-    width: 600px;
-    box-shadow: 0px 0px 10px 5px rgba(0,0,0, 0.15);
-}
+
 /* FOOTER */
 .page-footer {
     height: 56px;
