@@ -33,6 +33,19 @@ label{
     color: #389583;
 }
 
+h2{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 3em;
+    color: #05386B;
+    margin-bottom: 1em
+}
+
+h4{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.5em;
+    color: #389583;
+}
+
 /*   NAVBAR  */
 .navbar {
     background-color: #FCFCFC;
@@ -61,16 +74,19 @@ label{
 }
 .nav-link.aanmelden, .btn-form-registratie {
     background-color: #5CD894;
-    color: #FCFCFC;
+    color: #EDF5E0;
     margin-left: 1em;
     border-radius: 5px;
     padding: 0.5em;
 }
 
 /* LANDINGPAGE.PHP */
-.intro{
+.intro, .awareness, .awards, .experts, .affection{
     position: relative;
     height: 100vh;
+}
+
+.intro{
     background-image: url("../img/Visuals/demo_application.svg"), url("../img/Visuals/fluid_bg.svg");
     background-repeat: no-repeat;
     background-size: 35em, cover;
@@ -88,23 +104,19 @@ label{
 h1{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 4em;
+    font-weight: bold;
 }
 
-h4{
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 1.5em;
-    color: #389583;
-}
 
-/*  REGISTRATION.PHP  */
+/*  ASKCODE.PHP  */
 
-.registration .container{
+.askCode.container{
     height: 100vh;
     background-image: url("../img/Visuals/ask_code.svg");
     background-repeat: no-repeat;
     background-size: contain;
-    background-position-y: 30vh;
-
+    background-position: bottom center;
+    padding-top: 5em;
 }
 .p-2 .row, .p-3 .row, .p-4 .row{
     width: 600px;
