@@ -8,9 +8,9 @@
 <body>
     <?php include_once(__DIR__."/../includes/nav.inc.php"); ?>
     <div class="container askCode">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-7 m-auto">
         <!-- 1st -->
-        <h2>Heb je een code?</h2>
+        <h2 class="mb-2">Heb je een code?</h2>
             <!-- 2nd -->
             <div class="row">
                 <div class="card shadow-sm col-12 rounded-lg">
@@ -43,7 +43,7 @@
                                 <label class="mb-0">Nee, ik heb geen code</label>
                             </div>
                             <div class="col-md-7">
-                                <a href="registration.php" class="btn">Ga verder</a>
+                                <a href="register.php" class="btn">Ga verder</a>
                             </div>
                         </div>
                     </div>
