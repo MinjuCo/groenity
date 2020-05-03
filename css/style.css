@@ -52,6 +52,11 @@ hr{
     width: 80%;
 }
 
+.askCode, .registration, .login{
+    height: 100vh;
+    padding-top: 5.7em;
+}
+
 /*   NAVBAR  */
 .navbar {
     background-color: #FCFCFC;
@@ -116,18 +121,32 @@ h1{
 /*  ASKCODE.PHP  */
 
 .askCode.container{
-    height: 100vh;
     background-image: url("../img/Visuals/ask_code.svg");
     background-repeat: no-repeat;
-    background-size: 75%;
+    background-size: 80%;
     background-position: bottom center;
-    padding-top: 5em;
 }
 
 .btn-form-registratie{
     margin-left:0;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+/* REGISTER.PHP */
+.registration{
+    background-image: url("../img/Visuals/registration.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom center;
+}
+
+/* LOGIN.PHP */
+.login{
+    background-image: url("../img/Visuals/login.svg");
+    background-repeat: no-repeat;
+    background-size: 30em;
+    background-position: bottom left;
 }
 
 /* FOOTER */
