@@ -57,11 +57,21 @@ hr{
     padding-top: 5.7em;
 }
 
-/*   NAVBAR  */
-.navbar {
-    background-color: #FCFCFC;
-    box-shadow: 0px -10px 10px 10px rgba(0,0,0,0.2);
+.container.application{
+    padding-top: 11em;
 }
+
+/*   NAVBAR  */
+.navbar{
+    background-color: #FCFCFC;
+}
+
+.navbar.navbar--app{
+    background-color: #05386B;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .navbar-brand {
     width: 130px;
 }
@@ -75,10 +85,32 @@ hr{
 }
 
 .nav-item .nav-link{
+    box-sizing: border-box;
     color: #389583;
     font-family: 'Roboto', sans-serif;
-
 }
+
+.nav-item .subnav--icon{
+    color: #EDF5E0;
+    stroke: #EDF5E0;
+    padding: 0.75rem 0;
+}
+
+.nav-item .subnav--icon.active{
+    color: #5CD894;
+    stroke: #5CD894;
+    border-bottom: 4px solid #5CD894;
+}
+
+.nav-item .subnav--icon:hover{
+    color: #8DE4AF;
+    stroke: #8DE4AF;
+}
+
+.nav-item .subnav--icon svg{
+    margin-bottom: 0.25rem;
+}
+
 .nav-item.aanmelden::before{
     content: "";
     border-left: 1px solid rgba(5, 56, 107, 0.2);
@@ -88,6 +120,18 @@ hr{
     color: #EDF5E0;
     margin-left: 1em;
     border-radius: 5px;
+}
+
+#notification{
+    stroke: #389583;
+}
+
+.dropdown-menu.notifications{
+    min-width: 20rem;
+}
+
+#profile{
+    color: #1C1C1C;
 }
 
 /* LANDINGPAGE.PHP */
