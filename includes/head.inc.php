@@ -1,5 +1,5 @@
 <?php 
-$currentPage = basename($_SERVER['PHP_SELF'],'.php');
+$currentPage = strtolower(basename($_SERVER['PHP_SELF'],'.php'));
 ?>
 <head>
     <meta charset="UTF-8">
