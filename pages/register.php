@@ -1,5 +1,19 @@
 <?php
+  include_once("../classes/Db.php");
+  include_once("../classes/User.php");
   $pageTitle = "Registratie";
+
+  if (!empty($_POST["submit-registration"])) {
+$error = "clicked";
+echo 'checked';
+    if(isset($_POST['conditionAccepted'])){
+      $error = 'accepted';
+      echo 'accepted';
+    } else {
+      $error = 'nope';
+      echo 'nope';
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -14,8 +28,8 @@
         Krijg toegang tot je eigen dashboard waar je het leven van je stadje mee kan opvolgen, 
         terwijl je uitdagingen of discussies aangaat.
       </p>
-
-      <form action="" method="post">
+<p><?php if(isset($error)){ echo $error; } ?></p>
+      <form action="" method="post" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="firtName">Voornaam</label>
@@ -46,7 +60,7 @@
             </label>
           </div>
         </div>
-        <button type="submit" class="btn btn-block">Schrijf je in</button>
+        <input type="submit" class="btn btn-block" name="submit-registration" placeholder="Schrijf je in">
       </form>
       <hr>
       <p class="text-center">Reeds lid? <a class="link-gn" href="login.php">Meld je hier aan</a></p>
