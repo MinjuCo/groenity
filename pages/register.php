@@ -10,7 +10,7 @@ echo 'checked';
       $error = 'accepted';
       echo 'accepted';
     } else {
-      $error = 'nope';
+      $error = 'Astublieft vinkt aan onze privacy voorwarden';
       echo 'nope';
     }
   }
