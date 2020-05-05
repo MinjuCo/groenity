@@ -32,7 +32,7 @@
             </form>
             <small id="streetAlert" class="form-text text-muted"></small>
             <hr>
-            <p class="text-center">Reeds lid? <a class="link-gn" href="#">Meld je hier aan</a></p>
+            <p class="text-center">Reeds lid? <a class="link-gn" href="pages/register.php">Meld je hier aan</a></p>
           </div>
         </div>
       </div>
