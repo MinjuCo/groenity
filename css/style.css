@@ -193,6 +193,11 @@ h1{
     background-position: bottom left;
 }
 
+/* CITY.PHP */
+.nav-pills .nav-link.active{
+    color: #EDF5E0;
+    background-color: #389583;
+}
 /* FOOTER */
 .page-footer {
     height: 56px;
