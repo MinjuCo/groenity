@@ -8,7 +8,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
                     <?php
                     if (isset($_SESSION["user"])) {
                         include_once(__DIR__."/../includes/nav-private.inc.php");

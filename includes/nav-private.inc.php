@@ -1,4 +1,4 @@
-<form class="form-inline my-2 my-lg-0 w-50">
+<form class="form-inline mr-auto my-2 my-lg-0 w-50">
     <div class="input-group w-100">
     <input type="text" class="form-control" name="searchUser" placeholder="Zoek een gebruiker op" aria-label="Gebruiker opzoeken">
     <div class="input-group-append">
