@@ -16,6 +16,10 @@
     private $verified;
 
     /*
+        LOGIN
+    */
+
+    /*
         REGISTER
     */
     public function register()
@@ -59,7 +63,6 @@
         $statement2->execute();
         return true;
 
-
         } catch(Throwable $e){
             return false;
         }
@@ -99,7 +102,7 @@
     */
 
     // email validation
-    public function doesEmailExists()
+    public function validateEmail()
     {
       $conn = Db::getConnection();
 
@@ -113,7 +116,7 @@
         return false;
       }
     }
-    // password equal?
+    // password registration/change validation
     public function validatePassword($p1, $p2)
     {
         $password1 = htmlspecialchars($p1);
@@ -148,6 +151,10 @@
      */ 
     public function setFirstName($firstName)
     {
+        if(empty($firstName)){
+            throw new Exception("Vul eerste naam in");
+    }
+   
         $this->firstName = htmlspecialchars($firstName);
 
         return $this;
@@ -168,6 +175,7 @@
      */ 
     public function setLastName($lastName)
     {
+
         $this->lastName = htmlspecialchars($lastName);
 
         return $this;

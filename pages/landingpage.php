@@ -1,3 +1,8 @@
+<?php
+//get city
+//get 
+
+?>
 <section class="intro d-flex align-items-center" id="intro">
   <div class="container-xl">
     <div class="row d-flex">
@@ -32,7 +37,7 @@
             </form>
             <small id="streetAlert" class="form-text text-muted"></small>
             <hr>
-            <p class="text-center">Reeds lid? <a class="link-gn" href="pages/register.php">Meld je hier aan</a></p>
+            <p class="text-center">Reeds lid? <a class="link-gn" href="pages/login.php">Meld je hier aan</a></p>
           </div>
         </div>
       </div>

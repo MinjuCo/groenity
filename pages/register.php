@@ -10,46 +10,51 @@ if (!empty($_POST["submit-registration"])) {
   // check if user agreed to tearms
   if (isset($_POST['conditionAccepted'])) {
 
-    $password = $_POST["password"];
-    $repeatPassword = $_POST["confirmPassword"];
-    $email = $_POST['email'];
-    $firstname = $_POST['firstName'];
-    $lastname = $_POST['lastName'];
+    try {
 
-    //fields validation
-    if (checkAllFields($firstname, $lastname, $email, $password, $repeatPassword) == true) {
+      $password = $_POST["password"];
+      $repeatPassword = $_POST["confirmPassword"];
+      $email = $_POST['email'];
+      $firstname = $_POST['firstName'];
+      $lastname = $_POST['lastName'];
 
-      $passwordValid = $user->validatePassword($password, $repeatPassword);
+      //fields validation
+      //if (checkAllFields($firstname, $lastname, $email, $password, $repeatPassword) == true) {
 
-      //password validation
-      if (strlen($passwordValid) > 1) {
-        $error = $passwordValid;
-      }
+        $passwordValid = $user->validatePassword($password, $repeatPassword);
 
-      //email validation
-      $user->setEmail($_POST['email']);
-      $emailExists = $user->doesEmailExists();
+        //password validation
+        if (strlen($passwordValid) > 1) {
+          $error = $passwordValid;
+        }
 
-      if ($emailExists == true) {
-        $error = "Dit emailadress wordt momenteel gebruikt door iemaand anders";
-      }
-    } else {
-      $error = "Leege velden";
+        //email validation
+        $user->setEmail($_POST['email']);
+        $emailExists = $user->validateEmail();
+
+        if ($emailExists == true) {
+          $error = "Dit emailadress wordt momenteel gebruikt door iemaand anders";
+        }
+      //} else {
+        //$error = "Leege velden";
+      //}
+    } catch (\Exception $e) {
+      $error = $e->getMessage();
     }
   } else {
     $error = 'Astublieft vinkt aan onze privacy voorwarden';
   }
 
-
   if (!isset($error)) {
     $user->setFirstName($_POST['firstName']);
     $user->setLastName($_POST['lastName']);
     $user->setPassword($_POST['password']);
-    
+
+
     //register
-    if($user->register() === true && $user->sendValidationCode() === true){
-        $error = 'SECCESSSSS';
-    }  else {
+    if ($user->register() === true && $user->sendValidationCode() === true) {
+      $error = 'SECCESSSSS';
+    } else {
       $error = "Registratie niet gelukt";
     }
   }
