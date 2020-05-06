@@ -1,24 +1,39 @@
 <?php
-  include_once("../classes/Db.php");
-  include_once("../classes/User.php");
+include_once("../classes/Db.php");
+include_once("../classes/User.php");
 
-  $pageTitle = "Inloggen";
+$pageTitle = "Inloggen";
 
-if(!empty($_POST)){
-  
+if (!empty($_POST)) {
+  $user = new User();
+
+  try {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $user->setEmail($email);
+    $user->setPassword($password);
+
+    $user->login();
+  } catch (\Exception $e) {
+    $error = $e->getMessage();
+  }
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="nl">
-<?php include_once(__DIR__."/../includes/head.inc.php"); ?>
+<?php include_once(__DIR__ . "/../includes/head.inc.php"); ?>
 
 <body>
-  <?php include_once(__DIR__."/../includes/nav.inc.php"); ?>
+  <?php include_once(__DIR__ . "/../includes/nav.inc.php"); ?>
   <div class="container-fluid login">
     <div class="col-md-6 m-auto">
       <h2 class="mb-2">Meld je aan om je dashboard te zien</h2>
-
+      <?php if (isset($error)) : ?>
+        <p class="form__error"> <?php echo $error; ?></p>
+      <?php endif; ?>
       <form action="" method="post">
         <div class="form-group">
           <label for="email">E-mailadres</label>

@@ -18,6 +18,11 @@ if (!empty($_POST["submit-registration"])) {
       $firstname = $_POST['firstName'];
       $lastname = $_POST['lastName'];
 
+      $user->setFirstName($_POST['firstName']);
+      $user->setLastName($_POST['lastName']);
+      $user->setPassword($_POST['password']);
+      $user->setEmail($_POST['email']);
+  
       //fields validation
       //if (checkAllFields($firstname, $lastname, $email, $password, $repeatPassword) == true) {
 
@@ -29,9 +34,8 @@ if (!empty($_POST["submit-registration"])) {
         }
 
         //email validation
-        $user->setEmail($_POST['email']);
+       
         $emailExists = $user->validateEmail();
-
         if ($emailExists == true) {
           $error = "Dit emailadress wordt momenteel gebruikt door iemaand anders";
         }
@@ -46,11 +50,6 @@ if (!empty($_POST["submit-registration"])) {
   }
 
   if (!isset($error)) {
-    $user->setFirstName($_POST['firstName']);
-    $user->setLastName($_POST['lastName']);
-    $user->setPassword($_POST['password']);
-
-
     //register
     if ($user->register() === true && $user->sendValidationCode() === true) {
       $error = 'SECCESSSSS';
@@ -59,27 +58,7 @@ if (!empty($_POST["submit-registration"])) {
     }
   }
 }
-// extra functions for validations
-function checkAllFields($f, $l, $e, $p, $rp)
-{
-  $arr = [$f, $l, $e, $p, $rp];
-  foreach ($arr as $v) {
-    if (checkEmpty($v) == false) {
-      return false;
-    }
-  }
-  return true;
-}
 
-function checkEmpty($value)
-{
-  if (!empty($value)) {
-    echo 'works?';
-    return true;
-  } else {
-    return false;
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
