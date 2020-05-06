@@ -1,5 +1,13 @@
 <?php
+  include_once("../classes/Db.php");
+  include_once("../classes/User.php");
+
   $pageTitle = "Inloggen";
+
+if(!empty($_POST)){
+  
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="nl">

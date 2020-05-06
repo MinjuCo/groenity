@@ -15,6 +15,122 @@
     private $role_id;
     private $verified;
 
+    /*
+        REGISTER
+    */
+    public function register()
+    {
+        try{
+        $conn = Db::getConnection();
+        
+        $password = $this->protectPassword();
+
+        $statement = $conn->prepare("INSERT users(first_name, last_name, email, password) values(:firstname, :lastname, :email, :password)");
+        $statement->bindValue(":firstname", $this->getFirstName());
+        $statement->bindValue(":lastname", $this->getLastName());
+        $statement->bindValue(":email", $this->getEmail());
+        $statement->bindValue(":password", $password);
+        $statement->execute();
+            return true;
+        } 
+        catch(Throwable $e) {
+            return false;
+        }
+    }
+
+    //send validation code
+    public function sendValidationCode(){
+        try{
+        $code = $this->randomCode();
+
+        $conn = Db::getConnection();
+        
+        // get id
+        $statement = $conn->prepare("SELECT id FROM users WHERE email = :email");
+        $statement->bindValue(":email", $this->email);
+        $statement->execute();
+        $userId = $statement->fetch();
+        var_dump($userId);
+        
+        // set up validation code
+        $statement2 = $conn->prepare("INSERT verification_code(verify_code, user_id) values(:code, :id)");
+        $statement2->bindValue(":code", $code);
+        $statement2->bindValue(":id", $userId[0]);
+        $statement2->execute();
+        return true;
+
+
+        } catch(Throwable $e){
+            return false;
+        }
+    }
+    
+            //find user id
+     
+    // create random code
+    function randomCode() { 
+
+        $chars = "abcdefghijkmn023456789opqrstuvwxyz"; 
+        srand((double)microtime()*1000000); 
+        $i = 0; 
+        $code = '' ; 
+    
+        while ($i <= 7) { 
+            $num = rand() % 33; 
+            $tmp = substr($chars, $num, 1); 
+            $code = $code . $tmp; 
+            $i++; 
+        } 
+    
+        return $code; 
+    } 
+    // hash password
+    public function protectPassword()
+    {
+        $options = [
+            "cost" => 12 // 2^12
+          ];
+          $password = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
+          return $password;
+    }
+    
+    /* 
+        VALIDATION 
+    */
+
+    // email validation
+    public function doesEmailExists()
+    {
+      $conn = Db::getConnection();
+
+      $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
+      $statement->bindParam(":email", $this->email);
+      $statement->execute();
+      $count = $statement->rowCount();
+      if ($count > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    // password equal?
+    public function validatePassword($p1, $p2)
+    {
+        $password1 = htmlspecialchars($p1);
+        $password2 = htmlspecialchars($p2);
+        $error = "";
+
+        //equal
+        if($password1 != $password2){
+            $error = "Wachtwoorden komen niet overeen";
+        }
+
+        if(strlen($password1) < 8){
+            $error = "Wachtwoord moet ten minste 8 karakters bevaten";
+        }
+
+        return $error;
+    }
     
 
     /**
@@ -32,7 +148,7 @@
      */ 
     public function setFirstName($firstName)
     {
-        $this->firstName = $firstName;
+        $this->firstName = htmlspecialchars($firstName);
 
         return $this;
     }
@@ -52,7 +168,7 @@
      */ 
     public function setLastName($lastName)
     {
-        $this->lastName = $lastName;
+        $this->lastName = htmlspecialchars($lastName);
 
         return $this;
     }
@@ -72,7 +188,7 @@
      */ 
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = htmlspecialchars($email);
 
         return $this;
     }
@@ -92,7 +208,7 @@
      */ 
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = htmlspecialchars($password);
 
         return $this;
     }
@@ -112,7 +228,7 @@
      */ 
     public function setStreet($street)
     {
-        $this->street = $street;
+        $this->street = htmlspecialchars($street);
 
         return $this;
     }
@@ -132,7 +248,7 @@
      */ 
     public function setHouseNumber($houseNumber)
     {
-        $this->houseNumber = $houseNumber;
+        $this->houseNumber = htmlspecialchars($houseNumber);
 
         return $this;
     }
@@ -152,7 +268,7 @@
      */ 
     public function setZip($zip)
     {
-        $this->zip = $zip;
+        $this->zip = htmlspecialchars($zip);
 
         return $this;
     }
@@ -172,7 +288,7 @@
      */ 
     public function setPhoneNumber($phoneNumber)
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->phoneNumber = htmlspecialchars($phoneNumber);
 
         return $this;
     }
