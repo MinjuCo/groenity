@@ -215,7 +215,7 @@
         return $this;
     }
 
-    public static function getChallenges(){
+    public static function getAllChallenges(){
       $conn = Db::getConnection();
       $statement = $conn->prepare("select * from challenges");
       $statement->execute();
@@ -224,9 +224,20 @@
       return $challenges;
     }
 
+    public function getChallengeInfo($challengeId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from challenges where id = :challengeId");
+        $statement->bindValue(":challengeId", $challengeId);
+
+        $statement->execute();
+
+        $challenge = $statement->fetch(PDO::FETCH_ASSOC);
+        return $challenge;
+    }
+
     public static function getUserParticipations($userId){
       $conn = Db::getConnection();
-      $statement = $conn->prepare("select * from challenge_participators where user_id = :userId");
+      $statement = $conn->prepare("select * from challenge_participators cp left join challenges c on cp.challenge_id = c.id where user_id = :userId");
       $statement->bindValue(":userId", $userId);
 
       $statement->execute();
@@ -237,7 +248,7 @@
 
     public static function getUserActiveChallenges($userId){
       $conn = Db::getConnection();
-      $statement = $conn->prepare("select * from challenge_battles where (participator_one = :userId or participator_two = :userId)");
+      $statement = $conn->prepare("select * from challenge_battles cb left join challenges c on cb.challenge_id = c.id where (participator_one = :userId or participator_two = :userId)");
       $statement->bindValue(":userId", $userId);
 
       $statement->execute();
@@ -245,4 +256,5 @@
       $userParticipations = $statement->fetchAll(PDO::FETCH_ASSOC);
       return $userParticipations;
     }
+
   }
