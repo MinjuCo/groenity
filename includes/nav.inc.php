@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li class="nav-item col-2">
-                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "challenges")? "active": "";?>" href="#">
+                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "challenge" || $currentPage == "challengeInfo")? "active": "";?>" href="#">
                             <?php echo file_get_contents("../img/Icons/36/award.svg"); ?>
                             Uitdagingen
                         </a>
