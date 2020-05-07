@@ -22,17 +22,23 @@ document.querySelector('#findAdress').addEventListener("click", function(e){
       })
       .then(data => {
 
+        let zipCode = data.adresMatches[0].postinfo.objectId;
+
+
         //detect error
         if(typeof(data.warnings[0]) !== "undefined"){
            document.querySelector('#adressError').setAttribute("class", "form__error visible");
            return false;
         }
 
-        sessionStorage.setItem("street", street);
-        sessionStorage.setItem("city", houseNr);
-        sessionStorage.setItem("houserNr", city);
-              
+        //AJAX
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "api/setSession.php?zip=" + zipCode + "&street=" + street + "&houseNr=" + houseNr , true);
+            xmlhttp.send();
+
+        
         window.location.replace("pages/askCode.php");
+      
       })
       .catch(error => {
         console.error("Error:", error);

@@ -15,13 +15,15 @@ class User
     private $greenPoints;
     private $role_id;
     private $verified;
+    private $code;
+
 
     /*
         LOGIN
     */
     public function login()
     {
-        echo 'you are here';
+
         if ($this->validateEmail() == true) {
             $conn = Db::getConnection();
             echo 'you re here';
@@ -71,6 +73,30 @@ class User
         }
     }
 
+    public function compliteRegistration($id)
+    {
+        try{
+        $conn = Db::getConnection();
+
+        
+        $statement = $conn->prepare("INSERT user_information(user_id, street, house_number, zip) values(:user, :street, :house, :zip)");
+        $statement->bindValue(":user", $id);
+        $statement->bindValue(":street", $this->getStreet());
+        $statement->bindValue(":house", $this->getHouseNumber());
+        $statement->bindValue(":zip", $this->getZip());
+        $statement->execute();
+        
+        $statement2 =  $conn->prepare("UPDATE users SET verified = 1 WHERE id = :user");
+        $statement2->bindValue(":user", $id);
+        $statement2->execute();
+
+        header("Location: ../pages/instellingen.php");
+        return true;
+        } catch(Throwable $e) {
+            throw new Exception("check fout");
+        }
+    }
+
     //send validation code
     public function sendValidationCode()
     {
@@ -96,8 +122,6 @@ class User
             return false;
         }
     }
-
-    //find user id
 
     // create random code
     function randomCode()
@@ -126,11 +150,12 @@ class User
         $password = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
         return $password;
     }
-
+    /*
+        
+    */
     /* 
         VALIDATION 
     */
-
     // email validation
     public function validateEmail()
     {
@@ -165,7 +190,21 @@ class User
         return $error;
     }
 
+    //code verification
+    public function validateCode(){
+        $conn = Db::getConnection();
 
+        $statement = $conn->prepare("SELECT * FROM verification_code WHERE verify_code = :code");
+        $statement->bindParam(":code", $this->code);
+        $statement->execute();
+        $user = $statement->fetch();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            return $user[2];
+        } else {
+            throw new Exception("Wij hebben dit code helaas niet gevonden");
+        }
+    }
     /**
      * Get the value of firstName
      */
@@ -437,4 +476,28 @@ class User
 
         return $this;
     }
+
+    /**
+     * Get the value of code
+     */ 
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set the value of code
+     *
+     * @return  self
+     */ 
+    public function setCode($code)
+    {
+        if (empty($code)) {
+            throw new Exception("Leege code");
+        }
+        $this->code = $code;
+
+        return $this;
+    }
+
 }
