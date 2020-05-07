@@ -1,5 +1,9 @@
 <?php
+    include_once(__DIR__ . "/../classes/User.php");
     $pageTitle = "Code";
+
+    session_start();
+    
 ?>
 <!DOCTYPE html>
 <html lang="nl">

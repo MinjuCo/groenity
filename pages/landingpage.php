@@ -1,8 +1,3 @@
-<?php
-//get city
-//get 
-
-?>
 <section class="intro d-flex align-items-center" id="intro">
   <div class="container-xl">
     <div class="row d-flex">
@@ -14,6 +9,10 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <h4>Vul je thuisadres in</h4>
+              <!-- ERROR display -->
+        
+            <p class="form__error hidden" id="adressError">We hebben je adres niet teruggevonden. Gelieve het juiste adres in te geven.</p>
+   
             <form action="" method="post">
               <div class="form-row">
                 <div class="form-group col-md-9">
@@ -31,7 +30,7 @@
                   <input type="text" class="form-control" id="city" name="city">
                 </div>
                 <div class="form-group col-md-4 d-flex align-items-end">
-                  <input type="submit" class="btn form-control" value="Gratis deelnemen">
+                  <input type="submit" class="btn form-control" id="findAdress" name="" value="Gratis deelnemen">
                 </div>
               </div>
             </form>
@@ -53,7 +52,7 @@
       <div class="col-md-6 align-self-center">
         <h2>Wat weet jij over jouw impact op het milieu?</h2>
         <p>
-          Op Groenity krijg je informatie over de invloed dat je hebt op het milieu aan de hand van je gegevens en verbruik. 
+          Op Groenity krijg je informatie over de invloed dat je hebt op het milieu aan de hand van je gegevens en verbruik.
           Daarnaast worden er ook tips en inspiratie gegeven om je levensstijl ecologischer te maken en je kosten te verminderen.
         </p>
       </div>
@@ -66,8 +65,8 @@
       <div class="col-md-6 align-self-center">
         <h2>Haalt jouw stad de eerste plaats?</h2>
         <p>
-        Daag jezelf uit missies te volbrengen om Groenity coins te verdienen voor je stad. 
-        Groenity coins geven weer hoe ecologisch jouw stad is en kunnen later omgewisseld worden voor milieubewuste projecten.
+          Daag jezelf uit missies te volbrengen om Groenity coins te verdienen voor je stad.
+          Groenity coins geven weer hoe ecologisch jouw stad is en kunnen later omgewisseld worden voor milieubewuste projecten.
         </p>
       </div>
       <div class="col-md-6">
@@ -85,9 +84,9 @@
       <div class="col-md-6 align-self-center">
         <h2>Heb je een geweldig idee of zit je met een vraag?</h2>
         <p>
-        Bij Groenity krijgen de gebruikers de kans om hun vragen of ideeën te bespreken met milieuspecialisten. 
-        Geef een seintje dat je een deskundige nodig hebt en laat een berichtje met je contactgegevens achter.
-        Een expert probeert dan zo snel mogelijk een gesprek met jou in te plannen.
+          Bij Groenity krijgen de gebruikers de kans om hun vragen of ideeën te bespreken met milieuspecialisten.
+          Geef een seintje dat je een deskundige nodig hebt en laat een berichtje met je contactgegevens achter.
+          Een expert probeert dan zo snel mogelijk een gesprek met jou in te plannen.
         </p>
       </div>
     </div>
@@ -108,4 +107,4 @@
     </div>
   </div>
 </section>
-
+<script src="api/apiAdress.js"></script>

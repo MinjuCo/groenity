@@ -5,6 +5,13 @@ dark-blue: #05386B
 font-white/green: #EDF5E0;
 white/nav: #FCFCFC;
 */
+.hidden{
+    display: none;
+}
+
+.visible{
+    visibility: visible;
+}
 
 html, body{
     font-family: 'Roboto', sans-serif;
