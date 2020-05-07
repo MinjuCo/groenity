@@ -71,6 +71,25 @@ hr{
     min-height: 100vh;
 }
 
+.nav-pills.categories .nav-link{
+    color: rgba(5, 56, 107, 0.7);
+    border-radius: 0;
+}
+
+.nav-pills .nav-link:hover{
+    color: rgba(56, 149, 131,0.7);
+}
+
+.nav-pills.nav-pills.categories .active{
+    color: #05386B;
+    background-color: transparent;
+    border-bottom: 1px solid #05386B;
+}
+
+.nav-pills.nav-pills.categories .nav-link:hover{
+    color: #05386B;
+}
+
 /*   NAVBAR  */
 .navbar{
     background-color: #FCFCFC;
