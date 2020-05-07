@@ -41,7 +41,7 @@
             </h2>
           </div>
           <div class="col-md-3 text-right">
-            <a href="#" class="btn">Deelnemen</a>
+            <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn">Deelnemen</a>
           </div>
 
         </div>
