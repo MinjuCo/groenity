@@ -150,6 +150,20 @@
         return $this;
     }
 
+    public static function getUserBattleChallenge($userId, $challengeId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from battles where challenge_id = :challengeId and (participator_one = :userId or participator_two = :userId) and active = 1");
+
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":challengeId", $challengeId);
+
+        $statement->execute();
+
+        $battle = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $battle;
+    }
+
     public static function userIsInQueue($userId, $challengeId){
         $conn = Db::getConnection();
         $statement = $conn->prepare("select challenge_id from challenge_queue where challenge_id = :challengeId and user_id = :userId and matched = 0");
