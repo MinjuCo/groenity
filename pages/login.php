@@ -6,17 +6,20 @@ $pageTitle = "Inloggen";
 
 if (!empty($_POST)) {
   $user = new User();
+  
+  $email = $_POST['email'];
+  $password = $_POST['password'];
 
   try {
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
     $user->setEmail($email);
     $user->setPassword($password);
 
-    $user->login();
-  } catch (\Exception $e) {
+    if($user->login()){
+      session_start();
+      $_SESSION['user'] = $email;
+      header("Location: profil.php");
+    }
+  } catch (\Throwable $e) {
     $error = $e->getMessage();
   }
 }
@@ -31,7 +34,7 @@ if (!empty($_POST)) {
   <div class="container-fluid login">
     <div class="col-md-6 m-auto">
       <h2 class="mb-2">Meld je aan om je dashboard te zien</h2>
-      <?php if (isset($error)) : ?>
+      <?php if (!empty($error)) : ?>
         <p class="form__error"> <?php echo $error; ?></p>
       <?php endif; ?>
       <form action="" method="post">
@@ -44,16 +47,8 @@ if (!empty($_POST)) {
           <input type="password" class="form-control" name="password" id="password">
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <div class="form-check">
-              <input class="form-check-input" name="conditionAccepted" type="checkbox" id="checkCondition">
-              <label class="form-check-label" for="checkCondition">
-                Ingelogd blijven
-              </label>
-            </div>
-          </div>
-          <div class="form-group col-md-6">
-            <a href="forgotPassword.php" class="link-blue float-right">Wachtwoord vergeten?</a>
+          <div class="form-group">
+            <a href="forgotPassword.php" class="link-blue">Wachtwoord vergeten?</a>
           </div>
         </div>
         <button type="submit" class="btn btn-block">Meld je aan</button>

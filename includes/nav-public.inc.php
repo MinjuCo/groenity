@@ -9,6 +9,6 @@
             <a href="#" class="nav-link">Contact</a>
         </li>
         <li class="nav-item aanmelden">
-            <a href="pages/login.php" class="nav-link aanmelden d-inline-block">Meld je aan</a>
+            <a href="<?php echo ($currentPage == "index")? "pages/": ""; echo ($currentPage == "login")? "../index":"login";?>.php" class="nav-link aanmelden d-inline-block"><?php echo ($currentPage == "login")? "Schrijf je in":"Meld je aan"; ?></a>
         </li>
     </ul>

@@ -1,7 +1,7 @@
 console.log("connceted");
 
 //decet click
-document.querySelector('#findAdress').addEventListener("click", function(e){
+document.querySelector('#findAddress').addEventListener("click", function(e){
     e.preventDefault();
     let street = document.querySelector("#street").value;
     let houseNr = document.querySelector("#streetNr").value;
@@ -37,7 +37,7 @@ document.querySelector('#findAdress').addEventListener("click", function(e){
 
         //detect error
         if(typeof(data.warnings[0]) !== "undefined"){
-           document.querySelector('#adressError').setAttribute("class", "form__error visible");
+           document.querySelector('#addressError').setAttribute("class", "form__error visible");
            return false;
         }
       

@@ -4,8 +4,12 @@ $pageTitle = "Code";
 
 session_start();
 
+if(empty($_SESSION["street"]) || empty($_SESSION['houseNr']) || empty($_SESSION["zip"])){
+    header("Location: ../index.php");
+}
+
 $street = $_SESSION["street"];
-$houseNr = $_SESSION['houseNr'];
+$houseNr = $_SESSION["houseNr"];
 $zip = $_SESSION["zip"];
 
 

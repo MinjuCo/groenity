@@ -1,5 +1,10 @@
 <?php 
     $pageTitle = "Jouw groene samenleving";
+    session_start();
+    
+    unset($_SESSION['zip']);
+    unset($_SESSION['street']);
+    unset($_SESSION['houseNr']);
 ?>
 
 <!DOCTYPE html>

@@ -18,193 +18,6 @@ class User
     private $code;
 
 
-    /*
-        LOGIN
-    */
-    public function login()
-    {
-
-        if ($this->validateEmail() == true) {
-            $conn = Db::getConnection();
-            echo 'you re here';
-            $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
-            $statement->bindValue(":email", $this->email);
-            $statement->execute();
-            $user = $statement->fetch();
-
-            //verified?
-            if ($user['verified'] == 0) {
-                throw new Exception("Aub activeer je email eerst");
-            }
-
-            if (password_verify($this->password, $user['password'])) {
-                session_start();
-                $_SESSION['user'] = $user[0];
-
-                header("Location: ../pages/profil.php");
-                return true;
-            } else {
-                throw new Exception("Email of password verkeerd");
-            }
-        } else {
-            throw new Exception("Activeer je email");
-        }
-    }
-
-    /*
-        REGISTER
-    */
-    public function register()
-    {
-        try {
-            $conn = Db::getConnection();
-
-            $password = $this->protectPassword();
-
-            $statement = $conn->prepare("INSERT users(first_name, last_name, email, password) values(:firstname, :lastname, :email, :password)");
-            $statement->bindValue(":firstname", $this->getFirstName());
-            $statement->bindValue(":lastname", $this->getLastName());
-            $statement->bindValue(":email", $this->getEmail());
-            $statement->bindValue(":password", $password);
-            $statement->execute();
-            return true;
-        } catch (Throwable $e) {
-            return false;
-        }
-    }
-
-    public function compliteRegistration($id)
-    {
-        try{
-        $conn = Db::getConnection();
-
-        
-        $statement = $conn->prepare("INSERT user_information(user_id, street, house_number, zip) values(:user, :street, :house, :zip)");
-        $statement->bindValue(":user", $id);
-        $statement->bindValue(":street", $this->getStreet());
-        $statement->bindValue(":house", $this->getHouseNumber());
-        $statement->bindValue(":zip", $this->getZip());
-        $statement->execute();
-        
-        $statement2 =  $conn->prepare("UPDATE users SET verified = 1 WHERE id = :user");
-        $statement2->bindValue(":user", $id);
-        $statement2->execute();
-
-        header("Location: ../pages/instellingen.php");
-        return true;
-        } catch(Throwable $e) {
-            throw new Exception("check fout");
-        }
-    }
-
-    //send validation code
-    public function sendValidationCode()
-    {
-        try {
-            $code = $this->randomCode();
-
-            $conn = Db::getConnection();
-
-            // get id
-            $statement = $conn->prepare("SELECT id FROM users WHERE email = :email");
-            $statement->bindValue(":email", $this->email);
-            $statement->execute();
-            $userId = $statement->fetch();
-            var_dump($userId);
-
-            // set up validation code
-            $statement2 = $conn->prepare("INSERT verification_code(verify_code, user_id) values(:code, :id)");
-            $statement2->bindValue(":code", $code);
-            $statement2->bindValue(":id", $userId[0]);
-            $statement2->execute();
-            return true;
-        } catch (Throwable $e) {
-            return false;
-        }
-    }
-
-    // create random code
-    function randomCode()
-    {
-
-        $chars = "abcdefghijkmn023456789opqrstuvwxyz";
-        srand((float) microtime() * 1000000);
-        $i = 0;
-        $code = '';
-
-        while ($i <= 7) {
-            $num = rand() % 33;
-            $tmp = substr($chars, $num, 1);
-            $code = $code . $tmp;
-            $i++;
-        }
-
-        return $code;
-    }
-    // hash password
-    public function protectPassword()
-    {
-        $options = [
-            "cost" => 12 // 2^12
-        ];
-        $password = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
-        return $password;
-    }
-    /*
-        
-    */
-    /* 
-        VALIDATION 
-    */
-    // email validation
-    public function validateEmail()
-    {
-        $conn = Db::getConnection();
-
-        $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
-        $statement->bindParam(":email", $this->email);
-        $statement->execute();
-        $count = $statement->rowCount();
-        if ($count > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    // password registration/change validation
-    public function validatePassword($p1, $p2)
-    {
-        $password1 = htmlspecialchars($p1);
-        $password2 = htmlspecialchars($p2);
-        $error = "";
-
-        //equal
-        if ($password1 != $password2) {
-            $error = "Wachtwoorden komen niet overeen";
-        }
-
-        if (strlen($password1) < 8) {
-            $error = "Wachtwoord moet ten minste 8 karakters bevaten";
-        }
-
-        return $error;
-    }
-
-    //code verification
-    public function validateCode(){
-        $conn = Db::getConnection();
-
-        $statement = $conn->prepare("SELECT * FROM verification_code WHERE verify_code = :code");
-        $statement->bindParam(":code", $this->code);
-        $statement->execute();
-        $user = $statement->fetch();
-        $count = $statement->rowCount();
-        if ($count > 0) {
-            return $user[2];
-        } else {
-            throw new Exception("Wij hebben dit code helaas niet gevonden");
-        }
-    }
     /**
      * Get the value of firstName
      */
@@ -221,7 +34,7 @@ class User
     public function setFirstName($firstName)
     {
         if (empty($firstName)) {
-            throw new Exception("Vul eerste naam in");
+            throw new Exception("Gelieve een voornaam in te vullen");
         }
 
         $this->firstName = htmlspecialchars($firstName);
@@ -245,7 +58,7 @@ class User
     public function setLastName($lastName)
     {
         if (empty($lastName)) {
-            throw new Exception("Vul Achternaam in");
+            throw new Exception("Gelieve een achternaam in te vullen");
         }
 
         $this->lastName = htmlspecialchars($lastName);
@@ -269,7 +82,7 @@ class User
     public function setEmail($email)
     {
         if (empty($email)) {
-            throw new Exception("Vul email in");
+            throw new Exception("Gelieve een geldig e-mailadres in te vullen");
         }
 
         $this->email = htmlspecialchars($email);
@@ -293,7 +106,7 @@ class User
     public function setPassword($password)
     {
         if (empty($password)) {
-            throw new Exception("Vul password in");
+            throw new Exception("Gelieve een wachtwoord te kiezen");
         }
 
         $this->password = htmlspecialchars($password);
@@ -498,6 +311,185 @@ class User
         $this->code = $code;
 
         return $this;
+    }
+
+    /*
+        LOGIN
+    */
+    public function login()
+    {
+
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
+        $email = $this->getEmail();
+
+        $statement->bindValue(":email", $email);
+        $statement->execute();
+        
+        if($statement->rowCount() > 0){
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+            $password = $this->getPassword();
+
+            if (password_verify($password, $user['password'])) {
+                //verified?
+                if ($user['verified'] == 0) {
+                    throw new Exception("Gelieve uw e-mail te activeren.");
+                }
+                return true;
+            } else {
+                throw new Exception("Er is geen account gevonden met deze gegevens. <a class='link-gn' href='../index.php'>Neem snel deel aan Gresident</a>");
+            }
+        }else{
+            throw new Exception("Er is geen account gevonden met deze gegevens. <a class='link-gn' href='../index.php'>Neem snel deel aan Gresident</a>");
+        }
+    }
+
+    /*
+        REGISTER
+    */
+    public function saveUser()
+    {
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("INSERT users(first_name, last_name, email, password) values (:firstname, :lastname, :email, :password)");
+        
+        $password = $this->protectPassword();
+        
+        $statement->bindValue(":firstname", $this->getFirstName());
+        $statement->bindValue(":lastname", $this->getLastName());
+        $statement->bindValue(":email", $this->getEmail());
+        $statement->bindValue(":password", $password);
+
+        $result = $statement->execute();
+        return $result;
+    }
+
+    public function compliteRegistration($id)
+    {
+        try{
+        $conn = Db::getConnection();
+
+        
+        $statement = $conn->prepare("INSERT user_information(user_id, street, house_number, zip) values(:user, :street, :house, :zip)");
+        $statement->bindValue(":user", $id);
+        $statement->bindValue(":street", $this->getStreet());
+        $statement->bindValue(":house", $this->getHouseNumber());
+        $statement->bindValue(":zip", $this->getZip());
+        $statement->execute();
+        
+        $statement2 =  $conn->prepare("UPDATE users SET verified = 1 WHERE id = :user");
+        $statement2->bindValue(":user", $id);
+        $statement2->execute();
+
+        header("Location: ../pages/instellingen.php");
+        return true;
+        } catch(Throwable $e) {
+            throw new Exception("check fout");
+        }
+    }
+
+    //send validation code
+    public function sendValidationCode()
+    {
+        $conn = Db::getConnection();
+        // get id
+        $statement = $conn->prepare("SELECT id FROM users WHERE email = :email");
+        $statement->bindValue(":email", $this->getEmail());
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // set up validation code
+        $statementCode = $conn->prepare("INSERT verification_code(verify_code, user_id) values(:code, :id)");
+        
+        $code = $this->randomCode();
+        $statementCode->bindValue(":code", $code);
+        $statementCode->bindValue(":id", $user['id']);
+        $result = $statementCode->execute();
+
+        return $result;
+    }
+
+    // create random code
+    function randomCode()
+    {
+
+        $chars = "abcdefghijkmn023456789opqrstuvwxyz";
+        srand((float) microtime() * 1000000);
+        $i = 0;
+        $code = '';
+
+        while ($i <= 7) {
+            $num = rand() % 33;
+            $tmp = substr($chars, $num, 1);
+            $code = $code . $tmp;
+            $i++;
+        }
+
+        return $code;
+    }
+    // hash password
+    public function protectPassword()
+    {
+        $options = [
+            "cost" => 12 // 2^12
+        ];
+        $password = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
+        return $password;
+    }
+    /*
+        
+    */
+    /* 
+        VALIDATION 
+    */
+    // email validation
+    public function emailExists()
+    {
+        $conn = Db::getConnection();
+
+        $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
+        $statement->bindParam(":email", $this->email);
+        $statement->execute();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    // password registration/change validation
+    public function validatePassword($confirmPassword)
+    {
+        $password = $this->getPassword();
+        $confirmPassword = htmlspecialchars($confirmPassword);
+
+        if (strlen($password) < 8) {
+            throw new Exception("Wachtwoord moet ten minste 8 karakters bevaten");
+        }
+
+        //equal
+        if ($password == $confirmPassword) {
+            return true;
+        }else{
+            throw new Exception("Wachtwoorden komen niet overeen");
+        }
+
+        
+    }
+
+    //code verification
+    public function validateCode(){
+        $conn = Db::getConnection();
+
+        $statement = $conn->prepare("SELECT * FROM verification_code WHERE verify_code = :code");
+        $statement->bindParam(":code", $this->code);
+        $statement->execute();
+        $user = $statement->fetch();
+        $count = $statement->rowCount();
+        if ($count > 0) {
+            return $user[2];
+        } else {
+            throw new Exception("Wij hebben dit code helaas niet gevonden");
+        }
     }
 
 }
