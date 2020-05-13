@@ -11,7 +11,7 @@ document.querySelector('#findAdress').addEventListener("click", function(e){
     console.log(houseNr);
     console.log(city);
 
-    let url = `https://cors-anywhere.herokuapp.com/https://basisregisters.vlaanderen.be/api/v1/adresmatch?adresMatchRequest.gemeentenaam=${city}&adresMatchRequest.straatnaam=${street}&adresMatchRequest.huisnummer=${houseNr}`;
+    let url = `https://cors-anywhere.herokuapp.com/https://api.basisregisters.vlaanderen.be/v1/adresmatch?gemeentenaam=${city}&straatnaam=${street}&huisnummer=${houseNr}`;
 
     //get data
     
@@ -21,8 +21,18 @@ document.querySelector('#findAdress').addEventListener("click", function(e){
         return response.json();
       })
       .then(data => {
+        if(data.adresMatches.length != 0){
+          let zipCode = data.adresMatches[0].postinfo.objectId;
 
-        let zipCode = data.adresMatches[0].postinfo.objectId;
+          //AJAX
+          xmlhttp = new XMLHttpRequest();
+          xmlhttp.open("GET", "api/setSession.php?zip=" + zipCode + "&street=" + street + "&houseNr=" + houseNr , true);
+          xmlhttp.send();
+
+      
+          window.location.replace("pages/askCode.php");
+        }
+        
 
 
         //detect error
@@ -30,14 +40,6 @@ document.querySelector('#findAdress').addEventListener("click", function(e){
            document.querySelector('#adressError').setAttribute("class", "form__error visible");
            return false;
         }
-
-        //AJAX
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("GET", "api/setSession.php?zip=" + zipCode + "&street=" + street + "&houseNr=" + houseNr , true);
-            xmlhttp.send();
-
-        
-        window.location.replace("pages/askCode.php");
       
       })
       .catch(error => {
