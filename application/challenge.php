@@ -64,7 +64,7 @@
                   <?php if(!empty($onGoingChallenges)):
                      foreach($onGoingChallenges as $onGoingChallenge):
                       $challenge = Challenge::getChallengeInfo($onGoingChallenge['challenge_id']);
-                      $userInQueue = Battle::userIsInQueue($userId, $challenge['id']);
+                      $userInQueue = ($challenge['is_battle'] && Challenge::challengeAlreadyAccepted($userId, $challenge['id'], $challenge['is_battle']))? true:false;
                      ?>
                       <div class="row mb-3">
                         <div class="card col-12">
@@ -118,7 +118,7 @@
                       </div>
                     <?php endforeach;
                   else: ?>
-                    <div class="card col-12">
+                    <div class="card col-12 empty">
                       <div class="card-body">
                         <h3 class="text-center">U hebt nog geen duel uitdagingen aangegaan</h3>
                       </div>
@@ -150,7 +150,7 @@
                       </div>
                     <?php endforeach;
                   else: ?>
-                    <div class="card col-12">
+                    <div class="card col-12 empty">
                       <div class="card-body">
                         <h3 class="text-center">U hebt nog geen zelfstandige uitdagingen aangegaan</h3>
                       </div>
@@ -183,9 +183,9 @@
                       </div>
                     <?php endforeach;
                   else: ?>
-                    <div class="card col-12">
+                    <div class="card col-12 empty">
                       <div class="card-body">
-                        <h3 class="text-center">U hebt nog geen zelfstandige uitdagingen aangegaan</h3>
+                        <h3 class="text-center">U hebt nog geen uitdagingen in wachtlijst staan</h3>
                       </div>
                     </div>
                   <?php endif; ?>
@@ -206,8 +206,7 @@
                       <h6 class="card-subtitle mb-2 text-muted"><?php echo ($challenge['is_battle'])? "1vs1 ": "Zelfstandig ";?>uitdaging</h6>
                       <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                       <div class="action-buttons d-flex flex-row-reverse float-right">
-                        
-                        <a href="#" class="btn ml-2">Deelnemen</a>
+                        <button class="btn btn-participate ml-2" data-challengeid="<?php echo htmlspecialchars($challenge['id']);?>">Deelnemen</button>
                         <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['id']);?>" class="btn">Meer info</a>
                       </div>
                     </div>

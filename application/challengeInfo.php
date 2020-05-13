@@ -14,7 +14,7 @@
 
     try{
       $challenge = Challenge::getChallengeInfo($challegeId);
-      $userInQueue = Battle::userIsInQueue($userId, $challegeId);
+      $userInQueue = ($challenge['is_battle'] && Challenge::challengeAlreadyAccepted($userId, $challegeId, $challenge['is_battle']))? true: false;;
       $userDoingChallenge = Challenge::userIsDoingThisChallenge($userId, $challegeId);
     }catch(\Throwable $th){
       $error = $th->getMessage();
