@@ -230,6 +230,8 @@
         select * from challenges c where not exists (select challenge_id from battles b where b.challenge_id = c.id and (b.participator_one = :userId or b.participator_two = :userId) and active = 1)
          and not exists (select challenge_id from challenge_singles cs where cs.challenge_id = c.id and cs.user_id = :userId and active = 1) 
          and not exists (select challenge_id from challenge_completed cc where cc.challenge_id = c.id and cc.user_id = :userId and active = 1)
+         and not exists (select challenge_id from challenge_queue cq where cq.challenge_id = c.id and cq.user_id = :userId and active = 1)
+         order by created_at desc
          ");
 
         $statement->bindValue(":userId", $userId);
@@ -242,7 +244,7 @@
 
     public static function getUserCompletedChallenge($userId){
         $conn = Db::getConnection();
-        $statement = $conn->prepare("select cc.challenge_id, title, description, goals, extra_info, rewards, green_points, thema_id, is_battle, isWinner from challenges c inner join challenge_completed cc on cc.challenge_id = c.id where user_id = :userId");
+        $statement = $conn->prepare("select cc.challenge_id, title, description, goals, extra_info, rewards, green_points, thema_id, is_battle, isWinner from challenges c inner join challenge_completed cc on cc.challenge_id = c.id where user_id = :userId order by timestamp");
 
         $statement->bindValue(":userId", $userId);
 
@@ -254,14 +256,15 @@
 
     public static function getUserOngoingChallenges($userId){
         $conn = Db::getConnection();
-        $statement = $conn->prepare("SELECT challenge_id from battles 
+        $statement = $conn->prepare("SELECT challenge_id, timestamp from battles 
         where is_completed = 0 and active = 1 and (participator_one = :userId or participator_two = :userId) 
         UNION 
-        select challenge_id from challenge_singles 
+        select challenge_id, timestamp from challenge_singles 
         where is_completed = 0 and active = 1 and user_id = :userId 
         UNION 
-        SELECT challenge_id from challenge_queue 
-        where matched = 0 and active = 1 and user_id = :userId");
+        SELECT challenge_id, timestamp from challenge_queue 
+        where active = 1 and user_id = :userId
+        ORDER BY timestamp DESC");
 
         $statement->bindValue(":userId", $userId);
 
@@ -271,17 +274,37 @@
         return $challenges;
     }
 
+    public static function userIsDoingThisChallenge($userId, $challengeId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("SELECT challenge_id from battles 
+        where is_completed = 0 and active = 1 and (participator_one = :userId or participator_two = :userId) and challenge_id = :challengeId
+        UNION 
+        select challenge_id from challenge_singles 
+        where is_completed = 0 and active = 1 and user_id = :userId and challenge_id = :challengeId");
+
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":challengeId", $challengeId);
+
+        $statement->execute();
+
+        if($statement->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public static function getUserCategorizedChallenges($category,$userId){
         $conn = Db::getConnection();
         switch($category){
             case "battle":
-                $statement = $conn->prepare("select challenge_id, title, description, green_points from battles b left join challenges c on b.challenge_id = c.id where (participator_one = :userId or participator_two = :userId) and active = 1 and is_completed = 0");
+                $statement = $conn->prepare("select challenge_id as id, title, description, green_points from battles b left join challenges c on b.challenge_id = c.id where (participator_one = :userId or participator_two = :userId) and active = 1 and is_completed = 0 group by timestamp desc");
                 break;
             case "single":
-                $statement = $conn->prepare("select challenge_id, title, description, green_points from challenge_singles cs left join challenges c on cs.challenge_id = c.id where user_id = :userId and active = 1 and is_completed = 0");
+                $statement = $conn->prepare("select challenge_id as id, title, description, green_points from challenge_singles cs left join challenges c on cs.challenge_id = c.id where user_id = :userId and active = 1 and is_completed = 0 group by timestamp desc");
                 break;
             case "queue":
-                $statement = $conn->prepare("select challenge_id, title, description, green_points from challenge_queue cq left join challenges c on cq.challenge_id = c.id where user_id = :userId and active = 1 and matched = 0");
+                $statement = $conn->prepare("select challenge_id as id, title, description, green_points from challenge_queue cq left join challenges c on cq.challenge_id = c.id where user_id = :userId and active = 1 group by timestamp desc");
             break;
             default:
                 return false;
@@ -306,14 +329,13 @@
         return $challenge;
     }
 
-    public static function challengeAlreadyAccepted($userId, $challengeId){
+    public static function challengeAlreadyAccepted($userId, $challengeId, $isBattle){
         $conn = Db::getConnection();
-        $challenge = $this->getChallengeInfo($challengeId);
 
-        if($challenge['is_battle']){
-            $statement = $conn->prepare("select * from challenge_participators where user_id = :userId and challenge_id = :challengeId");
+        if($isBattle == true){
+            $statement = $conn->prepare("select * from challenge_queue where user_id = :userId and challenge_id = :challengeId and active = 1");
         }else{
-            $statement = $conn->prepare("select * from challenge_singles where user_id = :userId and challenge_id = :challengeId");
+            $statement = $conn->prepare("select * from challenge_singles where user_id = :userId and challenge_id = :challengeId and active = 1");
         }
 
         $statement->bindValue(":userId", $userId);

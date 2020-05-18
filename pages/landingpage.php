@@ -9,11 +9,8 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <h4>Vul je thuisadres in</h4>
-              <!-- ERROR display -->
-        
-            <p class="form__error hidden" id="adressError">We hebben je adres niet teruggevonden. Gelieve het juiste adres in te geven.</p>
    
-            <form action="" method="post">
+            <form action="api/setSession.php" method="post">
               <div class="form-row">
                 <div class="form-group col-md-9">
                   <label for="street">Straatnaam</label>
@@ -30,11 +27,13 @@
                   <input type="text" class="form-control" id="city" name="city">
                 </div>
                 <div class="form-group col-md-4 d-flex align-items-end">
-                  <input type="submit" class="btn form-control" id="findAdress" name="" value="Gratis deelnemen">
+                  <input type="submit" class="btn form-control" id="findAddress" name="" value="Gratis deelnemen">
                 </div>
               </div>
             </form>
-            <small id="streetAlert" class="form-text text-muted"></small>
+            <!-- ERROR display -->
+        
+            <p class="form__error hidden" id="addressError">We hebben je adres niet teruggevonden. Gelieve het juiste adres in te geven.</p>
             <hr>
             <p class="text-center">Reeds lid? <a class="link-gn" href="pages/login.php">Meld je hier aan</a></p>
           </div>
@@ -107,4 +106,4 @@
     </div>
   </div>
 </section>
-<script src="api/apiAdress.js"></script>
+<script src="api/apiAddress.js"></script>

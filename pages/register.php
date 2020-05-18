@@ -3,60 +3,42 @@ include_once("../classes/User.php");
 $pageTitle = "Registratie";
 
 
-if (!empty($_POST["submit-registration"])) {
-
-  $user = new User();
-
-  // check if user agreed to tearms
-  if (isset($_POST['conditionAccepted'])) {
+if (!empty($_POST)) {
 
     try {
-
       $password = $_POST["password"];
       $repeatPassword = $_POST["confirmPassword"];
       $email = $_POST['email'];
       $firstname = $_POST['firstName'];
       $lastname = $_POST['lastName'];
 
+      $user = new User();
       $user->setFirstName($_POST['firstName']);
       $user->setLastName($_POST['lastName']);
-      $user->setPassword($_POST['password']);
       $user->setEmail($_POST['email']);
-  
-      //fields validation
-      //if (checkAllFields($firstname, $lastname, $email, $password, $repeatPassword) == true) {
+      $user->setPassword($_POST['password']);
 
-        $passwordValid = $user->validatePassword($password, $repeatPassword);
+      //email validation
+      $emailExists = $user->emailExists();
+      if ($emailExists == true) {
+        throw new Exception("Dit e-mailadres is al in gebruik.");
+      }
 
-        //password validation
-        if (strlen($passwordValid) > 1) {
-          $error = $passwordValid;
-        }
+      //Password validation
+      $user->validatePassword($repeatPassword);
 
-        //email validation
-       
-        $emailExists = $user->validateEmail();
-        if ($emailExists == true) {
-          $error = "Dit emailadress wordt momenteel gebruikt door iemaand anders";
-        }
-      //} else {
-        //$error = "Leege velden";
-      //}
+      // check if user agreed to tearms
+      if (!isset($_POST['conditionAccepted'])) {
+        throw new Exception("Gelieve de algemene voorwaarden en privacy beleid te aanvaarden.");
+      }
+
+      if ($user->saveUser() && $user->sendValidationCode()) {
+        $success = 'Een verificatie code is verzonden naar je e-mail.';
+      }
+      
     } catch (\Exception $e) {
       $error = $e->getMessage();
     }
-  } else {
-    $error = 'Astublieft vinkt aan onze privacy voorwarden';
-  }
-
-  if (!isset($error)) {
-    //register
-    if ($user->register() === true && $user->sendValidationCode() === true) {
-      $error = 'SECCESSSSS';
-    } else {
-      $error = "Registratie niet gelukt";
-    }
-  }
 }
 
 ?>
@@ -73,23 +55,26 @@ if (!empty($_POST["submit-registration"])) {
         Krijg toegang tot je eigen dashboard waar je het leven van je stadje mee kan opvolgen,
         terwijl je uitdagingen of discussies aangaat.
       </p>
-      <p><?php if (isset($error)) {
-            echo $error;
-          } ?></p>
+      <?php if (!empty($error)) : ?>
+        <p class="form__error"> <?php echo $error; ?></p>
+      <?php endif; ?>
+      <?php if (!empty($success)) : ?>
+        <p class="form__success"> <?php echo $success; ?></p>
+      <?php endif; ?>
       <form action="" method="post" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="firtName">Voornaam</label>
-            <input type="text" class="form-control" name="firstName" id="firstName">
+            <input type="text" class="form-control" name="firstName" id="firstName" value="<?php echo (isset($_POST["firstName"]))? $_POST["firstName"]:""; ?>">
           </div>
           <div class="form-group col-md-6">
             <label for="lastName">Achternaam</label>
-            <input type="text" class="form-control" name="lastName" id="lastName">
+            <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo (isset($_POST["lastName"]))? $_POST["lastName"]:""; ?>">
           </div>
         </div>
         <div class="form-group">
           <label for="email">E-mailadres</label>
-          <input type="email" class="form-control" name="email" id="email">
+          <input type="email" class="form-control" name="email" id="email" value="<?php echo (isset($_POST["email"]) && $user->emailExists() == false)? $_POST["email"]:""; ?>">
         </div>
         <div class="form-group">
           <label for="password">Wachtwoord</label>

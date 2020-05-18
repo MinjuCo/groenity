@@ -45,12 +45,15 @@
         return $this;
     }
 
-    public function addUserToSingle(){
+    public function acceptChallenge($userId){
+        $challengeId = $this->getId();
+
+        if(Challenge::challengeAlreadyAccepted($userId, $challengeId, false)){
+            throw new Exception("Je hebt al deelgenomen aan deze uitdaging.");
+        }
+
         $conn = Db::getConnection();
         $statement = $conn->prepare("insert into challenge_singles (user_id, challenge_id, active) values (:userId, :challengeId, 1)");
-  
-        $challengeId = $this->getId();
-        $userId = $this->getUserId();
   
         $statement->bindValue(":userId", $userId);
         $statement->bindValue(":challengeId", $challengeId);

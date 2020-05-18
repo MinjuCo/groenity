@@ -1,20 +1,26 @@
 <?php
-    include_once(__DIR__."/../classes/Challenge.php");
+    include_once(__DIR__."/../classes/Battle.php");
+    include_once(__DIR__."/../classes/SingleChallenge.php");
     include_once(__DIR__."/../classes/Theme.php");
 
     if(isset($_GET['challenge']) && !empty($_GET['challenge'])){
       $challegeId = htmlspecialchars($_GET['challenge']);
+    }else{
+      header("Location: challenge.php");
     }
+
+    $_SESSION['user'] = "Test";
+    $userId = 1;
 
     try{
       $challenge = Challenge::getChallengeInfo($challegeId);
+      $userInQueue = ($challenge['is_battle'] && Challenge::challengeAlreadyAccepted($userId, $challegeId, $challenge['is_battle']))? true: false;;
+      $userDoingChallenge = Challenge::userIsDoingThisChallenge($userId, $challegeId);
     }catch(\Throwable $th){
       $error = $th->getMessage();
     }
 
     $pageTitle = htmlspecialchars($challenge['title']);
-    $_SESSION['user'] = "Test";
-    $userId = 1;
 ?>
 
 <!DOCTYPE html>
@@ -40,40 +46,38 @@
               <?php echo htmlspecialchars($challenge['title']); ?>
             </h2>
           </div>
-          <div class="col-md-3 text-right">
-            <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn">Deelnemen</a>
+          <div class="col-md-3 d-flex justify-content-end align-items-center">
+            <?php if($userDoingChallenge):?>
+              <div class="card">
+                <div class="card-body p-2">
+                  <h4>
+                    <span class="badge float-right coins">
+                      <?php echo htmlspecialchars($challenge["green_points"]);?>
+                    </span>
+                  </h4>
+                </div>
+              </div>
+            <?php else:
+              if($userInQueue): ?>
+                <h2>
+                  <span class="ml-2 badge badge-warning">
+                    In wacht
+                  </span>
+                </h2>
+              <?php else: ?>
+                <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn">Deelnemen</a>
+              <?php endif;
+            endif; ?>
+            
           </div>
 
         </div>
         <div class="row">
-          <div class="col-md-8">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <h4>Beschrijving</h4>
-                <p class="card-text">
-                  <?php echo htmlspecialchars($challenge['description']); ?>
-                </p>
-                <h4>Doel</h4>
-                <p class="card-text">
-                  <?php echo htmlspecialchars($challenge['goals']); ?>
-                </p>
-                <h4>Meer info</h4>
-                <p class="card-text">
-                  <?php echo htmlspecialchars($challenge['extra_info']); ?>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <h4>Beloning</h4>
-                <p>
-                  <?php echo htmlspecialchars($challenge['rewards']); ?>
-                </p>
-              </div>
-            </div>
-          </div>
+          <?php if($userDoingChallenge):
+            include_once("includes/acceptedChallengeCard.php");
+          else:
+            include_once("includes/todoChallengeCard.php");
+          endif; ?>
         </div>
     </div>
     

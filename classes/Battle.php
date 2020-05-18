@@ -150,32 +150,48 @@
         return $this;
     }
 
-    public static function userIsInQueue($userId, $challengeId){
+    public static function getUserBattleChallenge($userId, $challengeId){
         $conn = Db::getConnection();
-        $statement = $conn->prepare("select challenge_id from challenge_queue where challenge_id = :challengeId and user_id = :userId and matched = 0");
+        $statement = $conn->prepare("select * from battles where challenge_id = :challengeId and (participator_one = :userId or participator_two = :userId) and active = 1");
 
         $statement->bindValue(":userId", $userId);
         $statement->bindValue(":challengeId", $challengeId);
 
         $statement->execute();
-        if($statement->rowCount() > 0){
-            return true;
-        }else{
-            return false;
-        }
+
+        $battle = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $battle;
     }
 
-    public function addUserToQueue($userId){
-      $conn = Db::getConnection();
-      $statement = $conn->prepare("insert into challenge_queue (user_id, challenge_id, active) values (:userId, :challengeId, 1)");
+    public static function getQueueWithChallenge($userId, $challengeId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select user_id, zip from challenge_queue where challenge_id = :challengeId and user_id != :userId and active = 1");
 
-      $challengeId = $this->getId();
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":challengeId", $challengeId);
 
-      $statement->bindValue(":userId", $userId);
-      $statement->bindValue(":challengeId", $challengeId);
+        $statement->execute();
+        $queue = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-      $result = $statement->execute();
-      return $result;
+        return $queue;
+    }
+
+    public function acceptChallenge($userId){
+        $challengeId = $this->getId();
+
+        if(Challenge::challengeAlreadyAccepted($userId, $challengeId, true)){
+            throw new Exception("Je hebt al deelgenomen aan deze uitdaging.");
+        }
+
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("insert into challenge_queue (user_id, challenge_id, active) values (:userId, :challengeId, 1)");
+
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":challengeId", $challengeId);
+
+        $result = $statement->execute();
+        return $result;
     }
 
   }
