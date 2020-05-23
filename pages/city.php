@@ -22,61 +22,156 @@ $_SESSION['user'] = "Test";
                     <a class="nav-link active rounded-pill" id="pills-city-tab" data-toggle="pill" href="#pills-city" role="tab" aria-controls="pills-city" aria-selected="true">Mijn stad</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false">Verkennen</a>
+                    <a class="nav-link rounded-pill" id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false">Verkennen</a>
                 </li>
             </ul>
         </div>
-        <div class="row">
-            <div class="tab-content col-md-7 card shadow-sm" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-city" role="tabpanel" aria-labelledby="pills-city-tab">
-                    <div class="card-title mt-2 d-flex  justify-content-between">
-                        <div class="col-5  align-self-center">
-                            <h3>Real-time gegevens</h3>
-                        </div>
-                        <div class="col-m-7 align-self-center">
-                            <input type="submit" value="Bekijk milieu-impact" class="btn form-control ">
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="myChart" width="400" height="200"></canvas>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="pills-explore" role="tabpanel" aria-labelledby="pills-explore-tab">
 
-                </div>
-            </div>
-            <div class="col-md-4 ml-2 card shadow-sm">
-                <div class="card-title mt-2 d-flex ">
-                    <h3>Prestaties</h3>
-                </div>
-                <div class="card-body text-center">
-                    <div class="row d-flex justify-content-between ">
-                        <div class="card d-flex p-3 border border-secondary">
-                            <img src="../img/g_coins.svg" alt="green points" style="height: 70px;">
-                            <h5>Groene punten</h5>
-                            <h4 class="font-weight-bold">2000</h4>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-city" role="tabpanel" aria-labelledby="pills-city-tab">
+                <div class="row">
+                    <div class="card col-md-8 shadow-sm d-flex">
+                        <div class="card-title mt-2 d-flex justify-content-between">
+                            <div class="col-6 align-self-center">
+                                <h3>Real-time gegevens</h3>
+                            </div>
+                            <div class="col-m-7 align-self-center">
+                                <input type="submit" value="Bekijk milieu-impact" class="btn form-control ">
+                            </div>
                         </div>
-                        <div class="card d-flex p-3 border border-secondary">
-                            <img src="../img/Icons/trending-up.svg" alt="" style="height: 70px;">
-                            <h5>Verbetering</h5>
-                            <h4 class="font-weight-bold">200 000</h4>
+                        <div class="card-body">
+                            <canvas id="myChart" width="400" height="200"></canvas>
                         </div>
                     </div>
-
-                    <div class="row mt-4">
-                        <div class="card border border-secondary" style="width: 100%;">
-                            <div class="d-flex justify-content-center">
-                                <div class="p-2">
-                                    <img src="../img/Icons/bar-chart-2.svg" alt="chart icon" style="height:70px;">
+                    <div class="col ml-3 card shadow-sm">
+                        <div class="card-title mt-2 d-flex ">
+                            <h3>Prestaties</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="row d-flex justify-content-between ">
+                                <div class="card d-flex p-3 border border-secondary">
+                                    <img src="../img/g_coins.svg" alt="green points" style="height: 70px;">
+                                    <h5>Groene punten</h5>
+                                    <h4 class="font-weight-bold">2000</h4>
                                 </div>
-                                <div class=" p-2">
-                                    <h5>Leaderboard</h5>
-                                    <h4 class="font-weight-bold">12</h4>
+                                <div class="card d-flex p-3 border border-secondary">
+                                    <img src="../img/Icons/trending-up.svg" alt="" style="height: 70px;">
+                                    <h5>Verbetering</h5>
+                                    <h4 class="font-weight-bold">200 000</h4>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="card border border-secondary" style="width: 100%;">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="p-2 d-flex align-items-center mr-2">
+                                            <img src="../img/Icons/users.svg" alt="chart icon" style="height:70px;">
+                                        </div>
+                                        <div class="p-2 ">
+                                            <h5>Aantal inwonners</h5>
+                                            <h4 class="font-weight-bold">12</h4>
+                                            <h5>Active inwonners</h5>
+                                            <h4 class="font-weight-bold">12</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="card border border-secondary" style="width: 100%;">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="p-2">
+                                            <img src="../img/Icons/award.svg" alt="chart icon" style="height:70px;">
+                                        </div>
+                                        <div class=" p-2">
+                                            <h5>Voltooide uitdagingen</h5>
+                                            <h4 class="font-weight-bold">12</h4>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="card col-md-12 mt-4 shadow-sm">
+                        <div class="card-title mt-2 d-flex ">
+                            <h3>Top Gresident-zens</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="row d-flex justify-content-between">
+
+                                        <div class="card p-2" style="width: 16rem;">
+                                            <div class="row text-center mt-1 mb-1">
+                                                <div class="col-4 align-self-center">
+                                                    <img src="../img/avatar.svg" alt="persoon">
+                                                </div>
+                                                <div class="col-6 align-content-end">
+                                                    <div class="row ">
+                                                        <p class="mb-0 mt-1 font-weight-bold">Naam Achternaam</p>
+                                                        <p class="mb-0 mt-1" style="color:#389583;">Status</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 mb-2">
+                                                    <a href=""><img src="../img/Icons/x.svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card p-2 " style="width: 16rem;">
+                                            <div class="row text-center mt-1 mb-1">
+                                                <div class="col-4 align-self-center">
+                                                    <img src="../img/avatar.svg" alt="persoon">
+                                                </div>
+                                                <div class="col-6 align-content-end">
+                                                    <div class="row ">
+                                                        <p class="mb-0 mt-1 font-weight-bold">Naam Achternaam</p>
+                                                        <p class="mb-0 mt-1" style="color:#389583;">Status</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 mb-2">
+                                                    <a href=""><img src="../img/Icons/x.svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card p-2" style="width: 16rem;">
+                                            <div class="row text-center mt-1 mb-1">
+                                                <div class="col-4 align-self-center">
+                                                    <img src="../img/avatar.svg" alt="persoon">
+                                                </div>
+                                                <div class="col-6 align-content-end">
+                                                    <div class="row ">
+                                                        <p class="mb-0 mt-1 font-weight-bold">Naam Achternaam</p>
+                                                        <p class="mb-0 mt-1" style="color:#389583;">Status</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 mb-2">
+                                                    <a href=""><img src="../img/Icons/x.svg" alt=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card" style="background-color: red;">
+                                        6+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-explore" role="tabpanel" aria-labelledby="pills-explore-tab">
+
             </div>
         </div>
     </div>
