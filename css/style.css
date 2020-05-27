@@ -109,7 +109,9 @@ hr{
 }
 
 .navbar-brand {
-    width: 130px;
+    width: 150px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .navbar-toggler{

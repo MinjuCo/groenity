@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md shadow d-flex flex-row align-items-center">
         <div class="container-xl">
             <a class="navbar-brand" href="<?php echo ($currentPage == "index")? "index.php": "../index.php";?>">
-                <img src="<?php echo ($currentPage == "index")? "img/": "../img/";?>groenity-logo.svg" alt="logo-groenity">
+                <img src="<?php echo ($currentPage == "index")? "img/": "../img/";?>gresident-logo.svg" alt="logo-groenity">
             </a>
             <!--responsive button-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
