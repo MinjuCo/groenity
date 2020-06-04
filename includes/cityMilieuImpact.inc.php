@@ -89,93 +89,174 @@
                       <div class="row">
                           <ul class="nav  mb-1" id="pills-tab-milieu" role="tablist">
                               <li class="nav-item ">
-                                  <a class="nav-link active border-bottom" id="pills-impact-enetgie-tab" data-toggle="pill" href="#pills-impact-energie" role="tab" aria-controls="pills-milieu" aria-selected="true" style="color:#05386B;">GEVOLGEN</a>
+                                  <a class="nav-link active border-bottom" id="pills-water-gevolgen-tab" data-toggle="pill" href="#pills-water-gevolgen" role="tab" aria-controls="pills-milieu-extend" aria-selected="true" style="color:#05386B;">GEVOLGEN</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;">TIPS</a>
+                                  <a class="nav-link " id="pills-water-tips-tab" data-toggle="pill" href="#pills-water-tips" role="tab" aria-controls="pills-milieu-extend" aria-selected="false" style="color:#05386B;">TIPS</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link  " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;">UITDAGINGEN</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;"><u></u></a>
+                                  <a class="nav-link  " id="pills-water-uitdagingen-tab" data-toggle="pill" href="#pills-water-uitdagingen" role="tab" aria-controls="pills-milieu-extend" aria-selected="false" style="color:#05386B;">UITDAGINGEN</a>
                               </li>
                               </u>
                       </div>
 
-                      <ul class="mt-3">
-                          <li>
-                              <h5 class="ml-2">Water</h5>
-                          </li>
-                          <li>
-                              <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
-                          </li>
-                          <li>
-                              <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
-                          </li>
-                      </ul>
+                      <div class="tab-content">
+                          <div class="tab-pane fade show active" id="pills-water-gevolgen" role="tabpanel" aria-labelledby="pills-impact-water-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> tabs water zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="tab-pane fade" id="pills-water-tips" role="tabpanel" aria-labelledby="pills-impact-water-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> Hier zijn tips</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="tab-pane fade" id="pills-water-uitdagingen" role="tabpanel" aria-labelledby="pills-impact-water-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> Uitdagingen</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
                   </div>
                   <!-- GELUIDSNIVEAU -->
                   <div class="tab-pane fade" id="pills-impact-geluid" role="tabpanel" aria-labelledby="pills-impact-geluid-tab">
                       <div class="row">
                           <ul class="nav  mb-1" id="pills-tab-milieu" role="tablist">
                               <li class="nav-item ">
-                                  <a class="nav-link active border-bottom" id="pills-impact-enetgie-tab" data-toggle="pill" href="#pills-impact-energie" role="tab" aria-controls="pills-milieu" aria-selected="true" style="color:#05386B;">GEVOLGEN</a>
+                                  <a class="nav-link active border-bottom" id="pills-geluid-gevolgen-tab" data-toggle="pill" href="#pills-geluid-gevolgen" role="tab" aria-controls="pills-milieu-extend" aria-selected="true" style="color:#05386B;">GEVOLGEN</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;">TIPS</a>
+                                  <a class="nav-link " id="pills-geluid-tips-tab" data-toggle="pill" href="#pills-geluid-tips" role="tab" aria-controls="pills-milieu-extend" aria-selected="false" style="color:#05386B;">TIPS</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link  " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;">UITDAGINGEN</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;"><u></u></a>
+                                  <a class="nav-link  " id="pills-geluid-uitdagingen-tab" data-toggle="pill" href="#pills-geluid-uitdagingen" role="tab" aria-controls="pills-milieu-extend" aria-selected="false" style="color:#05386B;">UITDAGINGEN</a>
                               </li>
                               </u>
                       </div>
 
-                      <ul class="mt-3">
-                          <li>
-                              <h5 class="ml-2">Geluidsniveau</h5>
-                          </li>
-                          <li>
-                              <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
-                          </li>
-                          <li>
-                              <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
-                          </li>
-                      </ul>
+                      <div class="tab-content">
+                          <div class="tab-pane fade show active" id="pills-geluid-gevolgen" role="tabpanel" aria-labelledby="pills-impact-geluid-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> tabs geluidsniveau zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="tab-pane fade" id="pills-geluid-tips" role="tabpanel" aria-labelledby="pills-impact-geluid-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> Hier zijn tips</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="tab-pane fade" id="pills-geluid-uitdagingen" role="tabpanel" aria-labelledby="pills-impact-geluid-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> Uitdagingen</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
                   </div>
                   <!-- AFVAL -->
                   <div class="tab-pane fade" id="pills-impact-afval" role="tabpanel" aria-labelledby="pills-impact-afval-tab">
                       <div class="row">
                           <ul class="nav  mb-1" id="pills-tab-milieu" role="tablist">
                               <li class="nav-item ">
-                                  <a class="nav-link active border-bottom" id="pills-impact-enetgie-tab" data-toggle="pill" href="#pills-impact-energie" role="tab" aria-controls="pills-milieu" aria-selected="true" style="color:#05386B;">GEVOLGEN</a>
+                                  <a class="nav-link active border-bottom" id="pills-afval-gevolgen-tab" data-toggle="pill" href="#pills-afval-gevolgen" role="tab" aria-controls="pills-milieu-extend" aria-selected="true" style="color:#05386B;">GEVOLGEN</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;">TIPS</a>
+                                  <a class="nav-link " id="pills-afval-tips-tab" data-toggle="pill" href="#pills-afval-tips" role="tab" aria-controls="pills-milieu-extend" aria-selected="false" style="color:#05386B;">TIPS</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link  " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;">UITDAGINGEN</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link " id="pills-explore-tab" data-toggle="pill" href="#pills-explore" role="tab" aria-controls="pills-explore" aria-selected="false" style="color:#05386B;"><u></u></a>
+                                  <a class="nav-link  " id="pills-afval-uitdagingen-tab" data-toggle="pill" href="#pills-afval-uitdagingen" role="tab" aria-controls="pills-milieu-extend" aria-selected="false" style="color:#05386B;">UITDAGINGEN</a>
                               </li>
                               </u>
                       </div>
 
-                      <ul class="mt-3">
-                          <li>
-                              <h5 class="ml-2">AFVAL</h5>
-                          </li>
-                          <li>
-                              <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
-                          </li>
-                          <li>
-                              <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
-                          </li>
-                      </ul>
+                      <div class="tab-content">
+                          <div class="tab-pane fade show active" id="pills-afval-gevolgen" role="tabpanel" aria-labelledby="pills-impact-afval-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> tabs afval zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="tab-pane fade" id="pills-afval-tips" role="tabpanel" aria-labelledby="pills-impact-afval-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> Hier zijn tips</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                          <div class="tab-pane fade" id="pills-afval-uitdagingen" role="tabpanel" aria-labelledby="pills-impact-afval-tab">
+                              <ul class="mt-3">
+                                  <li>
+                                      <h5 class="ml-2"> Uitdagingen</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                                  <li>
+                                      <h5 class="ml-2"> De Aarde zal sneller opwarmen dan normaal</h5>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
                   </div>
               </div>
           </div>
