@@ -27,14 +27,9 @@
     
     <div class="container application">
         <h2 class="mb-4">Eigen gegevens</h2>
-        <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
-          <li class="nav-item">
-              <a class="nav-link active rounded-pill" id="pills-impact-tab" data-toggle="pill" href="#pills-impact" role="tab" aria-controls="pills-impact" aria-selected="true">Bekijk milieu-impact</a>
-          </li>
-        </ul>
-        <div class="row">
+        <div class="row mb-3">
           <div class="col-md-8">
-            <div class="card">
+            <div class="card shadow">
               <div class="card-body">
                 <h3 class="card-title">Real-time gegevens</h3>
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -62,9 +57,41 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <h3 class="card-title">Profiel</h3>
+            <div class="row mb-4">
+              <div class="card col-12 shadow">
+                <div class="card-body">
+                  <h3 class="card-title">Profiel</h3>
+                  <div class="media">
+                    <img class="mr-3 avatar rounded-circle" src="../img/default.png" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <h5 class="mt-0">[Naam gebruiker]</h5>
+                      [locatie]
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <ul class="nav nav-pills p-0 col-12" id="pills-tab" role="tablist">
+                <li class="nav-item w-100">
+                    <a class="nav-link btn btn-block active" id="pills-impact-tab" data-toggle="pill" href="#pills-impact" role="tab" aria-controls="pills-impact" aria-selected="true">Bekijk milieu-impact</a>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <div class="card col-12 shadow">
+                <div class="card-body">
+                  <h3 class="card-title">Prestaties</h3>
+                  <div class="media border mb-3 rounded text-center d-flex align-items-center">
+                    <img class="mr-3 avatar rounded-circle" src="../img/default.png" alt="Icon">
+                    <div class="media-body">
+                      Voltooide uitdagingen
+                      <h5>10</h5>
+                    </div>
+                  </div>
+                  <a href="#meerPrestaties" class="btn btn-block btn-secondary">Toon meer prestaties</a>
+                  <a href="#voetafdruk" class="btn btn-block">Bereken voetafdruk</a>
+                </div>
               </div>
             </div>
           </div>
