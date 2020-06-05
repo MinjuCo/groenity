@@ -2,7 +2,7 @@
     <div class="container-xl">
         <div class="row">
             <div class="col-10">
-                <p class="align-middle m-0">&copy; Groenity - <?php echo date("Y", time()); ?></p>
+                <p class="align-middle m-0">&copy; Gresident - <?php echo date("Y", time()); ?></p>
             </div>
             <div class="col-2 d-flex flex-row-reverse">
                 <a href="#" class="icon">
