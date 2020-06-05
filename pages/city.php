@@ -29,7 +29,7 @@ $_SESSION['user'] = "Test";
 
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-city" role="tabpanel" aria-labelledby="pills-city-tab">
-              <!-- Real-time 
+              <!-- Real-time  -->
                     <div class="row">
                     <div class="card col-md-8 shadow-sm d-flex">
                         <div class="card-title mt-2 d-flex justify-content-between">
@@ -170,7 +170,7 @@ $_SESSION['user'] = "Test";
                     </div>
                 </div>
             </div>
--->
+
 <?php include_once('../includes/cityMilieuImpact.inc.php') ?>
             <div class="tab-pane fade" id="pills-explore" role="tabpanel" aria-labelledby="pills-explore-tab">
                 <div class="row">

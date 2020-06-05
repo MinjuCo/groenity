@@ -238,6 +238,10 @@ h1{
     background-color: #389583;
 }
 
+.row .hidden{
+    visibility: hidden;
+}
+
 /* CHALLENGE.PHP */
 .badge.coins{
     padding-right: 1.5em;
@@ -281,3 +285,4 @@ h1{
         flex-direction: row;
     }
 }
+
