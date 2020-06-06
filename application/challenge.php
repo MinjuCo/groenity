@@ -74,9 +74,7 @@
                               <span class="ml-2 badge badge-<?php echo ($userInQueue)? "warning":"success"; ?>">
                                 <?php echo ($userInQueue)? "In wacht":"Bezig"; ?>
                               </span>
-                              <span class="badge float-right coins">
-                                <?php echo htmlspecialchars($challenge["green_points"]);?>
-                              </span>
+                              <span class="price float-right d-flex align-items-center"><?php echo htmlspecialchars($challenge["green_points"]);?><img class="coins" src="../img/g_coins.svg" alt="GP"></span>
                             </h4>
                             <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                             <div class="action-buttons d-flex flex-row-reverse float-right">

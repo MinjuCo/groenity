@@ -261,12 +261,10 @@ h1{
 }
 
 /* CHALLENGE.PHP */
-.badge.coins{
-    padding-right: 1.5em;
-    background-image: url("../img/g_coins.svg");
-    background-size: 24px 24px;
-    background-repeat: no-repeat;
-    background-position: right center;
+.coins{
+    width: 24px;
+    height: 24px;
+    margin-left: 0.3em;
 }
 
 /* FOOTER */
