@@ -1,4 +1,4 @@
-<div class="row hidden">
+<div class="row hidden" id="viewContainerMilieu">
     <div class="card col-md-10 shadow-sm d-flex">
         <div class="card-body mt-0">
             <div class="row  d-flex justify-content-between">
@@ -6,7 +6,7 @@
                     <h3>Milieu-impact</h3>
                 </div>
                 <div class="col-m-7 align-self-center">
-                    <input type="submit" value="Volg real-time op" class="btn form-control ">
+                    <input type="submit" value="Volg real-time op" class="btn form-control" id="btnRealTime">
                 </div>
 
             </div>

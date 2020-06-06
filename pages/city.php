@@ -29,15 +29,15 @@ $_SESSION['user'] = "Test";
 
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-city" role="tabpanel" aria-labelledby="pills-city-tab">
-              <!-- Real-time  -->
-                    <div class="row">
+                <!-- Real-time  -->
+                <div class="row" id="viewContainer">
                     <div class="card col-md-8 shadow-sm d-flex">
                         <div class="card-title mt-2 d-flex justify-content-between">
                             <div class="col-6 align-self-center">
                                 <h3>Real-time gegevens</h3>
                             </div>
                             <div class="col-m-7 align-self-center">
-                                <input type="submit" value="Bekijk milieu-impact" class="btn form-control ">
+                                <input type="submit" value="Bekijk milieu-impact" class="btn form-control" id="btnMilieu">
                             </div>
                         </div>
                         <div class="card-body">
@@ -45,8 +45,8 @@ $_SESSION['user'] = "Test";
                         </div>
                     </div>
                     <div class="col ml-3 card shadow-sm">
-                        <div class="card-title mt-2 d-flex ">
-                            <h3>Prestaties</h3>
+                        <div class="card-title mt-2 d-flex mb-0">
+                            <h3 class="mb-0">Prestaties</h3>
                         </div>
                         <div class="card-body text-center">
                             <div class="row d-flex justify-content-between ">
@@ -94,10 +94,11 @@ $_SESSION['user'] = "Test";
                         </div>
                     </div>
                 </div>
-                <div class="row">
+
+                <div class="row mb-4" id="viewContainer2">
                     <div class="card col-md-12 mt-4 shadow-sm">
-                        <div class="card-title mt-2 d-flex ">
-                            <h3>Top Gresident-zens</h3>
+                        <div class="card-title mt-2 d-flex mb-0 mt-1">
+                            <h3 class="mb-0 mt-1">Top Gresident-zens</h3>
                         </div>
                         <div class="card-body text-center">
                             <div class="row">
@@ -167,11 +168,15 @@ $_SESSION['user'] = "Test";
                         </div>
 
 
+
                     </div>
+                </div>
+                <div id="milieu">
+                    <?php include_once('../includes/cityMilieuImpact.inc.php'); ?>
                 </div>
             </div>
 
-<?php include_once('../includes/cityMilieuImpact.inc.php') ?>
+
             <div class="tab-pane fade" id="pills-explore" role="tabpanel" aria-labelledby="pills-explore-tab">
                 <div class="row">
                     <div class="card col-md-10 shadow-sm d-flex">
@@ -243,6 +248,27 @@ $_SESSION['user'] = "Test";
     ?>
 
     <script>
+        // switch
+        document.querySelector("#btnMilieu").addEventListener("click", function() {
+            console.log("clicked");
+            changeView();
+        });
+
+        document.querySelector("#btnRealTime").addEventListener("click", function() {
+            console.log("clicked");
+            changeView();
+        });
+
+        function changeView() {
+            let realTime = document.getElementById("viewContainer");
+            let realTime2 = document.getElementById("viewContainer2");
+            let milieu = document.getElementById("viewContainerMilieu");
+
+            realTime.classList.toggle("hidden");
+            realTime2.classList.toggle("hidden");
+            milieu.classList.toggle("hidden");
+        }
+        //chart
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
