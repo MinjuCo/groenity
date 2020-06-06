@@ -1,0 +1,1 @@
+<h2 class="mb-4 align-self-center">Pagina niet gevonden</h2>
