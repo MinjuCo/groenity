@@ -61,9 +61,9 @@
               </div>
             </div>
             <?php if($requestedContent == "impact"):?>
-              <a href="own.php" class="btn btn-block my-4">Volg real-time op</a>
+              <a href="own.php" class="btn btn-gresident btn-block my-4">Volg real-time op</a>
             <?php else:?>
-              <a href="?p=impact" class="btn btn-block my-4">Bekijk milieu-impact</a>
+              <a href="?p=impact" class="btn btn-gresident btn-block my-4">Bekijk milieu-impact</a>
             <?php endif;?>
             <div class="card shadow">
               <div class="card-body">
@@ -75,8 +75,8 @@
                     <h5>10</h5>
                   </div>
                 </div>
-                <a href="#meerPrestaties" class="btn btn-block btn-secondary">Toon meer prestaties</a>
-                <a href="#voetafdruk" class="btn btn-block">Bereken voetafdruk</a>
+                <a href="#meerPrestaties" class="btn btn-block btn-outline-gresident">Toon meer prestaties</a>
+                <a href="#voetafdruk" class="btn btn-gresident btn-block">Bereken voetafdruk</a>
               </div>
             </div>
           </div>

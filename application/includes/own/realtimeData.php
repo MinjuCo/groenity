@@ -55,7 +55,7 @@
             <div class="input-group mb-3">
               <input type="number" class="form-control" placeholder="Geef het maximum verbruik in waarbij je verwittigd wilt worden" id="maxLimit" name="maxLimit">
               <div class="input-group-append">
-                <input type="submit" class="btn btn-outline-secondary" value="Stel verbruik in" name="submitLimitEnergy">
+                <input type="submit" class="btn btn-gresident" value="Stel verbruik in" name="submitLimitEnergy">
               </div>
             </div>
           </div>
