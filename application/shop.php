@@ -6,10 +6,10 @@
     $_SESSION['user'] = "Test";
     $userId = 1;
     
-    if(isset($_GET['productType'])){
-      $productType = checkProductType(htmlspecialchars($_GET['productType']));
+    if(isset($_GET['content'])){
+      $content = checkContent(htmlspecialchars($_GET['content']), "shop");
     }else{
-      $productType = "allProducts";
+      $content = "allProducts";
     }
     
 
@@ -34,16 +34,16 @@
         <div class="content__tabs d-flex align-items-center justify-content-between mb-4">
           <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-              <a class="nav-link rounded-pill <?php echo ($productType == "allProducts")? "active":"" ?>" href="?productType=allProducts">Alles</a>
+              <a class="nav-link rounded-pill <?php echo ($content == "allProducts")? "active":"" ?>" href="?content=allProducts">Alles</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link rounded-pill <?php echo ($productType == "gadgets")? "active":"" ?>" href="?productType=gadgets">Gadgets</a>
+              <a class="nav-link rounded-pill <?php echo ($content == "gadgets")? "active":"" ?>" href="?content=gadgets">Gadgets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link rounded-pill <?php echo ($productType == "tshirts")? "active":"" ?>" href="?productType=tshirts">T-shirts</a>
+              <a class="nav-link rounded-pill <?php echo ($content == "tshirts")? "active":"" ?>" href="?content=tshirts">T-shirts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link rounded-pill <?php echo ($productType == "cityProducts")? "active":"" ?> disabled" href="?productType=cityProducts" tabindex="-1" aria-disabled="true">Gemeentelijk producten</a>
+              <a class="nav-link rounded-pill <?php echo ($content == "cityProducts")? "active":"" ?> disabled" href="?content=cityProducts" tabindex="-1" aria-disabled="true">Gemeentelijk producten</a>
             </li>
           </ul>
           <form class="form-inline">
@@ -60,10 +60,10 @@
         <div class="card col-12 shadow mb-4 pb-3">
           <div class="card-body pb-4">
             <?php 
-              if($productType == "notFound"){
+              if($content == "notFound"){
                 include_once(__DIR__."/404.php");
               }else{
-                include_once(__DIR__."/includes/shop/$productType.php");
+                include_once(__DIR__."/includes/shop/$content.php");
               }
             ?>
           </div>
