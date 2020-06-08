@@ -308,6 +308,14 @@ h1{
 .row .hidden{
     visibility: hidden;
 }
+.tooltip > .tooltip-inner {
+    background-color: #ffff;
+    border: 1px solid #389583;
+}
+.tooltip p {
+    color: black !important;
+}
+
 
 /* CHALLENGE.PHP */
 .coins{
