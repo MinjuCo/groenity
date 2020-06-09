@@ -316,9 +316,8 @@ h1{
     color: black !important;
 }
 
-.row.col.small-coin{
-    width: 25px;
-    height: 25px;
+p.live-kaart-p{
+    color: #389583 !important;
 }
 
 /* CHALLENGE.PHP */
