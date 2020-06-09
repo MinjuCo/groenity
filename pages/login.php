@@ -59,6 +59,7 @@ if (!empty($_POST)) {
       <p class="text-center">Nog geen lid? <a class="link-gn" href="../index.php">Schrijf je in</a></p>
     </div>
   </div>
+  <?php include_once(__DIR__ . "/../includes/footer.inc.php"); ?>
 </body>
 
 </html>

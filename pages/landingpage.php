@@ -1,11 +1,11 @@
-<section class="intro d-flex align-items-center" id="intro">
+<section class="intro landingSection d-flex flex-column flex-md-row align-items-md-center" id="intro">
   <div class="container-xl">
     <div class="row d-flex">
       <div class="col-md-6 intro_text">
         <h1>Maak je stad nog groener</h1>
         <p>Jij betekent veel in onze strijd voor een ecologische samenleving! </p>
       </div>
-      <div class="col-md-6 align-self-center">
+      <div class="col-md-6 py-4">
         <div class="card shadow-sm">
           <div class="card-body">
             <h4>Vul je thuisadres in</h4>
@@ -33,7 +33,7 @@
             </form>
             <!-- ERROR display -->
         
-            <p class="form__error hidden" id="addressError">We hebben je adres niet teruggevonden. Gelieve het juiste adres in te geven.</p>
+            <p class="form__error text-danger hidden" id="addressError">We hebben je adres niet teruggevonden. Gelieve het juiste adres in te geven.</p>
             <hr>
             <p class="text-center">Reeds lid? <a class="link-gn" href="pages/login.php">Meld je hier aan</a></p>
           </div>
@@ -42,7 +42,7 @@
     </div>
   </div>
 </section>
-<section class="awareness d-flex align-items-center">
+<section class="landingSection d-flex flex-column flex-md-row align-items-md-center">
   <div class="container-xl">
     <div class="row d-flex">
       <div class="col-md-6">
@@ -58,7 +58,7 @@
     </div>
   </div>
 </section>
-<section class="awards d-flex align-items-center">
+<section class="landingSection d-flex flex-column flex-md-row align-items-md-center">
   <div class="container-xl">
     <div class="row d-flex">
       <div class="col-md-6 align-self-center">
@@ -74,7 +74,7 @@
     </div>
   </div>
 </section>
-<section class="experts d-flex align-items-center">
+<section class="landingSection d-flex flex-column flex-md-row align-items-md-center">
   <div class="container-xl">
     <div class="row d-flex">
       <div class="col-md-6">
@@ -91,12 +91,12 @@
     </div>
   </div>
 </section>
-<section class="affection d-flex align-items-center">
+<section class="landingSection d-flex flex-column flex-md-row align-items-md-center">
   <div class="container-xl">
     <div class="row d-flex justify-content-center">
       <div class="col-md-7 text-center">
         <h2>Zal je er in slagen om je stad aan de top te krijgen?</h2>
-        <a href="#intro" class="btn-gresident">Deelnemen</a>
+        <a href="#intro" class="btn btn-gresident">Deelnemen</a>
       </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -106,4 +106,4 @@
     </div>
   </div>
 </section>
-<script src="api/apiAddress.js"></script>
+<div id="jsLoad"></div>

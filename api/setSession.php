@@ -12,9 +12,9 @@ if(isset($_REQUEST['zip']) && isset($_REQUEST['street'])  && isset($_REQUEST['ho
   $_SESSION['street'] = $street;
   $_SESSION['houseNr'] = $houseNr;
 
-  header("Location: ".__DIR__."/../pages/askCode.php");
+  //header("Location: ".__DIR__."/../pages/askCode.php");
 }
 
-header("Location: ".__DIR__."/../index.php");
+//header("Location: ".__DIR__."/../index.php");
 
 ?>

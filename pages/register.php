@@ -98,6 +98,7 @@ if (!empty($_POST)) {
       <p class="text-center">Reeds lid? <a class="link-gn" href="login.php">Meld je hier aan</a></p>
     </div>
   </div>
+  <?php include_once(__DIR__ . "/../includes/nav.inc.php"); ?>
 </body>
 
 </html>

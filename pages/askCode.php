@@ -85,6 +85,7 @@ if (!empty($_POST['sendCode'])) {
             </div>
         </div>
     </div>
+    <?php include_once(__DIR__ . "/../includes/nav.inc.php"); ?>
 </body>
 
 </html>

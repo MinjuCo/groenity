@@ -133,7 +133,7 @@ label{
 h2, h3{
     font-family: 'Roboto Condensed', sans-serif;
     color: #05386B;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 h2{
@@ -174,7 +174,7 @@ hr{
 }
 
 .askCode, .registration, .login{
-    height: 100vh;
+    height: 92vh;
     padding-top: 5.7em;
 }
 
@@ -256,15 +256,14 @@ hr{
     margin-bottom: 0.25rem;
 }
 
-.nav-item.aanmelden::before{
+.nav-item.single::before{
     content: "";
     border-left: 1px solid rgba(5, 56, 107, 0.2);
 }
-.nav-link.aanmelden, .btn-form-registratie {
-    background-color: #5CD894;
+
+.nav-link.btn-gresident{
     color: #EDF5E0;
     margin-left: 1em;
-    border-radius: 5px;
 }
 
 #notification{
@@ -280,20 +279,17 @@ hr{
 }
 
 /* LANDINGPAGE.PHP */
-.intro, .awareness, .awards, .experts, .affection{
+.landingSection{
     position: relative;
     height: 100vh;
+    min-height: 650px;
 }
 
 .intro{
     background-image: url("../img/Visuals/demo_application.svg"), url("../img/Visuals/fluid_bg.svg");
     background-repeat: no-repeat;
-    background-size: 35em, cover;
+    background-size: 30em, cover;
     background-position: 4vw bottom ,bottom left;
-}
-
-.intro .container-xl, .intro .container-xl .row{
-    height: 500px;
 }
 
 .intro_text.col-md-6{
@@ -302,7 +298,7 @@ hr{
 
 h1{
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 4em;
+    font-size: 4rem;
     font-weight: bold;
 }
 
@@ -334,7 +330,7 @@ h1{
 .login{
     background-image: url("../img/Visuals/login.svg");
     background-repeat: no-repeat;
-    background-size: 30em;
+    background-size: 30vw;
     background-position: bottom left;
 }
 
@@ -388,17 +384,31 @@ h1{
 }
 
 @media (max-width: 768px){
-    .nav-item.aanmelden::before{
+
+    h1{
+        font-size: 3em;
+    }
+
+    .landingSection{
+        padding: 5em 1em;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .intro_text{
+        text-align: center;
+    }
+
+    .nav-item.single::before{
         content: "";
         border-left: none;
     }
 
-    .nav-link.aanmelden{
+    .nav-link.btn-gresident{
         margin-left: 0;
-    }
-
-    .navbar .collapse{
-        flex-direction: row;
+        display: block!important;
+        padding-left: 1em;
+        padding-right: 1em;
     }
 }
 
