@@ -7,6 +7,9 @@
       case 'appointment':
         $validQueries = array("pending-appointments", "outstanding-balance", "history");
         break;
+      case 'settings':
+        $validQueries = array("general", "meters");
+        break;
       default:
         $validQueries = array();
         break;
