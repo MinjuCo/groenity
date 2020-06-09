@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#389583;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>apartment</title><g id="Layer_2" data-name="Layer 2"><rect class="cls-1" x="13.5" y="6" width="37" height="52" rx="2.87"/><rect class="cls-1" x="29" y="48" width="6" height="10"/><rect class="cls-1" x="19" y="36" width="5" height="7"/><rect class="cls-1" x="40" y="36" width="5" height="7"/><rect class="cls-1" x="19" y="24" width="5" height="7"/><rect class="cls-1" x="40" y="24" width="5" height="7"/><rect class="cls-1" x="19" y="12" width="5" height="7"/><rect class="cls-1" x="40" y="12" width="5" height="7"/></g></svg>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M35.7 43.5H12.3C11.1 43.5 10.125 42.525 10.125 41.325V6.675C10.125 5.475 11.1 4.5 12.3 4.5H35.775C36.975 4.5 37.95 5.475 37.95 6.675V41.4C37.875 42.525 36.9 43.5 35.7 43.5Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M26.25 36H21.75V43.5H26.25V36Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M18 27H14.25V32.25H18V27Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M33.75 27H30V32.25H33.75V27Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M18 18H14.25V23.25H18V18Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M33.75 18H30V23.25H33.75V18Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M18 9H14.25V14.25H18V9Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+  <path d="M33.75 9H30V14.25H33.75V9Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
+</svg>
+

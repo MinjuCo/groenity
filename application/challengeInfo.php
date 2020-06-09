@@ -65,7 +65,7 @@
                   </span>
                 </h2>
               <?php else: ?>
-                <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn">Deelnemen</a>
+                <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn btn-gresident">Deelnemen</a>
               <?php endif;
             endif; ?>
             

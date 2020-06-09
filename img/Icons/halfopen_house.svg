@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#389583;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>halfopen_house</title><g id="Layer_2" data-name="Layer 2"><path class="cls-1" d="M8,28l12-9.33L32,28V42.67a2.66,2.66,0,0,1-2.67,2.66H10.67A2.66,2.66,0,0,1,8,42.67Z"/><polyline class="cls-1" points="16 45.33 16 32 24 32 24 45.33"/><path class="cls-1" d="M32,28l12-9.33L56,28V42.67a2.66,2.66,0,0,1-2.67,2.66H34.67A2.66,2.66,0,0,1,32,42.67Z"/></g></svg>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 21L15 14.025L24 21V32.025C24 33.15 23.1 34.05 21.975 34.05H8.025C6.9 34.05 6 33.15 6 32.025V21V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 33.975V24H18V33.975" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 21L33 14.025L42 21V32.025C42 33.15 41.1 34.05 39.975 34.05H26.025C24.9 34.05 24 33.15 24 32.025V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

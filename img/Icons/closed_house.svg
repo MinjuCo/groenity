@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#389583;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>closed_house</title><g id="Layer_2" data-name="Layer 2"><path class="cls-1" d="M5,29l9-7,9,7V40a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2Z"/><path class="cls-1" d="M23,29l9-7,9,7V40a2,2,0,0,1-2,2H25a2,2,0,0,1-2-2Z"/><polyline class="cls-1" points="29 42 29 32 35 32 35 42"/><path class="cls-1" d="M41,29l9-7,9,7V40a2,2,0,0,1-2,2H43a2,2,0,0,1-2-2Z"/></g></svg>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.75 21.75L10.5 16.5L17.25 21.75V30C17.25 30.825 16.575 31.5 15.75 31.5H5.25C4.425 31.5 3.75 30.825 3.75 30V21.75Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.25 21.75L24 16.5L30.75 21.75V30C30.75 30.825 30.075 31.5 29.25 31.5H18.75C17.925 31.5 17.25 30.825 17.25 30V21.75Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.75 31.5V24H26.25V31.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30.75 21.75L37.5 16.5L44.25 21.75V30C44.25 30.825 43.575 31.5 42.75 31.5H32.25C31.425 31.5 30.75 30.825 30.75 30V21.75Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

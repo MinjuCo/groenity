@@ -8,7 +8,7 @@
                 <h4>Over welk meters bechikt u? </h4>
             </div>
             <div class="col-3 d-flex justify-content-end align-self-center">
-                <input type="submit" value="Aanpasen" class="btn form-control ">
+                <input type="submit" value="Aanpasen" class="btn btn-gresident form-control ">
             </div>
             <hr style="width: 96%">
 
@@ -72,7 +72,7 @@
                 </div>
                 <div class="row mt-3 d-flex ">
                     <div class="col-8"></div>
-                    <input type="submit" class="btn form-control col-4 mr-0" value="Toevoegen">
+                    <input type="submit" class="btn btn-gresident form-control col-4 mr-0" value="Toevoegen">
                 </div>
             </div>
         </div>
@@ -86,8 +86,8 @@
 
         <div class="row d-flex ml-1 p-2">
             <div class="col-4">
-        <button class="btn form-control ">Gegevens importeren</button>
-        <button class="btn form-control mt-4">Manueel ingeven</button>
+        <button class="btn btn-gresident form-control ">Gegevens importeren</button>
+        <button class="btn btn-gresident form-control mt-4">Manueel ingeven</button>
         </div>
         <div class="col-7 d-flex align-items-center">
             <p class="mt-2">

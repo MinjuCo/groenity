@@ -51,10 +51,10 @@ if (!empty($_POST)) {
             <a href="forgotPassword.php" class="link-blue">Wachtwoord vergeten?</a>
           </div>
         </div>
-        <button type="submit" class="btn btn-block">Meld je aan</button>
+        <button type="submit" class="btn btn-gresident btn-block">Meld je aan</button>
       </form>
       <hr>
-      <a href="#" class="btn btn-block">Meld je aan met Fluvius</a>
+      <a href="#" class="btn btn-gresident btn-block">Meld je aan met Fluvius</a>
       <hr>
       <p class="text-center">Nog geen lid? <a class="link-gn" href="../index.php">Schrijf je in</a></p>
     </div>
