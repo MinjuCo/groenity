@@ -8,7 +8,7 @@
                 <h4>Gebruikers met referentie: </h4>
             </div>
             <div class="col-3 d-flex justify-content-end align-self-center">
-                <button class="btn form-control ">Gebruikers toevoegen</button>
+                <button class="btn btn-gresident form-control ">Gebruikers toevoegen</button>
             </div>
             <hr style="width: 96%">
         </div>
@@ -37,7 +37,7 @@
                 <h4>In welke jaar is je huis gebouwd? </h4>
             </div>
             <div class="col-3 d-flex justify-content-end align-self-center">
-                <input type="submit" value="Aanpasen" class="btn form-control ">
+                <input type="submit" value="Aanpasen" class="btn btn-gresident form-control ">
             </div>
 
             <hr style="width: 96%">
@@ -67,7 +67,7 @@
                 <h4>Type woning </h4>
             </div>
             <div class="col-3 d-flex justify-content-end align-self-center">
-                <input type="submit" value="Aanpasen" class="btn form-control ">
+                <input type="submit" value="Aanpasen" class="btn btn-gresident form-control ">
             </div>
             <hr style="width: 96%">
 
@@ -124,7 +124,7 @@
                 <h4>Type verwarming </h4>
             </div>
             <div class="col-3 d-flex justify-content-end align-self-center">
-                <input type="submit" value="Aanpasen" class="btn form-control ">
+                <input type="submit" value="Aanpasen" class="btn btn-gresident form-control ">
             </div>
             <hr style="width: 96%">
 

@@ -92,7 +92,7 @@ if (!empty($_POST)) {
             </label>
           </div>
         </div>
-        <input type="submit" class="btn btn-block" name="submit-registration" placeholder="Schrijf je in">
+        <input type="submit" class="btn btn-gresident btn-block" name="submit-registration" placeholder="Schrijf je in">
       </form>
       <hr>
       <p class="text-center">Reeds lid? <a class="link-gn" href="login.php">Meld je hier aan</a></p>

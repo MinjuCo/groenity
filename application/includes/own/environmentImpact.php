@@ -84,6 +84,6 @@
     Als iedereen zo zou leven als jij, dan hebben we <span class="link-gn">2.4 wereldbollen</span> nodig. 
     Wil je tips en inspiratie voor duurzame lifestyle? Schrijf je dan in om gecontacteerd te worden door specialisten.
     </p>
-    <a href="" class="btn">Boek een gesprek</a>
+    <a href="" class="btn btn-gresident">Boek een gesprek</a>
   </div>
 </div>

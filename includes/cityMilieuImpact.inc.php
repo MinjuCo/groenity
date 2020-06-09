@@ -6,7 +6,7 @@
                     <h3>Milieu-impact</h3>
                 </div>
                 <div class="col-m-7 align-self-center">
-                    <input type="submit" value="Volg real-time op" class="btn form-control" id="btnRealTime">
+                    <input type="submit" value="Volg real-time op" class="btn btn-gresident form-control" id="btnRealTime">
                 </div>
 
             </div>

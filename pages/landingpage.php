@@ -27,7 +27,7 @@
                   <input type="text" class="form-control" id="city" name="city">
                 </div>
                 <div class="form-group col-md-4 d-flex align-items-end">
-                  <input type="submit" class="btn form-control" id="findAddress" name="" value="Gratis deelnemen">
+                  <input type="submit" class="btn btn-gresident form-control" id="findAddress" name="" value="Gratis deelnemen">
                 </div>
               </div>
             </form>
@@ -96,7 +96,7 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-7 text-center">
         <h2>Zal je er in slagen om je stad aan de top te krijgen?</h2>
-        <a href="#intro" class="btn">Deelnemen</a>
+        <a href="#intro" class="btn-gresident">Deelnemen</a>
       </div>
     </div>
     <div class="row d-flex justify-content-center">

@@ -60,7 +60,7 @@ if (!empty($_POST['sendCode'])) {
                                     <input type="text" class="form-control" name="code" id="inputCode" placeholder="Code">
                                 </div>
                                 <div class="form-group col-md-7">
-                                    <input type="submit" value="Bevestig" name="sendCode" class="btn btn-form-registratie">
+                                    <input type="submit" value="Bevestig" name="sendCode" class="btn btn-gresident btn-form-registratie">
                                 </div>
                             </div>
                         </form>
@@ -77,7 +77,7 @@ if (!empty($_POST['sendCode'])) {
                                 <label class="mb-0">Nee, ik heb geen code</label>
                             </div>
                             <div class="col-md-7">
-                                <a href="register.php" class="btn">Ga verder</a>
+                                <a href="register.php" class="btn btn-gresident">Ga verder</a>
                             </div>
                         </div>
                     </div>

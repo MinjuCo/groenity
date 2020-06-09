@@ -23,7 +23,7 @@ $_SESSION["user"] = "Test";
                         <h3>Real-time gegevens</h3>
                     </div>
                     <div class="col-mid-1 float-right">
-                        <a href="#" class="btn btn-block">Bekijk milieu-impact</a>
+                        <a href="#" class="btn btn-gresident btn-block">Bekijk milieu-impact</a>
                     </div>
                 </div>
                 <div class="row">

@@ -79,10 +79,10 @@
                             <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                             <div class="action-buttons d-flex flex-row-reverse float-right">
                               <?php if($userInQueue):?>
-                                <a href="#" class="btn ml-2">Annuleren</a>
-                                <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['id']);?>" class="btn">Meer info</a>
+                                <a href="#" class="btn btn-gresident ml-2">Annuleren</a>
+                                <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['id']);?>" class="btn btn-gresident">Meer info</a>
                               <?php else: ?>
-                                <a href="#" class="btn ml-2">Details</a>
+                                <a href="#" class="btn btn-gresident ml-2">Details</a>
                               <?php endif;?>
                             </div>
                           </div>
@@ -109,7 +109,7 @@
                             </h4>
                             <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                             <div class="action-buttons d-flex flex-row-reverse float-right">
-                                <a href="#" class="btn ml-2">Details</a>
+                                <a href="#" class="btn btn-gresident ml-2">Details</a>
                             </div>
                           </div>
                         </div>
@@ -141,7 +141,7 @@
                             </h4>
                             <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                             <div class="action-buttons d-flex flex-row-reverse float-right">
-                                <a href="#" class="btn ml-2">Details</a>
+                                <a href="#" class="btn btn-gresident ml-2">Details</a>
                             </div>
                           </div>
                         </div>
@@ -173,8 +173,8 @@
                             </h4>
                             <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                             <div class="action-buttons d-flex flex-row-reverse float-right">
-                                <a href="#" class="btn ml-2">Annuleren</a>
-                                <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['id']);?>" class="btn">Meer info</a>
+                                <a href="#" class="btn btn-gresident ml-2">Annuleren</a>
+                                <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['id']);?>" class="btn btn-gresident">Meer info</a>
                             </div>
                           </div>
                         </div>
@@ -204,8 +204,8 @@
                       <h6 class="card-subtitle mb-2 text-muted"><?php echo ($challenge['is_battle'])? "1vs1 ": "Zelfstandig ";?>uitdaging</h6>
                       <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                       <div class="action-buttons d-flex flex-row-reverse float-right">
-                        <button class="btn btn-participate ml-2" data-challengeid="<?php echo htmlspecialchars($challenge['id']);?>">Deelnemen</button>
-                        <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['id']);?>" class="btn">Meer info</a>
+                        <button class="btn btn-gresident btn-participate ml-2" data-challengeid="<?php echo htmlspecialchars($challenge['id']);?>">Deelnemen</button>
+                        <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['id']);?>" class="btn btn-gresident">Meer info</a>
                       </div>
                     </div>
                   </div>
@@ -228,7 +228,7 @@
                       </h4>
                       <p><?php echo substr(htmlspecialchars($challenge["description"]),0,300)."...";?></p>
                       <div class="action-buttons d-flex flex-row-reverse float-right">
-                        <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['challenge_id']);?>" class="btn">Bekijk details</a>
+                        <a href="challengeInfo.php?challenge=<?php echo htmlspecialchars($challenge['challenge_id']);?>" class="btn btn-gresident">Bekijk details</a>
                       </div>
                     </div>
                   </div>
