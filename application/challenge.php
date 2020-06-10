@@ -1,12 +1,12 @@
 <?php
     include_once(__DIR__."/../classes/Challenge.php");
     include_once(__DIR__."/../classes/Battle.php");
+    session_start();
 
     $pageTitle = "Uitdaging";
-    $_SESSION['user'] = "Test";
-    $userId = 1;
 
     try{
+      include_once(__DIR__."/includes/userInfo.inc.php");
       //$themes = Theme::getAllThemes();
       $todoChallenges = Challenge::getUserTodoChallenges($userId); //Challenges which user still has to do
       $onGoingChallenges = Challenge::getUserOngoingChallenges($userId); //All challenges that were accepted and are still going on
@@ -17,7 +17,6 @@
       $queuedChallenges = Challenge::getUserCategorizedChallenges("queue", $userId); //Get user queued challenges
     }catch(\Throwable $th){
       $error = $th->getMessage();
-      echo $error;
     }
 ?>
 

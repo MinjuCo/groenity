@@ -1,14 +1,20 @@
 <?php
   include_once(__DIR__."/functions/appFunctions.php");
+  session_start();
 
   $pageTitle = "Instellingen";
-  $_SESSION['user'] = "Test";
-  $userId = 1;
 
   if(isset($_GET['content'])){
     $content = checkContent(htmlspecialchars($_GET['content']), "settings");
   }else{
     $content = "general";
+  }
+
+  try{
+    include_once(__DIR__."/includes/userInfo.inc.php");
+  }catch(\Throwable $th){
+    $error = $th->getMessage();
+    echo $error;
   }
 ?>
 

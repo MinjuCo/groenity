@@ -1,7 +1,6 @@
 <?php
     include_once(__DIR__."/../classes/Challenge.php");
     include_once(__DIR__."/../classes/Battle.php");
-    include_once(__DIR__."/../classes/User.php");
     session_start();
 
     $pageTitle = "Eigen gegevens";
@@ -13,8 +12,7 @@
     }
 
     try{
-      $userInfo = User::userInformation($_SESSION['user']);
-      $userId = $userInfo['id'];
+      include_once(__DIR__."/includes/userInfo.inc.php");
       //$themes = Theme::getAllThemes();
       $completedChallenges = Challenge::getUserCompletedChallenge($userId); //Challenges that user already completed
     }catch(\Throwable $th){
@@ -53,23 +51,18 @@
             ?>
           </div>
           <div class="col-md-4">
-            <div class="card shadow">
+            <div class="card shadow mb-4">
               <div class="card-body">
                 <h3 class="card-title">Profiel</h3>
                 <div class="media">
                   <img class="mr-3 avatar rounded-circle" src="../img/avatar/default.png" alt="Generic placeholder image">
                   <div class="media-body">
-                    <h5 class="mt-0">[Naam gebruiker]</h5>
-                    [locatie]
+                    <h5 class="mt-0"><?php echo (!empty($fullName))? $fullName: "[Naam gebruiker]"; ?></h5>
+                    <?php echo (!empty($userCityInfo))? ucfirst(strtolower($userCityInfo['name'])): "[locatie]"; ?>
                   </div>
                 </div>
               </div>
             </div>
-            <?php if($requestedContent == "impact"):?>
-              <a href="own.php" class="btn btn-gresident btn-block my-4">Volg real-time op</a>
-            <?php else:?>
-              <a href="?p=impact" class="btn btn-gresident btn-block my-4">Bekijk milieu-impact</a>
-            <?php endif;?>
             <div class="card shadow">
               <div class="card-body">
                 <h3 class="card-title">Prestaties</h3>

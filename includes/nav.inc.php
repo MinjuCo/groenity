@@ -1,6 +1,6 @@
 <div class="fixed-top">
     <nav class="navbar navbar-expand-md shadow d-flex flex-row align-items-center">
-        <div class="container-xl">
+        <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo ($currentPage == "index")? "index.php": "../index.php";?>">
                 <img src="<?php echo ($currentPage == "index")? "img/": "../img/";?>gresident-logo.svg" alt="logo-groenity">
             </a>

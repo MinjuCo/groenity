@@ -26,6 +26,11 @@ white/nav: #FCFCFC;
 .border-gresident-lightgreen{
     border: 1px solid #8DE4AF;
 }
+
+#visualization{
+    width: 100%;
+    min-height: 450px;
+}
 /*====*/
 
 /* SCROLLBAR */

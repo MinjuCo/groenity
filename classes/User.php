@@ -491,9 +491,7 @@ class User
         $statement->execute();
 
         $user = $statement->fetch(PDO::FETCH_ASSOC);
-        if(empty($user)){
-            throw new Exception("UserNotFound");
-        }
+        
         return $user;
     }
 

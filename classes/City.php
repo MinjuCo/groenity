@@ -118,4 +118,15 @@
 
       return $city;
     }
+
+    public static function getInfoByZip($zip){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from cities where zip = :zip");
+        $statement->bindValue(":zip", $zip);
+        $statement->execute();
+  
+        $city = $statement->fetch(PDO::FETCH_ASSOC);
+  
+        return $city;
+      }
   }

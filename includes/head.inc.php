@@ -12,4 +12,8 @@ $currentPage = strtolower(basename($_SERVER['PHP_SELF'],'.php'));
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     <?php endif;?>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap" rel="stylesheet">
+    <?php if($currentPage == "own" && isset($requestedContent)): ?>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="../js/liveUsage.js"></script>
+    <?php endif; ?>
 </head>

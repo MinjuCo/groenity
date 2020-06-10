@@ -1,6 +1,11 @@
 <?php 
+    session_start();
     $pageTitle = "Stad";
-    $_SESSION['user'] = "Test";
+    try{
+        include_once(__DIR__."/includes/userInfo.inc.php");
+    }catch(\Throwable $th){
+        $error = $th->getMessage();
+    }
 ?>
 
 <!DOCTYPE html>
