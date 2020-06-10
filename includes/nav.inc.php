@@ -10,7 +10,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
                     <?php
-                    if (isset($_SESSION["user"])) {
+                    if (isset($_SESSION["user"]) && $currentPage != "index") {
                         include_once(__DIR__."/../includes/nav-private.inc.php");
                     } else {
                         include_once(__DIR__."/../includes/nav-public.inc.php");

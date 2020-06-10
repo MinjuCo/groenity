@@ -350,41 +350,30 @@ class User
     public function saveUser()
     {
         $conn = Db::getConnection();
-        $statement = $conn->prepare("INSERT users(first_name, last_name, email, password) values (:firstname, :lastname, :email, :password)");
-        
+        $statement = $conn->prepare("INSERT users(first_name, last_name, email, password, street, house_number, zip) values (:firstname, :lastname, :email, :password, :street, :houseNr, :zip)");
         $password = $this->protectPassword();
         
         $statement->bindValue(":firstname", $this->getFirstName());
         $statement->bindValue(":lastname", $this->getLastName());
         $statement->bindValue(":email", $this->getEmail());
         $statement->bindValue(":password", $password);
+        $statement->bindValue(":street", $this->getStreet());
+        $statement->bindValue(":houseNr", $this->getHouseNumber());
+        $statement->bindValue(":zip", $this->getZip());
 
         $result = $statement->execute();
         return $result;
     }
 
-    public function compliteRegistration($id)
+    public function validateUser($id)
     {
-        try{
         $conn = Db::getConnection();
-
         
-        $statement = $conn->prepare("INSERT user_information(user_id, street, house_number, zip) values(:user, :street, :house, :zip)");
+        $statement =  $conn->prepare("UPDATE users SET verified = 1 WHERE id = :user");
         $statement->bindValue(":user", $id);
-        $statement->bindValue(":street", $this->getStreet());
-        $statement->bindValue(":house", $this->getHouseNumber());
-        $statement->bindValue(":zip", $this->getZip());
-        $statement->execute();
+        $result = $statement->execute();
         
-        $statement2 =  $conn->prepare("UPDATE users SET verified = 1 WHERE id = :user");
-        $statement2->bindValue(":user", $id);
-        $statement2->execute();
-
-        header("Location: ../pages/instellingen.php");
-        return true;
-        } catch(Throwable $e) {
-            throw new Exception("check fout");
-        }
+        return $result;
     }
 
     //send validation code
@@ -447,7 +436,7 @@ class User
         $conn = Db::getConnection();
 
         $statement = $conn->prepare("SELECT * FROM users WHERE email = :email");
-        $statement->bindParam(":email", $this->email);
+        $statement->bindValue(":email", $this->email);
         $statement->execute();
         $count = $statement->rowCount();
         if ($count > 0) {
@@ -480,16 +469,32 @@ class User
     public function validateCode(){
         $conn = Db::getConnection();
 
-        $statement = $conn->prepare("SELECT * FROM verification_code WHERE verify_code = :code");
-        $statement->bindParam(":code", $this->code);
+        $statement = $conn->prepare("SELECT * FROM verification_code vc left join users u on u.id = vc.user_id WHERE verify_code = :code AND (u.street = :street AND u.house_number = :houseNr AND u.zip = :zip)");
+        $statement->bindValue(":code", $this->getCode());
+        $statement->bindValue(":street", $this->getStreet());
+        $statement->bindValue(":houseNr", $this->getHouseNumber());
+        $statement->bindValue(":zip", $this->getZip());
         $statement->execute();
-        $user = $statement->fetch();
-        $count = $statement->rowCount();
-        if ($count > 0) {
-            return $user[2];
-        } else {
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($user)) {
             throw new Exception("Wij hebben dit code helaas niet gevonden");
         }
+
+        return $user;
+    }
+
+    public static function userInformation($email){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from users where email = :email");
+        $statement->bindValue(":email", $email);
+        $statement->execute();
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        if(empty($user)){
+            throw new Exception("UserNotFound");
+        }
+        return $user;
     }
 
 }

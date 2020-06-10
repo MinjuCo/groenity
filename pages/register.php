@@ -1,5 +1,7 @@
 <?php
 include_once("../classes/User.php");
+session_start();
+
 $pageTitle = "Registratie";
 
 
@@ -17,6 +19,9 @@ if (!empty($_POST)) {
       $user->setLastName($_POST['lastName']);
       $user->setEmail($_POST['email']);
       $user->setPassword($_POST['password']);
+      $user->setStreet($_SESSION['street']);
+      $user->setHouseNumber($_SESSION['houserNr']);
+      $user->setZip($_SESSION['zip']);
 
       //email validation
       $emailExists = $user->emailExists();
@@ -61,7 +66,7 @@ if (!empty($_POST)) {
         </div>
       <?php endif; ?>
       <?php if (!empty($success)) : ?>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-success" role="alert">
           <strong>Goed gedaan!</strong> <?php echo $success; ?>
         </div>
       <?php endif; ?>

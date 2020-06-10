@@ -19,7 +19,7 @@
                 </button>
                 <!-- Media block -->
                 <div class="media">
-                  <img src="../img/default.png" class="thumb-64 mr-3 rounded-circle" alt="avatar">
+                  <img src="../img/avatar/default.png" class="thumb-64 mr-3 rounded-circle" alt="avatar">
                   <div class="media-body p-2">
                     <h6 class="mt-0">Marie Doe</h6>
                     <span class="role link-gn">Eigenaar<span>
@@ -37,7 +37,7 @@
                 </button>
                 <!-- Media block -->
                 <div class="media">
-                  <img src="../img/default.png" class="thumb-64 mr-3 rounded-circle" alt="avatar">
+                  <img src="../img/avatar/default.png" class="thumb-64 mr-3 rounded-circle" alt="avatar">
                   <div class="media-body p-2">
                     <h6 class="mt-0">Marie Doe</h6>
                     <span class="role link-gn">Eigenaar<span>

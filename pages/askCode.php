@@ -24,9 +24,12 @@ if (!empty($_POST['sendCode'])) {
         $user->setZip($zip);
 
         // verifie code & find userId
-        $id = $user->validateCode();
+        $user = $user->validateCode();
         
-        $user->compliteRegistration($id);
+        if($user->validateUser($user['user_id'])){
+            $_SESSION['user'] = $user['email'];
+            header("Location: ../application/appSettings.php"); 
+        }
 
     } catch (Exception $e) {
         $error = $e->getMessage();

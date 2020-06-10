@@ -13,6 +13,12 @@ white/nav: #FCFCFC;
     border: none;
 }
 
+.bg-gresigreen{
+    background-color: #389583;
+    color: #EDF5E0!important;
+    border: none;
+}
+
 .text-gresident-white{
     color: #EDF5E0;
 }
@@ -48,6 +54,11 @@ white/nav: #FCFCFC;
     background: linear-gradient(180deg, rgba(50,133,117,1) 0%, rgba(82,191,131,1) 100%);
 }
 /*===*/
+.thumb-45.avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
 
 .thumb-64{
     width: 64px;

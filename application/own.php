@@ -2,10 +2,9 @@
     include_once(__DIR__."/../classes/Challenge.php");
     include_once(__DIR__."/../classes/Battle.php");
     include_once(__DIR__."/../classes/User.php");
+    session_start();
 
     $pageTitle = "Eigen gegevens";
-    $_SESSION['user'] = "Test";
-    $userId = 1;
 
     if(isset($_GET['p']) && !empty($_GET['p'])){
       $requestedContent = htmlspecialchars($_GET['p']);
@@ -14,11 +13,12 @@
     }
 
     try{
+      $userInfo = User::userInformation($_SESSION['user']);
+      $userId = $userInfo['id'];
       //$themes = Theme::getAllThemes();
       $completedChallenges = Challenge::getUserCompletedChallenge($userId); //Challenges that user already completed
     }catch(\Throwable $th){
       $error = $th->getMessage();
-      echo $error;
     }
 ?>
 
@@ -32,6 +32,11 @@
     ?>
     
     <div class="container application">
+        <?php if (!empty($error)) : ?>
+          <div class="alert alert-danger" role="alert">
+            <strong>Pas op!</strong> <?php echo $error; ?>
+          </div>
+        <?php endif; ?>
         <h2 class="mb-4">Eigen gegevens</h2>
         <div class="row mb-3">
           <div class="col-md-8">
@@ -52,7 +57,7 @@
               <div class="card-body">
                 <h3 class="card-title">Profiel</h3>
                 <div class="media">
-                  <img class="mr-3 avatar rounded-circle" src="../img/default.png" alt="Generic placeholder image">
+                  <img class="mr-3 avatar rounded-circle" src="../img/avatar/default.png" alt="Generic placeholder image">
                   <div class="media-body">
                     <h5 class="mt-0">[Naam gebruiker]</h5>
                     [locatie]
@@ -69,7 +74,7 @@
               <div class="card-body">
                 <h3 class="card-title">Prestaties</h3>
                 <div class="media border mb-3 rounded text-center d-flex align-items-center">
-                  <img class="mr-3 avatar rounded-circle" src="../img/default.png" alt="Icon">
+                  <img class="mr-3 avatar rounded-circle" src="../img/avatar/default.png" alt="Icon">
                   <div class="media-body">
                     Voltooide uitdagingen
                     <h5>10</h5>

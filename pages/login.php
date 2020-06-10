@@ -17,7 +17,7 @@ if (!empty($_POST)) {
     if($user->login()){
       session_start();
       $_SESSION['user'] = $email;
-      header("Location: profil.php");
+      header("Location: ../application/own.php");
     }
   } catch (\Throwable $e) {
     $error = $e->getMessage();
@@ -35,7 +35,9 @@ if (!empty($_POST)) {
     <div class="col-md-6 m-auto">
       <h2 class="mb-2">Meld je aan om je dashboard te zien</h2>
       <?php if (!empty($error)) : ?>
-        <p class="form__error"> <?php echo $error; ?></p>
+        <div class="alert alert-danger" role="alert">
+          <strong>Pas op!</strong> <?php echo $error; ?>
+        </div>
       <?php endif; ?>
       <form action="" method="post">
         <div class="form-group">
