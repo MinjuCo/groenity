@@ -56,10 +56,14 @@ if (!empty($_POST)) {
         terwijl je uitdagingen of discussies aangaat.
       </p>
       <?php if (!empty($error)) : ?>
-        <p class="form__error"> <?php echo $error; ?></p>
+        <div class="alert alert-danger" role="alert">
+          <strong>Pas op!</strong> <?php echo $error; ?>
+        </div>
       <?php endif; ?>
       <?php if (!empty($success)) : ?>
-        <p class="form__success"> <?php echo $success; ?></p>
+        <div class="alert alert-danger" role="alert">
+          <strong>Goed gedaan!</strong> <?php echo $success; ?>
+        </div>
       <?php endif; ?>
       <form action="" method="post" enctype="multipart/form-data">
         <div class="form-row">
@@ -98,7 +102,7 @@ if (!empty($_POST)) {
       <p class="text-center">Reeds lid? <a class="link-gn" href="login.php">Meld je hier aan</a></p>
     </div>
   </div>
-  <?php include_once(__DIR__ . "/../includes/nav.inc.php"); ?>
+  <?php include_once(__DIR__ . "/../includes/footer.inc.php"); ?>
 </body>
 
 </html>

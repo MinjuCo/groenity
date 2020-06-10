@@ -69,7 +69,7 @@ if (!empty($_POST['sendCode'])) {
             </div>
             <hr>
 
-            <div class="row">
+            <div class="row mb-4">
                 <div class="card shadow-sm col-12 rounded-lg">
                     <div class="card-body">
                         <div class="row">
@@ -85,7 +85,7 @@ if (!empty($_POST['sendCode'])) {
             </div>
         </div>
     </div>
-    <?php include_once(__DIR__ . "/../includes/nav.inc.php"); ?>
+    <?php include_once(__DIR__ . "/../includes/footer.inc.php"); ?>
 </body>
 
 </html>

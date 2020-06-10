@@ -174,7 +174,7 @@ hr{
 }
 
 .askCode, .registration, .login{
-    height: 92vh;
+    min-height: 92vh;
     padding-top: 5.7em;
 }
 
@@ -387,6 +387,43 @@ h1{
 
     h1{
         font-size: 3em;
+    }
+
+    .login, .askCode.container, .registration{
+        background-image: none;
+    }
+
+    .login::before, .askCode.container::before, .registration::before{
+        content: ' ';
+        display: block;
+        background-size: 80vw;
+        background-repeat: no-repeat;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 90%;
+        position: absolute;
+        z-index:0;
+    }
+
+    .login::before {
+        background-image: url("../img/Visuals/login.svg");
+        background-size: 55vw;
+        background-position: bottom left;   
+    }
+
+    .askCode.container::before {
+        background-image: url("../img/Visuals/ask_code.svg");
+        background-position: bottom center;
+    }
+
+    .registration::before {
+        background-image: url("../img/Visuals/registration.svg");
+        background-position: right bottom;
+        background-size: 200vw; 
     }
 
     .landingSection{
