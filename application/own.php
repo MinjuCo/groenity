@@ -37,7 +37,7 @@
         <?php endif; ?>
         <h2 class="mb-4">Eigen gegevens</h2>
         <div class="row mb-3">
-          <div class="col-md-8">
+          <div class="col-md-8 order-2 order-md-1">
             <?php 
               if($requestedContent == "impact"):
               
@@ -50,7 +50,7 @@
               endif; 
             ?>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3 order-1">
             <div class="card shadow mb-4">
               <div class="card-body">
                 <h3 class="card-title">Profiel</h3>

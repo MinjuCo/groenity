@@ -2,7 +2,7 @@
   <div class="card-body">  
     <h3 class="card-title d-flex align-items-center justify-content-between">
       Milieu-impact
-      <a href="own.php" class="btn btn-gresident my-4">Volg real-time op</a>
+      <a href="own.php" class="btn btn-gresident">Volg real-time op</a>
     </h3>
     <ul class="nav nav-pills mb-3" id="pills-impact-tab" role="tablist">
       <li class="nav-item">

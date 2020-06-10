@@ -29,7 +29,7 @@ white/nav: #FCFCFC;
 
 #visualization{
     width: 100%;
-    min-height: 450px;
+    min-height: 325px;
 }
 /*====*/
 
@@ -63,6 +63,11 @@ white/nav: #FCFCFC;
     width: 32px;
     height: 32px;
     border-radius: 100%;
+}
+
+.thumb-48{
+    width: 48px;
+    height: 48px;
 }
 
 .thumb-64{

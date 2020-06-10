@@ -10,6 +10,9 @@
       case 'settings':
         $validQueries = array("general", "meters");
         break;
+      case 'city':
+        $validQueries = array("realtime", "impact");
+        break;
       default:
         $validQueries = array();
         break;

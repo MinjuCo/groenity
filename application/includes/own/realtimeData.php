@@ -2,7 +2,7 @@
   <div class="card-body">
     <h3 class="card-title d-flex align-items-center justify-content-between">
       Real-time gegevens
-      <a href="?p=impact" class="btn btn-gresident my-4">Bekijk milieu-impact</a>
+      <a href="?p=impact" class="btn btn-gresident">Bekijk milieu-impact</a>
     </h3>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item">
