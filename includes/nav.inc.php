@@ -28,38 +28,38 @@
         <div class="container-fluid app__nav">
             <div class="navbar-collapse justify-content-between" id="navbarApplication">
                 <ul class="navbar-nav navbar-nav--app d-flex flex-row justify-content-between container-fluid text-center">
+                    <li class="nav-item col-2">
+                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "own")? "active": "";?>" href="own.php">
+                            <?php echo file_get_contents("../img/Icons/36/bar-chart-2.svg"); ?>
+                            <span class="d-none d-md-block">Eigen gegevens</span>
+                        </a>
+                    </li>
                     <li class="nav-item active col-2">
-                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "city")? "active": "";?>" href="#">
+                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "city")? "active": "";?>" href="city.php">
                             <?php echo file_get_contents("../img/Icons/36/activity.svg"); ?>
                             <span class="d-none d-md-block">Stad</span>
                         </a>
                     </li>
                     <li class="nav-item col-2">
-                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "ownusage")? "active": "";?>" href="#">
-                            <?php echo file_get_contents("../img/Icons/36/bar-chart-2.svg"); ?>
-                            <span class="d-none d-md-block">Eigen gegevens</span>
-                        </a>
-                    </li>
-                    <li class="nav-item col-2">
-                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "challenge" || $currentPage == "challengeInfo")? "active": "";?>" href="#">
+                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "challenge" || $currentPage == "challengeInfo")? "active": "";?>" href="challenge.php">
                             <?php echo file_get_contents("../img/Icons/36/award.svg"); ?>
                             <span class="d-none d-md-block">Uitdagingen</span>
                         </a>
                     </li>
                     <li class="nav-item col-2">
-                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "discussion")? "active": "";?>" href="#">
+                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "appointment")? "active": "";?>" href="appointment.php">
                             <?php echo file_get_contents("../img/Icons/36/message-square.svg"); ?>
-                            <span class="d-none d-md-block">Gesprek</span>
+                            <span class="d-none d-md-block">Afspraak</span>
                         </a>
                     </li>
                     <li class="nav-item col-2">
-                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "shop")? "active": "";?>" href="#">
+                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "shop")? "active": "";?>" href="shop.php">
                             <?php echo file_get_contents("../img/Icons/36/shopping-bag.svg"); ?>
                             <span class="d-none d-md-block">Winkel</span>
                         </a>
                     </li>
                     <li class="nav-item col-2">
-                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "usagesettings")? "active": "";?>" href="#">
+                        <a class="nav-link d-flex flex-column align-items-center subnav--icon <?php echo ($currentPage == "appsettings")? "active": "";?>" href="appSettings.php">
                             <?php echo file_get_contents("../img/Icons/36/settings.svg"); ?>
                             <span class="d-none d-md-block">Instellingen</span>
                         </a>

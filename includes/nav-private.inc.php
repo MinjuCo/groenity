@@ -39,7 +39,7 @@
             <a class="dropdown-item" href="#">Profiel</a>
             <a class="dropdown-item" href="#">Instellingen</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Afmelden</a>
+            <a class="dropdown-item" href="../pages/logout.php">Afmelden</a>
         </div>
     </li>
 </ul>
