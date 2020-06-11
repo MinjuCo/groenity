@@ -29,8 +29,9 @@ white/nav: #FCFCFC;
 
 #visualization{
     width: 100%;
-    min-height: 325px;
+    min-height: 300px;
 }
+
 /*====*/
 
 /* SCROLLBAR */
@@ -194,7 +195,7 @@ hr{
     height: 64px;
 }
 
-.askCode, .registration, .login{
+.askCode, .registration, .login, .map, .password{
     min-height: 92vh;
     padding-top: 5.7em;
 }
@@ -355,6 +356,14 @@ h1{
     background-position: bottom left;
 }
 
+/* forgotPassword.php */
+.password{
+    background-image: url("../img/Visuals/forgot_password.svg");
+    background-repeat: no-repeat;
+    background-size: 30vw;
+    background-position: bottom center;
+}
+
 /* CITY.PHP */
 .nav-pills .nav-link.active{
     color: #EDF5E0;
@@ -410,11 +419,11 @@ h1{
         font-size: 3em;
     }
 
-    .login, .askCode.container, .registration{
+    .login, .askCode.container, .registration, .password{
         background-image: none;
     }
 
-    .login::before, .askCode.container::before, .registration::before{
+    .login::before, .askCode.container::before, .registration::before, .password::before{
         content: ' ';
         display: block;
         background-size: 80vw;
@@ -445,6 +454,11 @@ h1{
         background-image: url("../img/Visuals/registration.svg");
         background-position: right bottom;
         background-size: 200vw; 
+    }
+
+    .password::before {
+        background-image: url("../img/Visuals/forgot_password.svg");
+        background-position: bottom center;
     }
 
     .landingSection{

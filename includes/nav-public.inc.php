@@ -3,7 +3,7 @@
             <a href="#" class="nav-link">Over ons</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">Live kaart</a>
+            <a href="<?php echo ($currentPage == "index")? "pages/live-map.php":"live-map.php"; ?>" class="nav-link">Live kaart</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>

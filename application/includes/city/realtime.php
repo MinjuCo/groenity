@@ -1,6 +1,6 @@
 <div class="row mb-4">
   <div class="col-md-8">
-    <div class="card shadow">
+    <div class="card h-100 shadow">
       <div class="card-body">
         <h3 class="card-title d-flex align-items-center justify-content-between">
           Real-time gegevens
