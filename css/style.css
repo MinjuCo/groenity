@@ -13,6 +13,10 @@ white/nav: #FCFCFC;
     border: none;
 }
 
+.text-dark-blue{
+    color: #05386B;
+}
+
 .bg-gresigreen{
     background-color: #389583;
     color: #EDF5E0!important;
@@ -195,7 +199,7 @@ hr{
     height: 64px;
 }
 
-.askCode, .registration, .login, .map, .password{
+.askCode, .registration, .login, .map, .password, .newPassword, .contact{
     min-height: 92vh;
     padding-top: 5.7em;
 }
@@ -364,6 +368,14 @@ h1{
     background-position: bottom center;
 }
 
+/* newPassword.php */
+.newPassword{
+    background-image: url("../img/Visuals/setup_password.svg");
+    background-repeat: no-repeat;
+    background-size: 30vw;
+    background-position: bottom left;
+}
+
 /* CITY.PHP */
 .nav-pills .nav-link.active{
     color: #EDF5E0;
@@ -393,6 +405,14 @@ h1{
     margin-left: 0.3em;
 }
 
+/* CONTACT US */
+.contact{
+    background-image: url("../img/Visuals/undraw_contact_us.svg");
+    background-repeat: no-repeat;
+    background-size: 30vw;
+    background-position: bottom left;
+}
+
 /* FOOTER */
 .page-footer {
     height: 56px;
@@ -419,11 +439,11 @@ h1{
         font-size: 3em;
     }
 
-    .login, .askCode.container, .registration, .password{
+    .login, .askCode.container, .registration, .password, .newPassword{
         background-image: none;
     }
 
-    .login::before, .askCode.container::before, .registration::before, .password::before{
+    .login::before, .askCode.container::before, .registration::before, .password::before, .newPassword::before{
         content: ' ';
         display: block;
         background-size: 80vw;
@@ -459,6 +479,12 @@ h1{
     .password::before {
         background-image: url("../img/Visuals/forgot_password.svg");
         background-position: bottom center;
+    }
+
+    .newPassword::before {
+        background-image: url("../img/Visuals/setup_password.svg");
+        background-size: 50vw;
+        background-position: bottom left;
     }
 
     .landingSection{
