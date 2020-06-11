@@ -108,6 +108,25 @@
         return $this;
     }
 
+    public static function rankingLeaderboard(){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select name from cities order by green_points desc");
+        $statement->execute();
+        $leaderboard = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $leaderboard;
+    }
+
+    public static function cityActiveUsers($zip){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select count(zip) as active from users where zip = :zip");
+        $statement->bindValue(":zip", $zip);
+        $statement->execute();
+        $activeUsers = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $activeUsers;
+    }
+
     public static function getInfoByName($cityName){
       $conn = Db::getConnection();
       $statement = $conn->prepare("select * from cities where name = :cityName");

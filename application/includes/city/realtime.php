@@ -70,7 +70,7 @@
                   <?php echo file_get_contents("../img/g_coins.svg"); ?>
                 </div>
                 <span>Groene punten</span>
-                <h5 class="font-weight-bold link-gn">2000</h5>
+                <h5 class="font-weight-bold link-gn"><?php echo htmlspecialchars($userCityInfo['green_points']); ?></h5>
               </div>
           </div>
           <div class="col-6">
@@ -83,7 +83,7 @@
               </div>
           </div>
         </div>
-
+        <?php if(!empty($leaderboard)): ?>
         <div class="mb-3">
           <div class="d-flex justify-content-between align-items-center border-gresident-lightgreen rounded p-2">
               <div class="link-gn w-25 d-flex justify-content-center mx-4">
@@ -91,11 +91,11 @@
               </div>
               <div class="w-75">
                   <span>Leaderboard</span>
-                  <h5 class="font-weight-bold link-gn">12</h5>
+                  <h5 class="font-weight-bold link-gn"><?php echo $userCityRank; ?></h5>
               </div>
           </div>
         </div>
-
+        <?php endif; ?>
         <div class="mb-3">
           <div class="d-flex justify-content-between align-items-center border-gresident-lightgreen rounded p-2">
               <div class="link-gn w-25 d-flex justify-content-center mx-4">
@@ -103,9 +103,9 @@
               </div>
               <div class="w-75">
                   <span>Aantal inwoners</span>
-                  <h5 class="font-weight-bold link-gn">12</h5>
+                  <h5 class="font-weight-bold link-gn" id="population"></h5>
                   <span>Actieve inwoners</span>
-                  <h5 class="font-weight-bold link-gn">12</h5>
+                  <h5 class="font-weight-bold link-gn"><?php echo (!empty($activeUsers))? $activeUsers['active']:"Geen"; ?></h5>
               </div>
           </div>
         </div>

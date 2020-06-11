@@ -13,6 +13,13 @@
 
     try{
         include_once(__DIR__."/includes/userInfo.inc.php");
+        $leaderboard = City::rankingLeaderboard();
+        if(!empty($leaderboard)){
+            $searchingArray = array('name' => $userCityInfo['name']);
+            $userCityRank = array_search($searchingArray, $leaderboard);
+        }
+
+        $activeUsers = City::cityActiveUsers($userCityInfo['zip']);
     }catch(\Throwable $th){
         $error = $th->getMessage();
     }
@@ -34,6 +41,7 @@
           </div>
         <?php endif; ?>
         <h2 class="mb-4">Stad</h2>
+        <div class="hidden" id="cityName"><?php echo ucfirst(strtolower($userCityInfo['name'])); ?></div>
         <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active rounded-pill" id="pills-city-tab" data-toggle="pill" href="#pills-city" role="tab" aria-controls="pills-city" aria-selected="true">Mijn stad</a>
@@ -84,7 +92,7 @@
     
     <?php 
         //Footer + scripts
-        include_once(__DIR__."/../includes/footer.inc.php"); 
+        include_once(__DIR__."/../includes/footer.inc.php");
     ?>
     <?php if($content == "realtime"): ?>
         <script>
@@ -130,6 +138,7 @@
                 }
             });
         </script>
+        <script src="../api/apiPopulation.js"></script>
     <?php endif; ?>
 </body>
 </html>
