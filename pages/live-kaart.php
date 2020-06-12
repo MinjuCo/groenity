@@ -1,5 +1,17 @@
 <?php
 $pageTitle = "Live kaart";
+
+// Search 
+if(!empty($_POST["findCity"])){
+    $city = $_POST["city"];
+    if (is_numeric($city) ) {
+        echo "tak";
+        //set zipcode
+    } else {
+        echo "nie";
+        //set cityname
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +27,9 @@ $pageTitle = "Live kaart";
         <div class="row d-flex justify-content-between">
             <div class="col-md-4 card shadow-sm mb-4" id="">
                 <div class="card-body">
-                    <form action="post" class="form-inline justify-content-center">
-                        <input type="text" class="form-control" id="city" aria-describedby="city" placeholder="Bv 2800 of Mechelen ">
-                        <input type="submit" value="Zoeken" class="btn form-control ">
+                    <form class="form-inline justify-content-center" action="" method="post" enctype="multipart/form-data">
+                        <input type="text" class="form-control" id="city" name="city" aria-describedby="city" placeholder="Bv 2800 of Mechelen ">
+                        <input type="submit" value="Zoeken" name="findCity" class="btn form-control" id="findCity">
                     </form>
                     <div class="row mt-2">
                         <h3 class="mb-2">Leaderboard</h3>
@@ -37,7 +49,7 @@ $pageTitle = "Live kaart";
                         </div>
                     </div>
                     <!-- Leaderboard -->
-                    <?php for ($i = 1; $i < 17; $i++) { ?>
+                    <?php for ($i = 1; $i < 12; $i++) { ?>
                         <div class="row mt-0 d-flex justify-content-between">
                             <div class="col-2 mb-1">
                                 <p class="font-weight-bold mb-1"><?php echo $i; ?></p>
