@@ -24,7 +24,7 @@ fetch(wiki)
     .then(result => {
       if(Object.keys(result)[0] == "data"){
         let population = result.data.population;
-        document.querySelector("#population").innerHTML = population.toLocaleString("nl-BE");
+        document.querySelector("#population").innerHTML = population.toLocaleString("nl-BE").replace('.',' ');
       }else{
         document.querySelector("#population").innerHTML = "Niet bekend";
       }

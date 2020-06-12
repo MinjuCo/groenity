@@ -66,11 +66,46 @@
             <div class="card shadow">
               <div class="card-body">
                 <h3 class="card-title">Prestaties</h3>
-                <div class="media border mb-3 rounded text-center d-flex align-items-center">
-                  <img class="mr-3 avatar rounded-circle" src="../img/avatar/default.png" alt="Icon">
-                  <div class="media-body">
-                    Voltooide uitdagingen
-                    <h5>10</h5>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between align-items-center border-gresident-lightgreen rounded p-2">
+                      <div class="link-gn w-25 d-flex justify-content-center mx-4">
+                        <?php echo file_get_contents("../img/Icons/48/award.svg"); ?>
+                      </div>
+                      <div class="w-75">
+                          <span>Voltooide uitdagingen</span>
+                          <h5 class="font-weight-bold link-gn"><?php echo (!empty($completedChallenges))? count($completedChallenges):"0"; ?></h5>
+                      </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between align-items-center border-gresident-lightgreen rounded p-2">
+                      <div class="link-gn w-25 d-flex justify-content-center mx-4">
+                        <?php echo file_get_contents("../img/Icons/footprint.svg"); ?>
+                      </div>
+                      <div class="w-75">
+                          <span>Ecologische voetafdruk</span>
+                          <h5 class="font-weight-bold link-gn">4.34 hectare</h5>
+                      </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6 pr-1">
+                      <div class="d-flex flex-column rounded align-items-center border-gresident-lightgreen p-2">
+                        <div class="link-gn">
+                          <?php echo file_get_contents("../img/Icons/48/zap.svg"); ?>
+                        </div>
+                        <span>Energie bespaard</span>
+                        <h5 class="font-weight-bold link-gn">3 %</h5>
+                      </div>
+                  </div>
+                  <div class="col-6 pl-1">
+                      <div class="d-flex flex-column rounded align-items-center border-gresident-lightgreen p-2">
+                        <div class="link-gn">
+                          <?php echo file_get_contents("../img/Icons/48/dollar-sign.svg"); ?>
+                        </div>
+                        <span>Geld bespaard</span>
+                        <h5 class="font-weight-bold link-gn">5%</h5>
+                      </div>
                   </div>
                 </div>
                 <a href="#meerPrestaties" class="btn btn-block btn-outline-gresident">Toon meer prestaties</a>

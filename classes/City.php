@@ -147,5 +147,15 @@
         $city = $statement->fetch(PDO::FETCH_ASSOC);
   
         return $city;
-      }
+    }
+
+    public static function getCompletedChallengesOfCity($zip){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select count(user_id) as completed from `challenge_completed` cc left join users u on u.id = cc.user_id where u.zip = :zip");
+        $statement->bindValue(":zip", $zip);
+        $statement->execute();
+
+        $completed = $statement->fetch(PDO::FETCH_ASSOC);
+        return $completed;
+    }
   }

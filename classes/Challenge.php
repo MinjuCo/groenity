@@ -244,13 +244,13 @@
 
     public static function getUserCompletedChallenge($userId){
         $conn = Db::getConnection();
-        $statement = $conn->prepare("select cc.challenge_id, title, description, goals, extra_info, rewards, green_points, thema_id, is_battle, isWinner from challenges c inner join challenge_completed cc on cc.challenge_id = c.id where user_id = :userId order by timestamp");
+        $statement = $conn->prepare("select cc.challenge_id, title, description, goals, extra_info, rewards, green_points, thema_id, is_battle, isWinner from challenges c inner join `challenge_completed` cc on cc.challenge_id = c.id where user_id = :userId order by timestamp desc");
 
         $statement->bindValue(":userId", $userId);
 
         $statement->execute();
-
         $challenges = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
         return $challenges;
     }
 

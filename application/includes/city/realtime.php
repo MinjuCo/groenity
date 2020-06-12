@@ -117,7 +117,7 @@
               </div>
               <div class="w-75">
                   <span>Voltooide uitdagingen</span>
-                  <h5 class="font-weight-bold link-gn">1200</h5>
+                  <h5 class="font-weight-bold link-gn"><?php echo (!empty($amountCompletedChallenges))? $amountCompletedChallenges['completed']:"0"; ?></h5>
               </div>
           </div>
         </div>
@@ -277,7 +277,7 @@
                 </div>
             </div>
             <div class="col-md-3 d-flex">
-                <a href="#" class="align-self-center btn btn-outline-gresident btn-block py-5"><h4>9 +</h4> Laad meer</a>
+                <a href="#" class="btn btn-outline-gresident btn-block mb-3 d-flex flex-column justify-content-center"><h4>9 +</h4> Laad meer</a>
             </div>
 
         </div>

@@ -13,13 +13,16 @@
 
     try{
         include_once(__DIR__."/includes/userInfo.inc.php");
+        $zip = $userCityInfo['zip'];
+
         $leaderboard = City::rankingLeaderboard();
         if(!empty($leaderboard)){
             $searchingArray = array('name' => $userCityInfo['name']);
             $userCityRank = array_search($searchingArray, $leaderboard);
         }
 
-        $activeUsers = City::cityActiveUsers($userCityInfo['zip']);
+        $activeUsers = City::cityActiveUsers($zip);
+        $amountCompletedChallenges = City::getCompletedChallengesOfCity($zip);
     }catch(\Throwable $th){
         $error = $th->getMessage();
     }

@@ -10,9 +10,6 @@
       header("Location: challenge.php");
     }
 
-    $_SESSION['user'] = "Test";
-    $userId = 1;
-
     try{
       include_once(__DIR__."/includes/userInfo.inc.php");
       $challenge = Challenge::getChallengeInfo($challegeId);
