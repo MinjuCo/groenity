@@ -1,11 +1,9 @@
 <?php
     include_once(__DIR__."/../classes/Challenge.php");
     include_once(__DIR__."/../classes/Battle.php");
-    include_once(__DIR__."/../classes/User.php");
+    session_start();
 
     $pageTitle = "Eigen gegevens";
-    $_SESSION['user'] = "Test";
-    $userId = 1;
 
     if(isset($_GET['p']) && !empty($_GET['p'])){
       $requestedContent = htmlspecialchars($_GET['p']);
@@ -14,11 +12,11 @@
     }
 
     try{
+      include_once(__DIR__."/includes/userInfo.inc.php");
       //$themes = Theme::getAllThemes();
       $completedChallenges = Challenge::getUserCompletedChallenge($userId); //Challenges that user already completed
     }catch(\Throwable $th){
       $error = $th->getMessage();
-      echo $error;
     }
 ?>
 
@@ -32,9 +30,14 @@
     ?>
     
     <div class="container application">
+        <?php if (!empty($error)) : ?>
+          <div class="alert alert-danger" role="alert">
+            <strong>Pas op!</strong> <?php echo $error; ?>
+          </div>
+        <?php endif; ?>
         <h2 class="mb-4">Eigen gegevens</h2>
         <div class="row mb-3">
-          <div class="col-md-8">
+          <div class="col-md-8 order-2 order-md-1">
             <?php 
               if($requestedContent == "impact"):
               
@@ -47,32 +50,62 @@
               endif; 
             ?>
           </div>
-          <div class="col-md-4">
-            <div class="card shadow">
+          <div class="col-md-4 mb-3 order-1">
+            <div class="card shadow mb-4">
               <div class="card-body">
                 <h3 class="card-title">Profiel</h3>
                 <div class="media">
-                  <img class="mr-3 avatar rounded-circle" src="../img/default.png" alt="Generic placeholder image">
+                  <img class="mr-3 avatar rounded-circle" src="../img/avatar/default.png" alt="Generic placeholder image">
                   <div class="media-body">
-                    <h5 class="mt-0">[Naam gebruiker]</h5>
-                    [locatie]
+                    <h5 class="mt-0"><?php echo (!empty($fullName))? $fullName: "[Naam gebruiker]"; ?></h5>
+                    <?php echo (!empty($userCityInfo))? ucfirst(strtolower($userCityInfo['name'])): "[locatie]"; ?>
                   </div>
                 </div>
               </div>
             </div>
-            <?php if($requestedContent == "impact"):?>
-              <a href="own.php" class="btn btn-gresident btn-block my-4">Volg real-time op</a>
-            <?php else:?>
-              <a href="?p=impact" class="btn btn-gresident btn-block my-4">Bekijk milieu-impact</a>
-            <?php endif;?>
             <div class="card shadow">
               <div class="card-body">
                 <h3 class="card-title">Prestaties</h3>
-                <div class="media border mb-3 rounded text-center d-flex align-items-center">
-                  <img class="mr-3 avatar rounded-circle" src="../img/default.png" alt="Icon">
-                  <div class="media-body">
-                    Voltooide uitdagingen
-                    <h5>10</h5>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between align-items-center border-gresident-lightgreen rounded p-2">
+                      <div class="link-gn w-25 d-flex justify-content-center mx-4">
+                        <?php echo file_get_contents("../img/Icons/48/award.svg"); ?>
+                      </div>
+                      <div class="w-75">
+                          <span>Voltooide uitdagingen</span>
+                          <h5 class="font-weight-bold link-gn"><?php echo (!empty($completedChallenges))? count($completedChallenges):"0"; ?></h5>
+                      </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between align-items-center border-gresident-lightgreen rounded p-2">
+                      <div class="link-gn w-25 d-flex justify-content-center mx-4">
+                        <?php echo file_get_contents("../img/Icons/footprint.svg"); ?>
+                      </div>
+                      <div class="w-75">
+                          <span>Ecologische voetafdruk</span>
+                          <h5 class="font-weight-bold link-gn">4.34 hectare</h5>
+                      </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6 pr-1">
+                      <div class="d-flex flex-column rounded align-items-center border-gresident-lightgreen p-2">
+                        <div class="link-gn">
+                          <?php echo file_get_contents("../img/Icons/48/zap.svg"); ?>
+                        </div>
+                        <span>Energie bespaard</span>
+                        <h5 class="font-weight-bold link-gn">3 %</h5>
+                      </div>
+                  </div>
+                  <div class="col-6 pl-1">
+                      <div class="d-flex flex-column rounded align-items-center border-gresident-lightgreen p-2">
+                        <div class="link-gn">
+                          <?php echo file_get_contents("../img/Icons/48/dollar-sign.svg"); ?>
+                        </div>
+                        <span>Geld bespaard</span>
+                        <h5 class="font-weight-bold link-gn">5%</h5>
+                      </div>
                   </div>
                 </div>
                 <a href="#meerPrestaties" class="btn btn-block btn-outline-gresident">Toon meer prestaties</a>

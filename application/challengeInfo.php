@@ -2,6 +2,7 @@
     include_once(__DIR__."/../classes/Battle.php");
     include_once(__DIR__."/../classes/SingleChallenge.php");
     include_once(__DIR__."/../classes/Theme.php");
+    session_start();
 
     if(isset($_GET['challenge']) && !empty($_GET['challenge'])){
       $challegeId = htmlspecialchars($_GET['challenge']);
@@ -9,10 +10,8 @@
       header("Location: challenge.php");
     }
 
-    $_SESSION['user'] = "Test";
-    $userId = 1;
-
     try{
+      include_once(__DIR__."/includes/userInfo.inc.php");
       $challenge = Challenge::getChallengeInfo($challegeId);
       $userInQueue = ($challenge['is_battle'] && Challenge::challengeAlreadyAccepted($userId, $challegeId, $challenge['is_battle']))? true: false;;
       $userDoingChallenge = Challenge::userIsDoingThisChallenge($userId, $challegeId);
@@ -65,7 +64,7 @@
                   </span>
                 </h2>
               <?php else: ?>
-                <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn">Deelnemen</a>
+                <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn btn-gresident">Deelnemen</a>
               <?php endif;
             endif; ?>
             

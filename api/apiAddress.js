@@ -1,48 +1,56 @@
-console.log("connceted");
-
 //decet click
 document.querySelector('#findAddress').addEventListener("click", function(e){
     e.preventDefault();
-    let street = document.querySelector("#street").value;
+    let streetName = document.querySelector("#street").value;
     let houseNr = document.querySelector("#streetNr").value;
+    let streetAddress = streetName + " " + houseNr;
     let city = document.querySelector("#city").value;
+    let zip = "notFound";
 
-    console.log(street);
-    console.log(houseNr);
-    console.log(city);
+    fetch('ajax/getZip.php?q=' + city)
+    .then(response => response.json())
+    .then(result => {
+      console.log(result);
+      if(result.status === "success"){
+        zip = result.zip;
 
-    let url = `https://cors-anywhere.herokuapp.com/https://api.basisregisters.vlaanderen.be/v1/adresmatch?gemeentenaam=${city}&straatnaam=${street}&huisnummer=${houseNr}`;
+        console.log(streetAddress);
+        console.log(city);
+        console.log(zip);
 
-    //get data
-    
-    return fetch(url).then(response => {
-        //get json
-        //console.log(response.json());
-        return response.json();
-      })
-      .then(data => {
-        if(data.adresMatches.length != 0){
-          let zipCode = data.adresMatches[0].postinfo.objectId;
+        let url = `https://cors-anywhere.herokuapp.com/https://api.address-validator.net/api/verify?StreetAddress=${streetAddress}&City=${city}&CountryCode=be&PostalCode=${zip}&APIKey=av-27c0526fc3a239acdaf6b0d5fc7b3021`;
 
-          //AJAX
-          xmlhttp = new XMLHttpRequest();
-          xmlhttp.open("GET", "api/setSession.php?zip=" + zipCode + "&street=" + street + "&houseNr=" + houseNr , true);
-          xmlhttp.send();
-
-      
-          window.location.replace("pages/askCode.php");
-        }
+        //get data
         
+        fetch(url).then(response => {
+            //get json
+            //console.log(response.json());
+            return response.json();
+          })
+          .then(data => {
+            if(data.status === "VALID"){
+              
+              $("#jsLoad").load("api/setSession.php?zip=" + zip + "&street=" + streetName + "&houseNr=" + houseNr);
+          
+              window.location.replace("pages/askCode.php");
+            }
 
+            //detect error
+            if(data.status !== "VALID"){
+              document.querySelector('#addressError').setAttribute("class", "form__error text-danger visible");
+              return false;
+            }
+          
+          })
+          .catch(error => {
+            console.error("Error:", error);
+        });
 
-        //detect error
-        if(typeof(data.warnings[0]) !== "undefined"){
-           document.querySelector('#addressError').setAttribute("class", "form__error visible");
-           return false;
-        }
-      
-      })
-      .catch(error => {
-        console.error("Error:", error);
+      }else{
+        document.querySelector('#addressError').setAttribute("class", "form__error text-danger visible");
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
 });

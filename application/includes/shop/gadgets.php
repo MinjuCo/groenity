@@ -11,7 +11,7 @@
       <div class="text-right card-body">
         <h5 class="card-title text-left my-0">Product name</h5>
         <div class="price link-gn d-flex">100<img class="coins" src="../img/g_coins.svg" alt="GP"></div>
-        <a href="#" class="btn btn-primary">Voeg toe</a>
+        <a href="#" class="btn btn-gresident">Voeg toe</a>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
       <div class="text-right card-body">
         <h5 class="card-title text-left my-0">Product name</h5>
         <div class="price link-gn d-flex">100<img class="coins" src="../img/g_coins.svg" alt="GP"></div>
-        <a href="#" class="btn btn-primary">Voeg toe</a>
+        <a href="#" class="btn btn-gresident">Voeg toe</a>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@
       <div class="text-right card-body">
         <h5 class="card-title text-left my-0">Product name</h5>
         <div class="price link-gn d-flex">100<img class="coins" src="../img/g_coins.svg" alt="GP"></div>
-        <a href="#" class="btn btn-primary">Voeg toe</a>
+        <a href="#" class="btn btn-gresident">Voeg toe</a>
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@
       <div class="text-right card-body">
         <h5 class="card-title text-left my-0">Product name</h5>
         <div class="price link-gn d-flex">100<img class="coins" src="../img/g_coins.svg" alt="GP"></div>
-        <a href="#" class="btn btn-primary">Voeg toe</a>
+        <a href="#" class="btn btn-gresident">Voeg toe</a>
       </div>
     </div>
   </div>
@@ -73,7 +73,7 @@
       <div class="text-right card-body">
         <h5 class="card-title text-left my-0">Product name</h5>
         <div class="price link-gn d-flex">100<img class="coins" src="../img/g_coins.svg" alt="GP"></div>
-        <a href="#" class="btn btn-primary">Voeg toe</a>
+        <a href="#" class="btn btn-gresident">Voeg toe</a>
       </div>
     </div>
   </div>
@@ -88,7 +88,7 @@
       <div class="text-right card-body">
         <h5 class="card-title text-left my-0">Product name</h5>
         <div class="price link-gn d-flex">100<img class="coins" src="../img/g_coins.svg" alt="GP"></div>
-        <a href="#" class="btn btn-primary">Voeg toe</a>
+        <a href="#" class="btn btn-gresident">Voeg toe</a>
       </div>
     </div>
   </div>

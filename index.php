@@ -5,6 +5,10 @@
     unset($_SESSION['zip']);
     unset($_SESSION['street']);
     unset($_SESSION['houseNr']);
+
+    if(isset($_SESSION['user'])){
+        header("Location: application/own.php");
+    }
 ?>
 
 <!DOCTYPE html>

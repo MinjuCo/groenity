@@ -1,6 +1,9 @@
 <div class="card shadow">
   <div class="card-body">
-    <h3 class="card-title">Real-time gegevens</h3>
+    <h3 class="card-title d-flex align-items-center justify-content-between">
+      Real-time gegevens
+      <a href="?p=impact" class="btn btn-gresident">Bekijk milieu-impact</a>
+    </h3>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item">
           <a class="nav-link active rounded-pill" id="pills-energy-tab" data-toggle="pill" href="#pills-energy" role="tab" aria-controls="pills-energy" aria-selected="true">Energie</a>
@@ -34,7 +37,7 @@
         <div class="tab-content" id="timeContent">
           <div class="tab-pane fade show active" id="pills-daily" role="tabpanel" aria-labelledby="pills-daily-tab">
             <h4>Dagelijks energieverbruik</h4>
-            <div>(grafiek)</div>
+            <div id="visualization">(grafiek)</div>
           </div>
           <div class="tab-pane fade" id="pills-weekly" role="tabpanel" aria-labelledby="pills-weekly-tab">
             <h4>Wekelijks energieverbruik</h4>

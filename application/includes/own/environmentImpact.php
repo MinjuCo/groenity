@@ -1,6 +1,9 @@
 <div class="card shadow mb-4">
   <div class="card-body">  
-    <h3 class="card-title">Milieu-impact</h3>
+    <h3 class="card-title d-flex align-items-center justify-content-between">
+      Milieu-impact
+      <a href="own.php" class="btn btn-gresident">Volg real-time op</a>
+    </h3>
     <ul class="nav nav-pills mb-3" id="pills-impact-tab" role="tablist">
       <li class="nav-item">
           <a class="nav-link active rounded-pill" id="pills-energy-tab" data-toggle="pill" href="#pills-energy" role="tab" aria-controls="pills-energy" aria-selected="true">Energie</a>
@@ -84,6 +87,6 @@
     Als iedereen zo zou leven als jij, dan hebben we <span class="link-gn">2.4 wereldbollen</span> nodig. 
     Wil je tips en inspiratie voor duurzame lifestyle? Schrijf je dan in om gecontacteerd te worden door specialisten.
     </p>
-    <a href="" class="btn">Boek een gesprek</a>
+    <a href="" class="btn btn-gresident">Boek een gesprek</a>
   </div>
 </div>

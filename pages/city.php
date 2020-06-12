@@ -37,7 +37,7 @@ $_SESSION['user'] = "Test";
                                 <h3>Real-time gegevens</h3>
                             </div>
                             <div class="col-m-7 align-self-center">
-                                <input type="submit" value="Bekijk milieu-impact" class="btn form-control" id="btnMilieu">
+                                <input type="submit" value="Bekijk milieu-impact" class="btn btn-gresident form-control" id="btnMilieu">
                             </div>
                         </div>
                         <div class="card-body">
@@ -185,7 +185,7 @@ $_SESSION['user'] = "Test";
                             <div class="col-m-7">
                                 <form action="post" class="form-inline">
                                     <input type="text" class="form-control" id="city" aria-describedby="city" placeholder="Bv 2800 of Mechelen ">
-                                    <input type="submit" value="Zoeken" class="btn form-control ">
+                                    <input type="submit" value="Zoeken" class="btn btn-gresident form-control ">
                                 </form>
                             </div>
                         </div>

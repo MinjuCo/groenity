@@ -9,8 +9,33 @@ white/nav: #FCFCFC;
 /* COLORS */
 .bg-darkblue{
     background-color: #05386B;
+    color: #EDF5E0!important;
+    border: none;
+}
+
+.text-dark-blue{
+    color: #05386B;
+}
+
+.bg-gresigreen{
+    background-color: #389583;
+    color: #EDF5E0!important;
+    border: none;
+}
+
+.text-gresident-white{
     color: #EDF5E0;
 }
+
+.border-gresident-lightgreen{
+    border: 1px solid #8DE4AF;
+}
+
+#visualization{
+    width: 100%;
+    min-height: 300px;
+}
+
 /*====*/
 
 /* SCROLLBAR */
@@ -23,20 +48,42 @@ white/nav: #FCFCFC;
 ::-webkit-scrollbar-track {
     background: #fafafa;
     box-shadow: inset 0 0 8px #999999;
+    border-radius: 15px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: rgb(56,149,131);
     background: linear-gradient(180deg, rgba(56,149,131,1) 0%, rgba(92,216,148,1) 100%);
+    border-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(50,133,117);
-background: linear-gradient(180deg, rgba(50,133,117,1) 0%, rgba(82,191,131,1) 100%);
+    background: linear-gradient(180deg, rgba(50,133,117,1) 0%, rgba(82,191,131,1) 100%);
 }
 /*===*/
+.thumb-45.avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
+
+.thumb-48{
+    width: 48px;
+    height: 48px;
+}
+
+.thumb-64{
+    width: 64px;
+    height: 64px;
+}
+
+.thumb-85{
+    width: 85px;
+    height: 85px;
+}
 
 .hidden{
     display: none;
@@ -62,7 +109,7 @@ label{
     background-color: #FCFCFC;
 }
 
-.btn, .btn-gresident{
+.btn-gresident{
     background-color: #389583;
     color: #EDF5E0;
     border-radius: 5px;
@@ -90,6 +137,20 @@ label{
     color: #389583;
 }
 
+.settings-toggle .active .btn-outline-gresident{
+    background-color: #389583;
+    color: #EDF5E0;
+}
+
+.meter .form-group .settings-toggle .active{
+    border: 2px solid #8DE4AF;
+}
+
+.settings-toggle .active .btn-outline-gresident svg{
+    stroke: #EDF5E0;
+    color: #EDF5E0;
+}
+
 .link-gn{
     font-weight: bold;
     color: #389583;
@@ -98,7 +159,7 @@ label{
 h2, h3{
     font-family: 'Roboto Condensed', sans-serif;
     color: #05386B;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 h2{
@@ -123,6 +184,10 @@ h4{
     color: #389583;
 }
 
+h6{
+    font-weight: bold;
+}
+
 hr{
     color: rgba(5, 56, 107, 0.3);
     border-top:1px solid rgba(5, 56, 107, 0.3);
@@ -134,8 +199,8 @@ hr{
     height: 64px;
 }
 
-.askCode, .registration, .login{
-    height: 100vh;
+.askCode, .registration, .login, .map, .password, .newPassword, .contact{
+    min-height: 92vh;
     padding-top: 5.7em;
 }
 
@@ -217,15 +282,14 @@ hr{
     margin-bottom: 0.25rem;
 }
 
-.nav-item.aanmelden::before{
+.nav-item.single::before{
     content: "";
     border-left: 1px solid rgba(5, 56, 107, 0.2);
 }
-.nav-link.aanmelden, .btn-form-registratie {
-    background-color: #5CD894;
+
+.nav-link.btn-gresident{
     color: #EDF5E0;
     margin-left: 1em;
-    border-radius: 5px;
 }
 
 #notification{
@@ -241,20 +305,17 @@ hr{
 }
 
 /* LANDINGPAGE.PHP */
-.intro, .awareness, .awards, .experts, .affection{
+.landingSection{
     position: relative;
     height: 100vh;
+    min-height: 650px;
 }
 
 .intro{
     background-image: url("../img/Visuals/demo_application.svg"), url("../img/Visuals/fluid_bg.svg");
     background-repeat: no-repeat;
-    background-size: 35em, cover;
+    background-size: 30em, cover;
     background-position: 4vw bottom ,bottom left;
-}
-
-.intro .container-xl, .intro .container-xl .row{
-    height: 500px;
 }
 
 .intro_text.col-md-6{
@@ -263,7 +324,7 @@ hr{
 
 h1{
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 4em;
+    font-size: 4rem;
     font-weight: bold;
 }
 
@@ -295,7 +356,23 @@ h1{
 .login{
     background-image: url("../img/Visuals/login.svg");
     background-repeat: no-repeat;
-    background-size: 30em;
+    background-size: 30vw;
+    background-position: bottom left;
+}
+
+/* forgotPassword.php */
+.password{
+    background-image: url("../img/Visuals/forgot_password.svg");
+    background-repeat: no-repeat;
+    background-size: 30vw;
+    background-position: bottom center;
+}
+
+/* newPassword.php */
+.newPassword{
+    background-image: url("../img/Visuals/setup_password.svg");
+    background-repeat: no-repeat;
+    background-size: 30vw;
     background-position: bottom left;
 }
 
@@ -327,6 +404,14 @@ p.live-kaart-p{
     margin-left: 0.3em;
 }
 
+/* CONTACT US */
+.contact{
+    background-image: url("../img/Visuals/undraw_contact_us.svg");
+    background-repeat: no-repeat;
+    background-size: 30vw;
+    background-position: bottom left;
+}
+
 /* FOOTER */
 .page-footer {
     height: 56px;
@@ -348,17 +433,79 @@ p.live-kaart-p{
 }
 
 @media (max-width: 768px){
-    .nav-item.aanmelden::before{
+
+    h1{
+        font-size: 3em;
+    }
+
+    .login, .askCode.container, .registration, .password, .newPassword{
+        background-image: none;
+    }
+
+    .login::before, .askCode.container::before, .registration::before, .password::before, .newPassword::before{
+        content: ' ';
+        display: block;
+        background-size: 80vw;
+        background-repeat: no-repeat;
+        opacity: 0.4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 90%;
+        position: absolute;
+        z-index:0;
+    }
+
+    .login::before {
+        background-image: url("../img/Visuals/login.svg");
+        background-size: 55vw;
+        background-position: bottom left;   
+    }
+
+    .askCode.container::before {
+        background-image: url("../img/Visuals/ask_code.svg");
+        background-position: bottom center;
+    }
+
+    .registration::before {
+        background-image: url("../img/Visuals/registration.svg");
+        background-position: right bottom;
+        background-size: 200vw; 
+    }
+
+    .password::before {
+        background-image: url("../img/Visuals/forgot_password.svg");
+        background-position: bottom center;
+    }
+
+    .newPassword::before {
+        background-image: url("../img/Visuals/setup_password.svg");
+        background-size: 50vw;
+        background-position: bottom left;
+    }
+
+    .landingSection{
+        padding: 5em 1em;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .intro_text{
+        text-align: center;
+    }
+
+    .nav-item.single::before{
         content: "";
         border-left: none;
     }
 
-    .nav-link.aanmelden{
+    .nav-link.btn-gresident{
         margin-left: 0;
-    }
-
-    .navbar .collapse{
-        flex-direction: row;
+        display: block!important;
+        padding-left: 1em;
+        padding-right: 1em;
     }
 }
 

@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><style>.cls-1,.cls-2{fill:none;}.cls-1{stroke:#389583;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title>heat_pump</title><g id="Layer_2" data-name="Layer 2"><path class="cls-1" d="M24,2.26,4.44,17.48V41.39a4.34,4.34,0,0,0,4.34,4.35h4v-9.3H9l5.5-9.91L20,36.44H16v9.3h12.7V32H25l5.5-14L36,32H32V45.74h7.18a4.34,4.34,0,0,0,4.34-4.35V17.48Z"/><rect class="cls-2" width="48" height="48"/></g></svg>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.0004 2.29999L4.40039 17.5V41.4C4.40039 43.8 6.30039 45.7 8.70039 45.7H12.7004V36.4H9.00039L14.5004 26.5L20.0004 36.4H16.0004V45.7H28.7004V32H25.0004L30.5004 18L36.0004 32H32.0004V45.7H39.2004C41.6004 45.7 43.5004 43.8 43.5004 41.4V17.5L24.0004 2.29999Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

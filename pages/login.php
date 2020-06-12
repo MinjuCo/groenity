@@ -17,7 +17,7 @@ if (!empty($_POST)) {
     if($user->login()){
       session_start();
       $_SESSION['user'] = $email;
-      header("Location: profil.php");
+      header("Location: ../application/own.php");
     }
   } catch (\Throwable $e) {
     $error = $e->getMessage();
@@ -35,7 +35,9 @@ if (!empty($_POST)) {
     <div class="col-md-6 m-auto">
       <h2 class="mb-2">Meld je aan om je dashboard te zien</h2>
       <?php if (!empty($error)) : ?>
-        <p class="form__error"> <?php echo $error; ?></p>
+        <div class="alert alert-danger" role="alert">
+          <strong>Pas op!</strong> <?php echo $error; ?>
+        </div>
       <?php endif; ?>
       <form action="" method="post">
         <div class="form-group">
@@ -51,14 +53,15 @@ if (!empty($_POST)) {
             <a href="forgotPassword.php" class="link-blue">Wachtwoord vergeten?</a>
           </div>
         </div>
-        <button type="submit" class="btn btn-block">Meld je aan</button>
+        <button type="submit" class="btn btn-gresident btn-block">Meld je aan</button>
       </form>
       <hr>
-      <a href="#" class="btn btn-block">Meld je aan met Fluvius</a>
+      <a href="#" class="btn btn-gresident btn-block">Meld je aan met Fluvius</a>
       <hr>
       <p class="text-center">Nog geen lid? <a class="link-gn" href="../index.php">Schrijf je in</a></p>
     </div>
   </div>
+  <?php include_once(__DIR__ . "/../includes/footer.inc.php"); ?>
 </body>
 
 </html>

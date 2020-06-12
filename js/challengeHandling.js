@@ -30,8 +30,8 @@ btnsParticipate.forEach(btnParticipate => {
           
           //Replace buttons
           challengeBlock.querySelector(".action-buttons").innerHTML = `
-          <button class="btn ml-2">Annuleren</button>
-          <a href="challengeInfo.php?challenge=${result.body.id}" class="btn">Meer info</a>`;
+          <button class="btn btn-gresident ml-2">Annuleren</button>
+          <a href="challengeInfo.php?challenge=${result.body.id}" class="btn btn-gresident">Meer info</a>`;
           //remove block
           challengeBlock.parentNode.removeChild(challengeBlock);
           if(document.querySelector("#pills-queue .empty")){
@@ -47,7 +47,7 @@ btnsParticipate.forEach(btnParticipate => {
           
           //Replace buttons
           challengeBlock.querySelector(".action-buttons").innerHTML = `
-          <a href="challengeInfo.php?challenge=${result.body.id}" class="btn">Details</a>`;
+          <a href="challengeInfo.php?challenge=${result.body.id}" class="btn btn-gresident">Details</a>`;
           //remove block
           challengeBlock.parentNode.removeChild(challengeBlock);
           if(document.querySelector("#pills-single .empty")){

@@ -1,10 +1,9 @@
 <?php
     include_once(__DIR__."/../classes/User.php");
     include_once(__DIR__."/functions/appFunctions.php");
+    session_start();
 
     $pageTitle = "Winkel";
-    $_SESSION['user'] = "Test";
-    $userId = 1;
     
     if(isset($_GET['content'])){
       $content = checkContent(htmlspecialchars($_GET['content']), "shop");
@@ -14,6 +13,7 @@
     
 
     try{
+      include_once(__DIR__."/includes/userInfo.inc.php");
     }catch(\Throwable $th){
       $error = $th->getMessage();
       echo $error;
