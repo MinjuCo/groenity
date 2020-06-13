@@ -2,7 +2,7 @@
   function checkContent($queryVar, $page){
     switch ($page) {
       case 'shop':
-        $validQueries = array("allProducts", "tshirts", "gadgets", "cityProducts");
+        $validQueries = array("allProducts", "clothes", "gadgets", "cityProducts");
         break;
       case 'appointment':
         $validQueries = array("pending-appointments", "outstanding-balance", "history");

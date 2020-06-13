@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__."/../classes/User.php");
+    include_once(__DIR__."/../classes/Product.php");
     include_once(__DIR__."/functions/appFunctions.php");
     session_start();
 
@@ -14,6 +14,24 @@
 
     try{
       include_once(__DIR__."/includes/userInfo.inc.php");
+      switch($content){
+        case 'allProducts':
+          $products = Product::getProducts('all');
+          break;
+        case 'gadgets':
+          $products = Product::getProducts('gadgets');
+          break;
+        case 'clothes':
+          $products = Product::getProducts('clothes');
+          break;
+        case 'projects':
+          $products = Product::getProducts('projects');
+          break;
+        default:
+          $products = Product::getProducts($content);
+          break;
+      }
+
     }catch(\Throwable $th){
       $error = $th->getMessage();
       echo $error;
@@ -40,10 +58,10 @@
               <a class="nav-link rounded-pill <?php echo ($content == "gadgets")? "active":"" ?>" href="?content=gadgets">Gadgets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link rounded-pill <?php echo ($content == "tshirts")? "active":"" ?>" href="?content=tshirts">T-shirts</a>
+              <a class="nav-link rounded-pill <?php echo ($content == "clothes")? "active":"" ?>" href="?content=clothes">Kleren</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link rounded-pill <?php echo ($content == "cityProducts")? "active":"" ?> disabled" href="?content=cityProducts" tabindex="-1" aria-disabled="true">Gemeentelijk producten</a>
+              <a class="nav-link rounded-pill <?php echo ($content == "cityProducts")? "active":"" ?> disabled" href="?content=cityProducts" tabindex="-1" disabled aria-disabled="true">Gemeentelijk producten</a>
             </li>
           </ul>
           <form class="form-inline">
