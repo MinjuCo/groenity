@@ -1,6 +1,6 @@
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a href="#" class="nav-link">Over ons</a>
+            <a href="<?php echo ($currentPage == "index")? "pages/about.php":"about.php"; ?>" class="nav-link">Over ons</a>
         </li>
         <li class="nav-item">
             <a href="<?php echo ($currentPage == "index")? "pages/live-map.php":"live-map.php"; ?>" class="nav-link">Live kaart</a>
