@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__."/../classes/User.php");
+    include_once(__DIR__."/../classes/Appointment.php");
     include_once(__DIR__."/functions/appFunctions.php");
     session_start();
 
@@ -14,9 +14,58 @@
 
     try{
       include_once(__DIR__."/includes/userInfo.inc.php");
+      $pendingAppointments = Appointment::getPendingAppointments($userId);
+      $outstandingBalances = Appointment::getOutstandingBalance($userId);
+      $appointmentHistory = Appointment::getHistory($userId);
+
+      if(isset($_GET['searchSubject'])){
+        $searchSubject = htmlspecialchars($_GET['searchSubject']);
+
+        switch ($content) {
+          case 'pending-appointments':
+            $pendingAppointments = Appointment::searchAppointment($userId, $searchSubject);
+            break;
+          case 'outstanding-balance':
+            $outstandingBalances = Appointment::searchAppointment($userId, $searchSubject);
+            break;
+          case 'history':
+            $appointmentHistory = Appointment::searchAppointment($userId, $searchSubject);
+            break;
+        }
+      }
+
+      if(isset($_REQUEST['remove'])){
+        $id = $_REQUEST['remove'];
+
+        $result = Appointment::removeAppointment($userId, $id);
+        if($result){
+          header("Location: appointment.php");
+        }
+      }
+
+      if(!empty($_POST)){
+        $subject = $_POST['bookingSubject'];
+        $theme = $_POST['bookingTheme'];
+        $message = $_POST['bookingMessage'];
+        $email = $_POST['bookingEmail'];
+        $phone = $_POST['bookingPhone'];
+
+        $newAppointment = new Appointment();
+        $newAppointment->setUserId($userId);
+        $newAppointment->setSubject($subject);
+        $newAppointment->setThemeId($theme);
+        $newAppointment->setMessage($message);
+        $newAppointment->setEmail($email);
+        $newAppointment->setPhone($phone);
+
+        $result = $newAppointment->saveAppointment();
+
+        if($result){
+          $success = "U hebt succesvol een afspraak geboekt.";
+        }
+      }
     }catch(\Throwable $th){
       $error = $th->getMessage();
-      echo $error;
     }
 ?>
 
@@ -30,6 +79,16 @@
     ?>
     
     <div class="container application">
+        <?php if (!empty($success)) : ?>
+          <div class="alert alert-success" role="alert">
+            <strong>Voltooid!</strong> <?php echo $success; ?>
+          </div>
+        <?php endif; ?>
+        <?php if (!empty($error)) : ?>
+        <div class="alert alert-danger" role="alert">
+          <strong>Pas op!</strong> <?php echo $error; ?>
+        </div>
+      <?php endif; ?>
         <h2 class="mb-4"><?php echo $pageTitle; ?></h2>
         <div class="content__tabs d-flex align-items-center justify-content-between mb-4">
           <ul class="nav nav-pills nav-fill">
@@ -75,30 +134,32 @@
                   <p>Deze prijs dient vooral om de kosten van de experts te dekken en deels de webapplicatie te kunnen onderhouden.</p>
                 </div>
                 <div class="modal-split">
-                  <div class="form-group">
-                    <label for="bookingSubject">Onderwerp</label>
-                    <input type="text" class="form-control" name="bookingSubject" id="bookingSubject">
-                  </div>
-                  <div class="form-group">
-                    <label for="bookingTheme">Thema</label>
-                    <select class="form-control" id="bookingTheme" name="bookingTheme">
-                      <option>Energie</option>
-                      <option>Water</option>
-                      <option>Afval</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="bookingMessage">Wat wil je met de experts bespreken</label>
-                    <textarea class="form-control" name="bookingMessage" id="bookingMessage" rows="3"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="bookingEmail">Email</label>
-                    <input type="email" class="form-control" name="bookingEmail" id="bookingEmail">
-                  </div>
-                  <div class="form-group">
-                    <label for="bookingPhone">Telefoonnummer</label>
-                    <input type="tel" class="form-control" name="bookingPhone" id="bookingPhone">
-                  </div>
+                  <form action="" method="post" id="submitAppointment">
+                    <div class="form-group">
+                      <label for="bookingSubject">Onderwerp</label>
+                      <input type="text" class="form-control" name="bookingSubject" id="bookingSubject">
+                    </div>
+                    <div class="form-group">
+                      <label for="bookingTheme">Thema</label>
+                      <select class="form-control" id="bookingTheme" name="bookingTheme">
+                        <option value="1">Energie</option>
+                        <option value="2">Water</option>
+                        <option value="3">Afval</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="bookingMessage">Wat wil je met de experts bespreken</label>
+                      <textarea class="form-control" name="bookingMessage" id="bookingMessage" form="submitAppointment" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="bookingEmail">Email</label>
+                      <input type="email" class="form-control" name="bookingEmail" id="bookingEmail" value="<?php echo htmlspecialchars($userInfo['email']); ?>">
+                    </div>
+                    <div class="form-group">
+                      <label for="bookingPhone">Telefoonnummer</label>
+                      <input type="tel" class="form-control" name="bookingPhone" id="bookingPhone" value="<?php echo htmlspecialchars($userInfo['phone_number']); ?>">
+                    </div>
+                  </form>
                 </div>
               </div>
               <div class="modal-footer px-4 pb-2">
