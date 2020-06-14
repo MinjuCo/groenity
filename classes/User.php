@@ -495,4 +495,14 @@ class User
         return $user;
     }
 
+    public static function updatePoints($points, $userId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("update users set green_points = :points where id = :userId");
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":points", $points);
+        $result = $statement->execute();
+
+        return $result;
+    }
+
 }

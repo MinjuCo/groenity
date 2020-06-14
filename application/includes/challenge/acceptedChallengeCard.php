@@ -2,9 +2,9 @@
   <div class="card shadow-sm">
     <div class="card-body">
       <h4>Doel</h4>
-      <p class="card-text">
-        <?php echo htmlspecialchars($challenge['goals']); ?>
-      </p>
+      <ul class="card-text">
+        <li><?php echo $challengeGoals; ?></li>
+      </ul>
       <?php if($challenge['is_battle']):
           $battleInfo = Battle::getUserBattleChallenge($userId, $challenge['id']);
         ?>

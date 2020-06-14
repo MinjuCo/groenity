@@ -9,6 +9,7 @@
     private $isStarted;
     private $isCompleted;
     private $active;
+    private $challengeId;
 
     /**
      * Get the value of participatorTwo
@@ -178,7 +179,7 @@
     }
 
     public function acceptChallenge($userId){
-        $challengeId = $this->getId();
+        $challengeId = $this->getChallengeId();
 
         if(Challenge::challengeAlreadyAccepted($userId, $challengeId, true)){
             throw new Exception("Je hebt al deelgenomen aan deze uitdaging.");
@@ -194,4 +195,24 @@
         return $result;
     }
 
+
+    /**
+     * Get the value of challengeId
+     */ 
+    public function getChallengeId()
+    {
+        return $this->challengeId;
+    }
+
+    /**
+     * Set the value of challengeId
+     *
+     * @return  self
+     */ 
+    public function setChallengeId($challengeId)
+    {
+        $this->challengeId = $challengeId;
+
+        return $this;
+    }
   }

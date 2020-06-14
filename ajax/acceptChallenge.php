@@ -1,12 +1,13 @@
 <?php 
 include_once(__DIR__."/../classes/Battle.php");
 include_once(__DIR__."/../classes/SingleChallenge.php");
-include_once(__DIR__."/../functions/actionHandling.php");
-$userId = 1;
+include_once(__DIR__."/../application/functions/appFunctions.php");
+session_start();
 
 if(!empty($_POST)){
   $challengeId = $_POST['challengeId'];
   try{
+    include_once(__DIR__."/../application/includes/userInfo.inc.php");
     $result = participateToChallenge($userId, $challengeId);
 
     if($result){

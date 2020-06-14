@@ -18,7 +18,7 @@
         $leaderboard = City::rankingLeaderboard();
         if(!empty($leaderboard)){
             $searchingArray = array('name' => $userCityInfo['name']);
-            $userCityRank = array_search($searchingArray, $leaderboard);
+            $userCityRank = array_search($searchingArray, $leaderboard)+1;
         }
 
         $activeUsers = City::cityActiveUsers($zip);

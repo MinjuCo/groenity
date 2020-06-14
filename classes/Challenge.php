@@ -228,9 +228,9 @@
         $conn = Db::getConnection();
         $statement = $conn->prepare("
         select * from challenges c where not exists (select challenge_id from battles b where b.challenge_id = c.id and (b.participator_one = :userId or b.participator_two = :userId) and active = 1)
-         and not exists (select challenge_id from challenge_singles cs where cs.challenge_id = c.id and cs.user_id = :userId and active = 1) 
-         and not exists (select challenge_id from challenge_completed cc where cc.challenge_id = c.id and cc.user_id = :userId and active = 1)
-         and not exists (select challenge_id from challenge_queue cq where cq.challenge_id = c.id and cq.user_id = :userId and active = 1)
+         and not exists (select challenge_id from `challenge_singles` cs where cs.challenge_id = c.id and cs.user_id = :userId and active = 1) 
+         and not exists (select challenge_id from `challenge_completed` cc where cc.challenge_id = c.id and cc.user_id = :userId and active = 1)
+         and not exists (select challenge_id from `challenge_queue` cq where cq.challenge_id = c.id and cq.user_id = :userId and active = 1)
          order by created_at desc
          ");
 
@@ -259,10 +259,10 @@
         $statement = $conn->prepare("SELECT challenge_id, timestamp from battles 
         where is_completed = 0 and active = 1 and (participator_one = :userId or participator_two = :userId) 
         UNION 
-        select challenge_id, timestamp from challenge_singles 
+        select challenge_id, timestamp from `challenge_singles` 
         where is_completed = 0 and active = 1 and user_id = :userId 
         UNION 
-        SELECT challenge_id, timestamp from challenge_queue 
+        SELECT challenge_id, timestamp from `challenge_queue` 
         where active = 1 and user_id = :userId
         ORDER BY timestamp DESC");
 
@@ -279,7 +279,7 @@
         $statement = $conn->prepare("SELECT challenge_id from battles 
         where is_completed = 0 and active = 1 and (participator_one = :userId or participator_two = :userId) and challenge_id = :challengeId
         UNION 
-        select challenge_id from challenge_singles 
+        select challenge_id from `challenge_singles` 
         where is_completed = 0 and active = 1 and user_id = :userId and challenge_id = :challengeId");
 
         $statement->bindValue(":userId", $userId);
@@ -301,10 +301,10 @@
                 $statement = $conn->prepare("select challenge_id as id, title, description, green_points from battles b left join challenges c on b.challenge_id = c.id where (participator_one = :userId or participator_two = :userId) and active = 1 and is_completed = 0 group by timestamp desc");
                 break;
             case "single":
-                $statement = $conn->prepare("select challenge_id as id, title, description, green_points from challenge_singles cs left join challenges c on cs.challenge_id = c.id where user_id = :userId and active = 1 and is_completed = 0 group by timestamp desc");
+                $statement = $conn->prepare("select challenge_id as id, title, description, green_points from `challenge_singles` cs left join challenges c on cs.challenge_id = c.id where user_id = :userId and active = 1 and is_completed = 0 group by timestamp desc");
                 break;
             case "queue":
-                $statement = $conn->prepare("select challenge_id as id, title, description, green_points from challenge_queue cq left join challenges c on cq.challenge_id = c.id where user_id = :userId and active = 1 group by timestamp desc");
+                $statement = $conn->prepare("select challenge_id as id, title, description, green_points from `challenge_queue` cq left join challenges c on cq.challenge_id = c.id where user_id = :userId and active = 1 group by timestamp desc");
             break;
             default:
                 return false;
@@ -318,7 +318,7 @@
         return $challenges;
     }
 
-    public function getChallengeInfo($challengeId){
+    public static function getChallengeInfo($challengeId){
         $conn = Db::getConnection();
         $statement = $conn->prepare("select * from challenges where id = :challengeId");
         $statement->bindValue(":challengeId", $challengeId);
@@ -333,9 +333,9 @@
         $conn = Db::getConnection();
 
         if($isBattle == true){
-            $statement = $conn->prepare("select * from challenge_queue where user_id = :userId and challenge_id = :challengeId and active = 1");
+            $statement = $conn->prepare("select * from `challenge_queue` where user_id = :userId and challenge_id = :challengeId and active = 1");
         }else{
-            $statement = $conn->prepare("select * from challenge_singles where user_id = :userId and challenge_id = :challengeId and active = 1");
+            $statement = $conn->prepare("select * from `challenge_singles` where user_id = :userId and challenge_id = :challengeId and active = 1");
         }
 
         $statement->bindValue(":userId", $userId);
@@ -349,6 +349,38 @@
             return false;
         }
 
+    }
+
+    public static function challengeCompleted($userId, $challengeId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from `challenge_completed` where user_id = :userId and challenge_id = :challengeId and active = 1");
+
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":challengeId", $challengeId);
+
+        $statement->execute();
+
+        $challenge = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($statement->rowCount()>0){
+            return $challenge;
+        }else{
+            return false;
+        }
+    }
+
+    public static function saveSingleCompleted($userId, $challengeId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare('insert into `challenge_completed` (user_id, challenge_id, isWinner) values (:userId, :challengeId, true)');
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":challengeId", $challengeId);
+        $result = $statement->execute();
+        if($result){
+            return $result;
+        }
+        else{
+            throw new Exception("Uitdaging niet opgeslagen");
+        }
     }
 
   }

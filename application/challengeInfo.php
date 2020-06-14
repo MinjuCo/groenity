@@ -2,6 +2,7 @@
     include_once(__DIR__."/../classes/Battle.php");
     include_once(__DIR__."/../classes/SingleChallenge.php");
     include_once(__DIR__."/../classes/Theme.php");
+    include_once(__DIR__."/functions/appFunctions.php");
     session_start();
 
     if(isset($_GET['challenge']) && !empty($_GET['challenge'])){
@@ -15,6 +16,11 @@
       $challenge = Challenge::getChallengeInfo($challegeId);
       $userInQueue = ($challenge['is_battle'] && Challenge::challengeAlreadyAccepted($userId, $challegeId, $challenge['is_battle']))? true: false;;
       $userDoingChallenge = Challenge::userIsDoingThisChallenge($userId, $challegeId);
+      $challengeCompleted = Challenge::challengeCompleted($userId, $challegeId);
+
+      $challengeGoals = getGoalsText($challenge['goals']);
+      $rewards = explode(";", $challenge['rewards']);
+
     }catch(\Throwable $th){
       $error = $th->getMessage();
     }
@@ -50,32 +56,37 @@
               <div class="card">
                 <div class="card-body p-2">
                   <h4>
-                    <span class="badge float-right coins">
-                      <?php echo htmlspecialchars($challenge["green_points"]);?>
-                    </span>
+                    <span class="price float-right d-flex align-items-center"><?php echo htmlspecialchars($challenge["green_points"]);?><img class="coins" src="../img/g_coins.svg" alt="GP"></span>
                   </h4>
                 </div>
               </div>
-            <?php else:
-              if($userInQueue): ?>
-                <h2>
-                  <span class="ml-2 badge badge-warning">
-                    In wacht
-                  </span>
-                </h2>
+            <?php elseif($userInQueue): ?>
+              <h2>
+                <span class="ml-2 badge badge-warning">
+                  In wacht
+                </span>
+              </h2>
+            <?php elseif($challengeCompleted):?>
+              <h2>
+                <span class="ml-2 badge badge-success">
+                  Voltooid
+                </span>
+              </h2>
               <?php else: ?>
-                <a href="functions/addUserToChallenge.php?challenge=<?php echo $challegeId;?>" class="btn btn-gresident">Deelnemen</a>
-              <?php endif;
+                <button class="btn btn-gresident btn-participate ml-2" data-challengeid="<?php echo htmlspecialchars($challenge['id']);?>">Deelnemen</button>
+              <?php
             endif; ?>
             
           </div>
 
         </div>
-        <div class="row">
+        <div class="row mb-3">
           <?php if($userDoingChallenge):
-            include_once("includes/acceptedChallengeCard.php");
+            include_once("includes/challenge/acceptedChallengeCard.php");
+          elseif($challengeCompleted):
+            include_once("includes/challenge/completedChallengeCard.php");
           else:
-            include_once("includes/todoChallengeCard.php");
+            include_once("includes/challenge/todoChallengeCard.php");
           endif; ?>
         </div>
     </div>
@@ -84,6 +95,42 @@
     <?php 
         //Footer + scripts
         include_once(__DIR__."/../includes/footer.inc.php"); 
+        if(!$userDoingChallenge && !$challengeCompleted):
     ?>
+        <script>
+          let btnsParticipate = document.querySelectorAll(".btn-participate");
+
+          btnsParticipate.forEach(btnParticipate => {
+            let btn = this;
+            btnParticipate.addEventListener("click", (e) => {
+              let thisElem = e.currentTarget;
+              let challengeId = thisElem.dataset.challengeid;
+
+              //send to database
+              let formData = new FormData();
+              formData.append('challengeId', challengeId);
+
+              fetch('../ajax/acceptChallenge.php', {
+                method: 'POST',
+                body: formData
+              })
+              .then(response => response.json())
+              .then(result => {
+                if(result.status === "success"){
+                  window.location.replace("?content=onGoing");
+                }
+
+                if(result.status === "error"){
+                  alert(result.message);
+                }
+
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+            });
+          });
+        </script>
+        <?php endif; ?>
 </body>
 </html>
