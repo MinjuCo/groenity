@@ -1,15 +1,17 @@
+//wij moeten het toepassen aan gebruikers
+
 const sha256 = require('sha256');
-// const currentNodeUrl = process.argv[3];
-// const uuid = require('uuid/v1');
+const currentNodeUrl = process.argv[3];
+const uuid = require('uuid/v1');
 
 function Blockchain() {
 	this.chain = [];
 	this.pendingTransactions = [];
 
-//	this.currentNodeUrl = currentNodeUrl;
-//	this.networkNodes = [];
+	this.currentNodeUrl = currentNodeUrl;
+	this.networkNodes = [];
 
-//	this.createNewBlock(100, '0', '0');
+	this.createNewBlock(100, '0', '0');
 };
 
 
@@ -72,7 +74,7 @@ Blockchain.prototype.proofOfWork = function(previousBlockHash, currentBlockData)
 };
 
 
-/*
+
 Blockchain.prototype.chainIsValid = function(blockchain) {
 	let validChain = true;
 
@@ -151,5 +153,5 @@ Blockchain.prototype.getAddressData = function(address) {
 
 
 
-*/
+
 module.exports = Blockchain;
