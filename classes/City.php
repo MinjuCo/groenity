@@ -158,4 +158,14 @@
         $completed = $statement->fetch(PDO::FETCH_ASSOC);
         return $completed;
     }
+
+    public static function updatePoints($points, $cityId){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("update cities set green_points = :points where id = :cityId");
+        $statement->bindValue(":cityId", $cityId);
+        $statement->bindValue(":points", $points);
+        $result = $statement->execute();
+
+        return $result;
+    }
   }

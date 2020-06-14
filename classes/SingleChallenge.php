@@ -4,6 +4,7 @@
   class SingleChallenge extends Challenge{
     private $userId;
     private $active;
+    private $challengeId;
 
     /**
      * Get the value of userId
@@ -46,14 +47,14 @@
     }
 
     public function acceptChallenge($userId){
-        $challengeId = $this->getId();
+        $challengeId = $this->getChallengeId();
 
         if(Challenge::challengeAlreadyAccepted($userId, $challengeId, false)){
             throw new Exception("Je hebt al deelgenomen aan deze uitdaging.");
         }
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into challenge_singles (user_id, challenge_id, active) values (:userId, :challengeId, 1)");
+        $statement = $conn->prepare("insert into `challenge_singles` (user_id, challenge_id, active) values (:userId, :challengeId, 1)");
   
         $statement->bindValue(":userId", $userId);
         $statement->bindValue(":challengeId", $challengeId);
@@ -61,5 +62,46 @@
         $result = $statement->execute();
         return $result;
         
+    }
+
+    public static function setChallengeToComplete($userId, $challengeId){
+        $conn = Db::getConnection();
+
+        $statement = $conn->prepare("update `challenge_singles` set is_completed = 1 where user_id = :userId and challenge_id = :challengeId");
+        $statement->bindValue(":userId", $userId);
+        $statement->bindValue(":challengeId", $challengeId);
+
+        $result = $statement->execute();
+        return $result;
+    }
+
+    public static function completeChallenge($userId, $challengeId){
+        SingleChallenge::setChallengeToComplete($userId, $challengeId);
+        Challenge::saveSingleCompleted($userId, $challengeId);
+        if(SingleChallenge::setChallengeToComplete($userId, $challengeId) && Challenge::saveSingleCompleted($userId, $challengeId)){
+            return true;
+        }else{
+            throw new Exception("Niet gelukt");
+        }
+    }
+
+    /**
+     * Get the value of challengeId
+     */ 
+    public function getChallengeId()
+    {
+        return $this->challengeId;
+    }
+
+    /**
+     * Set the value of challengeId
+     *
+     * @return  self
+     */ 
+    public function setChallengeId($challengeId)
+    {
+        $this->challengeId = $challengeId;
+
+        return $this;
     }
   }

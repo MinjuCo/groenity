@@ -199,7 +199,7 @@ hr{
     height: 64px;
 }
 
-.askCode, .registration, .login, .map, .password, .newPassword, .contact{
+.askCode, .registration, .login, .map, .password, .newPassword, .contact, .about{
     min-height: 92vh;
     padding-top: 5.7em;
 }
