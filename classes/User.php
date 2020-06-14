@@ -350,7 +350,7 @@ class User
     public function saveUser()
     {
         $conn = Db::getConnection();
-        $statement = $conn->prepare("INSERT users(first_name, last_name, email, password, street, house_number, zip) values (:firstname, :lastname, :email, :password, :street, :houseNr, :zip)");
+        $statement = $conn->prepare("insert into users (first_name, last_name, email, password, street, house_number, zip) values (:firstname, :lastname, :email, :password, :street, :houseNr, :zip)");
         $password = $this->protectPassword();
         
         $statement->bindValue(":firstname", $this->getFirstName());
@@ -388,11 +388,13 @@ class User
 
         // set up validation code
         $statementCode = $conn->prepare("INSERT verification_code(verify_code, user_id) values(:code, :id)");
-        
         $code = $this->randomCode();
         $statementCode->bindValue(":code", $code);
         $statementCode->bindValue(":id", $user['id']);
         $result = $statementCode->execute();
+        $headers = "From: gresident@minju.space";
+        $message = "Hier is je verificatie code om in te loggen op Gresident. Code: ".$code;
+        mail($this->getEmail(),"Verification code",$message, $headers);
 
         return $result;
     }
@@ -469,7 +471,7 @@ class User
     public function validateCode(){
         $conn = Db::getConnection();
 
-        $statement = $conn->prepare("SELECT * FROM verification_code vc left join users u on u.id = vc.user_id WHERE verify_code = :code AND (u.street = :street AND u.house_number = :houseNr AND u.zip = :zip)");
+        $statement = $conn->prepare("SELECT * FROM `verification_code` vc left join users u on u.id = vc.user_id WHERE verify_code = :code AND (u.street = :street AND u.house_number = :houseNr AND u.zip = :zip)");
         $statement->bindValue(":code", $this->getCode());
         $statement->bindValue(":street", $this->getStreet());
         $statement->bindValue(":houseNr", $this->getHouseNumber());

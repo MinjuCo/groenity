@@ -11,7 +11,7 @@
               <a class="nav-link active rounded-pill" id="pills-energy-tab" data-toggle="pill" href="#pills-energy" role="tab" aria-controls="pills-energy" aria-selected="true">Energie</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link rounded-pill" id="pills-water-tab" data-toggle="pill" href="#pills-water" role="tab" aria-controls="pills-water" aria-selected="false">Water</a>
+              <a class="nav-link rounded-pill disabled" id="pills-water-tab" data-toggle="pill" href="#pills-water" role="tab" aria-controls="pills-water" aria-selected="false">Water</a>
           </li>
           <li class="nav-item">
               <a class="nav-link rounded-pill disabled" id="pills-soundlevel-tab" data-toggle="pill" href="#pills-level" role="tab" aria-controls="pills-soundlevel" aria-selected="false">Geluidsniveau</a>
@@ -30,7 +30,7 @@
                 <a class="nav-link" id="energy-tips-tab" data-toggle="pill" href="#energy-tips" role="tab" aria-controls="energy-tips" aria-selected="false">Tips</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="energy-challenges-tab" data-toggle="pill" href="#energy-challenges" role="tab" aria-controls="energy-challenges" aria-selected="false">Uitdagingen</a>
+                <a class="nav-link disabled" id="energy-challenges-tab" data-toggle="pill" href="#energy-challenges" role="tab" aria-controls="energy-challenges" aria-selected="false">Uitdagingen</a>
               </li>
             </ul>
             <div class="tab-content" id="energyContent">
@@ -42,7 +42,14 @@
                 </ul>
               </div>
               <div class="tab-pane fade" id="energy-tips" role="tabpanel" aria-labelledby="energy-tips-tab">
-                <h4>Wekelijks energieverbruik</h4>
+                <ul>
+                  <li>Trek een (extra) trui aan en bespaar 7% energie door de verwarming 1 °C lager te zetten.</li>
+                  <li>Laat 's nachts, of als overdag niemand thuis is, de temperatuur in de leefruimten zakken tot 15 à 16 °C.</li>
+                  <li>Elektrische bijverwarming kan nuttig zijn om heel kort een badkamer op te warmen, maar probeer het gebruik ervan te beperken.</li>
+                  <li>Sluit 's avonds de gordijnen of rolluiken.</li>
+                  <li>Te warm? Kies voor zonwering. Zolang het buiten warmer is dan binnen, houdt u rolluiken, ramen en gordijnen best dicht. Zet als het afkoelt zoveel mogelijk open.</li>
+                  <li>De airco is een ware energievreter. Gebruik hem zo weinig mogelijk, een ventilator is een veel zuiniger alternatief.</li>
+                </ul>
               </div>
               <div class="tab-pane fade" id="energy-challenges" role="tabpanel" aria-labelledby="energy-challenges-tab">
                 <h4>Maandelijks energieverbruik</h4>

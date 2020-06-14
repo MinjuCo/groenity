@@ -12,7 +12,7 @@
             <h3 class="card-title">Gresident: ontstaan</h3>
             <p><span class="link-gn">Gresident</span> is een web applicatie geïnitieerd door twee <span class="link-gn">IMD</span> studenten, Madina Jurakholova en Marlena Broniewicz. 
             Wij brengen stad en inwoners samen om <span class="link-gn">als één team naar een ecologisch samenleving te streven</span> waarin mens en natuur in balans staan. 
-            Wij ondervonden dat inwoners zeer weinig bewust zijn over hun eigen impact op het milieu. Daarnaast wouden de meerderheid van de inwoners dat er meer initiatief komt van de gemeente. Daarom is <span class="link-gn">Gresident</span> ontstaant.</p> 
+            Wij ondervonden dat inwoners zeer weinig bewust zijn over hun eigen impact op het milieu. Daarnaast wouden de meerderheid van de inwoners dat er meer initiatief komt van de gemeente. Daarom is <span class="link-gn">Gresident</span> ontstaan.</p> 
           </div>
         </div>
       </div>

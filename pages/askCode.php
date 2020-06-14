@@ -24,10 +24,9 @@ if (!empty($_POST['sendCode'])) {
         $user->setZip($zip);
 
         // verifie code & find userId
-        $user = $user->validateCode();
-        
-        if($user->validateUser($user['user_id'])){
-            $_SESSION['user'] = $user['email'];
+        $userInfo = $user->validateCode();
+        if($user->validateUser($userInfo['user_id'])){
+            $_SESSION['user'] = $userInfo['email'];
             header("Location: ../application/appSettings.php"); 
         }
 

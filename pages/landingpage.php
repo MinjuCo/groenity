@@ -27,7 +27,7 @@
                   <input type="text" class="form-control" id="city" name="city">
                 </div>
                 <div class="form-group col-md-4 d-flex align-items-end">
-                  <input type="submit" class="btn btn-gresident form-control" id="findAddress" name="" value="Gratis deelnemen">
+                  <input type="button" class="btn btn-gresident form-control" id="findAddress" name="" value="Gratis deelnemen">
                 </div>
               </div>
             </form>

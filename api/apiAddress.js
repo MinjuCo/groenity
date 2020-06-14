@@ -3,7 +3,7 @@ document.querySelector('#findAddress').addEventListener("click", function(e){
     e.preventDefault();
     let streetName = document.querySelector("#street").value;
     let houseNr = document.querySelector("#streetNr").value;
-    let streetAddress = streetName + " " + houseNr;
+    let streetAddress = streetName.replace(" ", "+") + "+" + houseNr;
     let city = document.querySelector("#city").value;
     let zip = "notFound";
 
@@ -28,11 +28,18 @@ document.querySelector('#findAddress').addEventListener("click", function(e){
             return response.json();
           })
           .then(data => {
+            console.log(data);
             if(data.status === "VALID"){
               
-              $("#jsLoad").load("api/setSession.php?zip=" + zip + "&street=" + streetName + "&houseNr=" + houseNr);
-          
-              window.location.replace("pages/askCode.php");
+              //$("#jsLoad").load("api/setSession.php?zip=" + data.postalcode + "&street=" + data.street + "&houseNr=" + data.streetnumber);
+              var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  window.location.replace("pages/askCode.php");
+                }
+              };
+              xmlhttp.open("GET", "api/setSession.php?zip=" + data.postalcode + "&street=" + data.street.replace(" ", "+") + "&houseNr=" + data.streetnumber, true);
+              xmlhttp.send();
             }
 
             //detect error
