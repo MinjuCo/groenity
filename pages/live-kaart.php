@@ -1,5 +1,17 @@
 <?php
 $pageTitle = "Live kaart";
+
+// Search 
+if(!empty($_POST["findCity"])){
+    $city = $_POST["city"];
+    if (is_numeric($city) ) {
+        echo "tak";
+        //set zipcode
+    } else {
+        echo "nie";
+        //set cityname
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,25 +23,23 @@ $pageTitle = "Live kaart";
     //Navbar
     include_once(__DIR__ . "/../includes/nav.inc.php");
     ?>
-
     <div class="container application">
-
         <div class="row d-flex justify-content-between">
-            <div class="col-md-4 card shadow-sm" id="">
+            <div class="col-md-4 card shadow-sm mb-4" id="">
                 <div class="card-body">
-                    <form action="post" class="form-inline justify-content-center">
-                        <input type="text" class="form-control" id="city" aria-describedby="city" placeholder="Bv 2800 of Mechelen ">
-                        <input type="submit" value="Zoeken" class="btn form-control ">
+                    <form class="form-inline justify-content-center" action="" method="post" enctype="multipart/form-data">
+                        <input type="text" class="form-control" id="city" name="city" aria-describedby="city" placeholder="Bv 2800 of Mechelen ">
+                        <input type="submit" value="Zoeken" name="findCity" class="btn form-control" id="findCity">
                     </form>
                     <div class="row mt-2">
                         <h3 class="mb-2">Leaderboard</h3>
                     </div>
                     <div class="row mt-0 d-flex justify-content-between ">
-                        <div class="col-1 mb-0">
+                        <div class="col-2 mb-0">
                             <p>#</p>
                         </div>
                         <div class="col-3 mb-0">
-                            <p >ZIP</p>
+                            <p>ZIP</p>
                         </div>
                         <div class="col-4 mb-0">
                             <p>STAD</p>
@@ -38,27 +48,28 @@ $pageTitle = "Live kaart";
                             <img src="../img/g_coins.svg" alt="coin" class="mr-3 ml-3">
                         </div>
                     </div>
-                    <!-- -->
-                    <div class="row mt-0 d-flex justify-content-between">
-                            <div class="col-1">
-                                <p class="font-weight-bold">1</p>
+                    <!-- Leaderboard -->
+                    <?php for ($i = 1; $i < 12; $i++) { ?>
+                        <div class="row mt-0 d-flex justify-content-between">
+                            <div class="col-2 mb-1">
+                                <p class="font-weight-bold mb-1"><?php echo $i; ?></p>
+                            </div>
+                            <div class="col-3 mb-1">
+                                <p class="mb-1">1000</p>
+                            </div>
+                            <div class="col-4 mb-1">
+                                <p class="mb-1">Voorbeeld</p>
                             </div>
                             <div class="col-3">
-                                <p>1000</p>
+                                <p class="mb-1 live-kaart-p">1000</p>
                             </div>
-                            <div class="col-4">
-                                <p>Voorbeeld</p>
-                            </div>
-                            <div class="col-3">
-                               <h4>1000</h4>
-                            </div>
-                        
-                    </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
-            <div class="col-md-7 card shadow-sm ">
-                <div class="d-flex mt-3">
-                    <?php include_once(__DIR__ . "/../includes/live-map.inc.php") ?>
+            <div class="col-md-7 card shadow-sm mb-4">
+                <div class="card-body d-flex justify-content-center align-items-center">
+                        <?php include_once(__DIR__ . "/../includes/live-map.inc.php") ?>
                 </div>
             </div>
         </div>

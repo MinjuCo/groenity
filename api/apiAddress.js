@@ -60,4 +60,4 @@ document.querySelector('#findAddress').addEventListener("click", function(e){
     .catch(error => {
       console.error('Error:', error);
     });
-})
+});
