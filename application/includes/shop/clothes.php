@@ -1,4 +1,4 @@
-<h3>Gadgets</h3>
+<h3>T-shirts</h3>
 <?php 
   $teller = 1;
   foreach($products as $product):
