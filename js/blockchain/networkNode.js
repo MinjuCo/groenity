@@ -6,6 +6,7 @@ const uuid = require('uuid/v1');
 const port = process.argv[2];
 const rp = require('request-promise');
 
+//generate unique string
 const nodeAddress = uuid().split('-').join('');
 
 const greenpoints = new Blockchain();
